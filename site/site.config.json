@@ -1,7 +1,7 @@
 {
   "_uitleg": "Vul hier de bedrijfsgegevens in. Alles wat leeg blijft, blijft op de site zichtbaar als 'IN TE VULLEN'. Daarna: python3 tools/build.py (of push naar GitHub; de site wordt dan automatisch opnieuw gebouwd).",
   "organisatie": "Verbind & GO",
-  "domein": "",
+  "domein": "verbindengo.nl",
   "email": "",
   "telefoon": "",
   "bereikbaarheid": "",
