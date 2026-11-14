@@ -1,0 +1,1 @@
+{ "buildCommand": "python3 tools/sync_css.py && python3 tools/build.py project dist", "outputDirectory": "dist", "cleanUrls": true }

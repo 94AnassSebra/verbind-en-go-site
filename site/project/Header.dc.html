@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Kop Verbind &amp; Go</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+:root{--ink:#0F1F1F;--petrol:#1F5D5A;--petrol-deep:#0D3534;--orange:#F0862B;--ease:cubic-bezier(.2,.8,.2,1)}
+.lh{position:sticky;top:0;z-index:50;font-family:'Figtree',system-ui,sans-serif;color:var(--ink);padding:12px max(12px,2vw) 0;pointer-events:none}
+.lh-bar{pointer-events:auto;max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:8px 8px 8px 20px;border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.7);box-shadow:0 1px 2px rgba(15,31,31,.05),0 18px 40px -28px rgba(15,31,31,.35),inset 0 0 0 1px rgba(15,31,31,.05)}
+.lh-logo{display:flex;align-items:center;text-decoration:none;color:var(--petrol);min-height:44px;font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:25px;letter-spacing:-0.04em}
+.lh-logo b{color:var(--orange);font-weight:800}
+.lh-nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;padding:3px;border-radius:999px;background:rgba(15,31,31,.045)}
+.lh-nav::-webkit-scrollbar{display:none}
+.lh-nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:999px;text-decoration:none;white-space:nowrap;font:500 14.5px/1 'Figtree',system-ui,sans-serif;color:#3E5250;transition:color .2s ease,background .2s ease}
+.lh-nav a:hover{color:var(--petrol);background:rgba(255,255,255,.9)}
+.lh-nav a[aria-current="page"]{color:var(--petrol);font-weight:700;background:#FFFFFF;box-shadow:0 1px 2px rgba(15,31,31,.08),0 6px 14px -10px rgba(15,31,31,.3)}
+.lh-acts{display:flex;gap:6px;align-items:center}
+.lh-cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--petrol-deep);color:#FFFFFF;text-decoration:none;font-weight:600;font-size:14.5px;position:relative;isolation:isolate;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s ease;box-shadow:0 10px 22px -14px rgba(13,53,52,.9)}
+.lh-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#2A7A74,var(--petrol) 55%,var(--petrol-deep))}
+.lh-cta:hover{transform:translateY(-1px);box-shadow:0 16px 30px -16px rgba(13,53,52,.95);color:#FFFFFF}
+.lh-login{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(15,31,31,.12);color:var(--petrol);text-decoration:none;font-weight:600;font-size:14.5px;background:rgba(255,255,255,.5);transition:border-color .2s ease,background .2s ease}
+.lh-login:hover{border-color:var(--petrol);background:#FFFFFF}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+@media (max-width:860px){.lh-nav{order:3;flex:1 1 100%;justify-content:flex-start}.lh-bar{border-radius:28px;padding:10px 10px 10px 16px}.lh-nav a{min-height:38px;padding:0 13px;font-size:14px}.lh-login span{display:none}.lh-login{padding:0 12px}}
+@media (prefers-reduced-motion: reduce){.lh *{transition:none!important}}
+</style>
+</helmet>
+<header class="lh">
+<a href="#inhoud" style="position:absolute;left:12px;top:-60px;pointer-events:auto;z-index:60;background:#F0862B;color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none">Naar de inhoud</a>
+<div class="lh-bar">
+<a class="lh-logo" href="Main.dc.html" aria-label="Verbind &amp; Go, naar de homepage">Verbind<b>&amp;</b>GO</a>
+<nav class="lh-nav" aria-label="Hoofdmenu">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="6">
+<a href="{{l.href}}" aria-current="{{l.current}}">{{l.label}}</a>
+</sc-for>
+</nav>
+<div class="lh-acts">
+<a class="lh-login" href="Inloggen.dc.html" aria-label="Inloggen op het portaal"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" fill="none"><rect x="3" y="7" width="10" height="7" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.6"/></svg><span>Inloggen</span></a>
+<a class="lh-cta" href="Contact.dc.html">Contact</a>
+</div>
+</div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["home","aanpak","gemeenten","werkgevers","over","contact","inloggen"],"default":"home"},"$preview":{"width":1440,"height":96}}'>
+class Component extends DCLogic {
+renderVals() {
+const active = this.props.active ?? 'home';
+const items = [['home', 'Home', 'Main.dc.html'], ['aanpak', 'Onze aanpak', 'Aanpak.dc.html'], ['gemeenten', 'Voor gemeenten', 'Gemeenten.dc.html'], ['werkgevers', 'Voor werkgevers', 'Werkgevers.dc.html'], ['over', 'Over ons', 'OverOns.dc.html']];
+return { links: items.map(([key, label, href]) => ({ label, href, current: key === active ? 'page' : undefined })) };
+}
+}
+</script>
+</body>
+</html>

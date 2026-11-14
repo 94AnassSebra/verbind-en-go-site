@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Voor deelnemers — Verbind &amp; Go</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#FBF4EA}
+*{box-sizing:border-box}
+a{color:#1C5B52}a:hover{color:#2E8A7A}
+:focus-visible{outline:3px solid #E8603F;outline-offset:3px;border-radius:8px}
+a[href="#inhoud"]:focus{top:12px!important}
+button{font:inherit}
+.o-h{font-family:'Fraunces',Georgia,serif;font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:500;letter-spacing:-0.025em;line-height:1;margin:0;text-wrap:balance;color:#1E2B29}
+.o-it{font-style:italic;color:#E8603F}
+.o-label{font:600 13px/1.3 'Figtree',system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#2E8A7A}
+.o-btn{display:inline-flex;align-items:center;gap:14px;min-height:62px;padding:0 8px 0 28px;border-radius:999px;font:600 18px/1 'Figtree',system-ui,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .2s ease,color .2s ease,border-color .2s ease,box-shadow .35s ease}
+.o-btn:hover{transform:translateY(-3px)}
+.o-btn-primary{background:#E8603F;color:#FBF4EA}.o-btn-primary:hover{background:#D4512F;color:#FBF4EA;box-shadow:0 22px 40px -16px rgba(232,96,63,.6)}
+.o-btn-ghost{border:1.5px solid rgba(28,91,82,.3);color:#1C5B52;padding:0 28px;background:transparent}.o-btn-ghost:hover{border-color:#1C5B52;background:rgba(191,232,216,.35);color:#1C5B52}
+.o-btn-dark{background:#1C5B52;color:#FBF4EA}.o-btn-dark:hover{background:#174A43;color:#FBF4EA}
+.o-arrow{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#FBF4EA;color:#E8603F;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.o-btn:hover .o-arrow{transform:rotate(-30deg)}
+.o-blob{position:absolute;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;animation:o-morph 18s ease-in-out infinite alternate;pointer-events:none}
+@keyframes o-morph{0%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:translate(0,0) rotate(0deg)}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%;transform:translate(2%,-2%) rotate(4deg)}100%{border-radius:50% 50% 40% 60%/40% 60% 50% 50%;transform:translate(-2%,2%) rotate(-5deg)}}
+.o-w{display:inline-block;animation:o-up 1s cubic-bezier(.2,.8,.2,1) both}
+.o-w:nth-child(2){animation-delay:.08s}.o-w:nth-child(3){animation-delay:.16s}.o-w:nth-child(4){animation-delay:.24s}.o-w:nth-child(5){animation-delay:.32s}
+@keyframes o-up{from{opacity:0;transform:translateY(30px) rotate(-1.5deg)}to{opacity:1;transform:none}}
+.o-fade{animation:o-fade 1.1s .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes o-fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.o-card{background:#FFFDF9;border-radius:40px;box-shadow:0 30px 60px -40px rgba(28,91,82,.35);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s ease}
+.o-card:hover{transform:translateY(-8px);box-shadow:0 50px 80px -40px rgba(28,91,82,.4)}
+.o-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(28,91,82,.08);font:600 12px/1 'Figtree',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#1C5B52}
+.o-choice{display:flex;flex-direction:column;gap:12px;padding:26px;border-radius:32px;border:1.5px solid rgba(28,91,82,.15);background:#FFFDF9;text-align:left;cursor:pointer;color:#1E2B29;font-size:20px;line-height:1.3;font-weight:600;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .25s ease,background .25s ease,color .25s ease;min-height:130px}
+.o-choice:hover{transform:translateY(-5px);border-color:#1C5B52}
+.o-choice[aria-pressed="true"]{background:#1C5B52;color:#FBF4EA;border-color:#1C5B52}
+.o-choice span.ic{width:44px;height:44px;border-radius:50%;background:#FFC9A8;display:grid;place-items:center;color:#1E2B29}
+.o-choice[aria-pressed="true"] span.ic{background:#E8603F;color:#FBF4EA}
+.o-panel{animation:o-fade .5s cubic-bezier(.2,.8,.2,1) both}
+.o-stepn{flex:none;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-family:'Fraunces',Georgia,serif;font-variation-settings:'SOFT' 100;font-weight:600;font-size:30px;color:#FBF4EA;background:#1C5B52}
+.o-step{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;padding:clamp(24px,3vw,40px);border-radius:40px}
+@supports (animation-timeline: view()){
+.o-rv{animation:o-rise linear both;animation-timeline:view();animation-range:entry 5% entry 40%}
+@keyframes o-rise{from{opacity:.1;transform:translateY(40px) scale(.98)}to{opacity:1;transform:none}}
+.o-draw{stroke-dasharray:2400;animation:o-drawline linear both;animation-timeline:view();animation-range:entry 0% exit 60%}
+@keyframes o-drawline{from{stroke-dashoffset:2400}to{stroke-dashoffset:0}}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="font-family:'Figtree',system-ui,sans-serif;color:#1E2B29;background:#FBF4EA;overflow-x:clip">
+<dc-import name="Header" active="deelnemers" hint-size="100%,110px"></dc-import>
+<main id="inhoud" style="margin-top:-84px">
+
+<section aria-labelledby="dn-title" style="position:relative;isolation:isolate;overflow:hidden">
+<div class="o-blob" aria-hidden="true" style="width:56vw;height:56vw;max-width:760px;max-height:760px;right:-14vw;top:-8vw;background:radial-gradient(circle at 30% 30%,#FFD2B5,#FFB38A 60%,#FFA876);opacity:.85;z-index:-2"></div>
+<div class="o-blob" aria-hidden="true" style="width:32vw;height:32vw;max-width:420px;max-height:420px;right:18vw;top:26vw;background:radial-gradient(circle at 40% 40%,#D7F1E6,#9FD9C8);opacity:.9;z-index:-1;animation-delay:-6s;animation-duration:22s"></div>
+<div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(150px,18vw,230px) max(20px,4vw) clamp(80px,10vw,140px)">
+<p class="o-label o-fade" style="margin:0 0 28px;animation-delay:.1s;display:flex;align-items:center;gap:12px"><svg width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1 7c4-6 8-6 13 0s9 6 13 0" fill="none" stroke="#E8603F" stroke-width="2" stroke-linecap="round"/></svg>Voor deelnemers</p>
+<h1 id="dn-title" class="o-h" style="max-width:11ch;font-size:clamp(54px,10vw,164px);line-height:.92"><span class="o-w">Je</span> <span class="o-w">wilt</span> <span class="o-w">werken.</span> <span class="o-w o-it">Wij helpen</span> <span class="o-w o-it">je verder.</span></h1>
+<div class="o-fade" style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;justify-content:space-between;margin-top:48px">
+<p style="margin:0;max-width:46ch;font-size:clamp(20px,1.9vw,25px);line-height:1.5;color:#3E4F4C">Wil je aan het werk? Of wil je je werk houden? We kijken samen wat je wilt, wat je goed kunt en wat je nog nodig hebt. Daarna maken we een plan.</p>
+<a class="o-btn o-btn-primary" href="Contact.dc.html">Ik wil begeleiding <span class="o-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</div>
+</div>
+<svg aria-hidden="true" viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:100%;height:clamp(40px,6vw,90px)"><path d="M0 50 C 240 90, 480 0, 720 40 S 1200 90, 1440 30 L1440 90 L0 90 Z" fill="#F3E4CF"/></svg>
+</section>
+
+<!-- WAT PAST BIJ JOU -->
+<section aria-labelledby="kies-title" style="background:#F3E4CF">
+<div style="max-width:1320px;margin:0 auto;padding:clamp(56px,7vw,100px) max(20px,4vw) clamp(80px,9vw,128px)">
+<div class="o-rv" style="margin-bottom:32px"><p class="o-label" style="margin:0 0 16px">Voor wie?</p><h2 id="kies-title" class="o-h" style="font-size:clamp(38px,5.4vw,80px);max-width:14ch">Wat past <span class="o-it">bij jou?</span></h2><p style="margin:20px 0 0;font-size:20px;line-height:1.5;max-width:46ch">Klik op wat bij jou past. Dan zie je wat we samen kunnen doen.</p></div>
+<div class="o-rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px">
+<sc-for list="{{opties}}" as="o" hint-placeholder-count="4"><button type="button" class="o-choice" aria-pressed="{{o.pressed}}" onClick="{{o.pick}}"><span class="ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>{{o.label}}</span></button></sc-for>
+</div>
+<div class="o-rv o-panel" style="margin-top:18px;display:flex;flex-wrap:wrap;gap:18px">
+<div style="flex:1 1 400px;min-width:0;background:#1C5B52;color:#FBF4EA;border-radius:44px;padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden"><span class="o-blob" aria-hidden="true" style="width:240px;height:240px;right:-80px;bottom:-90px;background:#2E8A7A;opacity:.7"></span>
+<span class="o-pill" style="background:rgba(251,244,234,.12);color:#D7F1E6;position:relative">Jouw situatie</span>
+<p class="o-h" style="position:relative;font-size:clamp(28px,3vw,46px);line-height:1.04;color:#FBF4EA">{{cur.kop}}</p>
+<p style="position:relative;margin:0;font-size:19px;line-height:1.6;color:#D7F1E6">{{cur.tekst}}</p>
+</div>
+<div style="flex:1 1 400px;min-width:0;background:#FFFDF9;border-radius:44px;padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;gap:16px">
+<span class="o-pill">Wat we samen doen</span>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;font-size:19px;line-height:1.5"><sc-for list="{{cur.stappen}}" as="s" hint-placeholder-count="3"><li style="display:flex;gap:14px;align-items:flex-start"><span aria-hidden="true" style="flex:none;width:34px;height:34px;border-radius:50%;background:#FFC9A8;color:#1E2B29;display:grid;place-items:center;font:700 15px 'Figtree',sans-serif">{{s.n}}</span><span>{{s.t}}</span></li></sc-for></ul>
+<p style="margin:auto 0 0;padding-top:14px;border-top:1.5px dashed rgba(28,91,82,.2);font-size:17px;line-height:1.5;color:#5B6B68">{{cur.taal}}</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STAPPEN -->
+<section aria-labelledby="samen-title" style="background:#FBF4EA">
+<div style="max-width:1320px;margin:0 auto;padding:clamp(80px,9vw,128px) max(20px,4vw)">
+<div class="o-rv" style="text-align:center;margin-bottom:48px"><p class="o-label" style="margin:0 0 16px">Zo gaat het</p><h2 id="samen-title" class="o-h" style="font-size:clamp(38px,5.4vw,80px)">Vijf stappen, <span class="o-it">samen.</span></h2></div>
+<div style="position:relative;max-width:900px;margin:0 auto">
+<svg aria-hidden="true" viewBox="0 0 100 1000" preserveAspectRatio="none" style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:120px;height:100%;z-index:0"><path class="o-draw" d="M50 0 C 90 120, 10 180, 50 300 S 90 480, 50 600 S 10 780, 50 900 L 50 1000" fill="none" stroke="#2E8A7A" stroke-width="3" stroke-linecap="round" stroke-dasharray="2400" stroke-dashoffset="0"/></svg>
+<div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:28px">
+<article class="o-step o-card o-rv" style="margin-right:auto;max-width:520px"><span class="o-stepn">1</span><div style="flex:1 1 240px;min-width:0"><h3 class="o-h" style="font-size:28px;margin-bottom:8px">We leren elkaar kennen.</h3><p style="margin:0;color:#3E4F4C;line-height:1.6;font-size:18px">Je vertelt wat je wilt en wat je kunt. Je mag alles vragen.</p></div></article>
+<article class="o-step o-card o-rv" style="margin-left:auto;max-width:520px;background:#FFF3E8"><span class="o-stepn" style="background:#FFA876;color:#1E2B29">2</span><div style="flex:1 1 240px;min-width:0"><h3 class="o-h" style="font-size:28px;margin-bottom:8px">We maken samen doelen.</h3><p style="margin:0;color:#3E4F4C;line-height:1.6;font-size:18px">Bijvoorbeeld: vragen stellen op je werk, of elke dag op tijd beginnen.</p></div></article>
+<article class="o-step o-card o-rv" style="margin-right:auto;max-width:520px;background:#EAF7F1"><span class="o-stepn" style="background:#2E8A7A">3</span><div style="flex:1 1 240px;min-width:0"><h3 class="o-h" style="font-size:28px;margin-bottom:8px">Je oefent.</h3><p style="margin:0;color:#3E4F4C;line-height:1.6;font-size:18px">Met korte opdrachten en in gesprekken. Soms ook op je werk.</p></div></article>
+<article class="o-step o-card o-rv" style="margin-left:auto;max-width:520px"><span class="o-stepn">4</span><div style="flex:1 1 240px;min-width:0"><h3 class="o-h" style="font-size:28px;margin-bottom:8px">Je begint of groeit op je werk.</h3><p style="margin:0;color:#3E4F4C;line-height:1.6;font-size:18px">Je begeleider blijft je helpen.</p></div></article>
+<article class="o-step o-card o-rv" style="margin:0 auto;max-width:560px;background:#1C5B52;color:#FBF4EA"><span class="o-stepn" style="background:#E8603F">5</span><div style="flex:1 1 240px;min-width:0"><h3 class="o-h" style="font-size:28px;margin-bottom:8px;color:#FBF4EA">We kijken terug.</h3><p style="margin:0;color:#D7F1E6;line-height:1.6;font-size:18px">Wat ging goed? Wat kan beter? Wat is de volgende stap?</p></div></article>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DRIE BLOKKEN -->
+<section aria-labelledby="gesprek-title" style="background:#1C5B52;color:#FBF4EA;border-radius:80px 80px 0 0;position:relative;overflow:hidden">
+<div class="o-blob" aria-hidden="true" style="width:40vw;height:40vw;max-width:520px;max-height:520px;right:-12vw;top:-14vw;background:#2E8A7A;opacity:.5;animation-delay:-4s"></div>
+<div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(80px,9vw,128px) max(20px,4vw);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px">
+<div class="o-card o-rv" style="padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;gap:12px;color:#1E2B29">
+<p class="o-label" style="margin:0">Het eerste gesprek</p>
+<h2 id="gesprek-title" class="o-h" style="font-size:clamp(28px,3vw,40px)">Zo gaat het eerste gesprek</h2>
+<ul style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;font-size:18px;line-height:1.5">
+<li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#E8603F;font-weight:700">→</span>Je praat met een begeleider van Verbind &amp; Go.</li>
+<li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#E8603F;font-weight:700">→</span>Je vertelt over jezelf, je werk en je wensen.</li>
+<li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#E8603F;font-weight:700">→</span>Je mag alles vragen.</li>
+<li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#E8603F;font-weight:700">→</span>Na het gesprek weet je wat de volgende stap is.</li>
+</ul></div>
+<div class="o-card o-rv" style="padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;gap:12px;background:#FFF3E8;color:#1E2B29">
+<p class="o-label" style="margin:0;color:#9B3A22">Belangrijk om te weten</p>
+<h2 class="o-h" style="font-size:clamp(28px,3vw,40px)">Wie betaalt de begeleiding?</h2>
+<p style="margin:0;font-size:18px;line-height:1.6">Vaak betaalt de gemeente of je werkgever. Of je kunt beginnen, hangt dan af van hun afspraken met ons. We zoeken dat samen met je uit.</p>
+<p style="margin:0;font-size:18px;line-height:1.6">Krijg je een uitkering? Dan kun je ook je contactpersoon bij de gemeente vragen naar Verbind &amp; Go.</p>
+</div>
+<div class="o-card o-rv" style="padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;gap:12px;background:#EAF7F1;color:#1E2B29">
+<p class="o-label" style="margin:0">Privacy</p>
+<h2 class="o-h" style="font-size:clamp(28px,3vw,40px)">Wat we je niet vragen</h2>
+<p style="margin:0;font-size:18px;line-height:1.6">Als je contact opneemt, vragen we niet naar je BSN, je gezondheid of je uitkering. Dat hoef je ook niet in het formulier te zetten.</p>
+<p style="margin:0;font-size:18px;line-height:1.6">Zijn er andere zorgen, bijvoorbeeld over geld of gezondheid? Vertel het als je wilt. We denken mee over wie je daarbij kan helpen.</p>
+</div>
+</div>
+<svg aria-hidden="true" viewBox="0 0 1440 90" preserveAspectRatio="none" style="display:block;width:100%;height:clamp(40px,6vw,90px)"><path d="M0 40 C 300 0, 600 90, 900 40 S 1300 0, 1440 50 L1440 90 L0 90 Z" fill="#FBF4EA"/></svg>
+</section>
+
+<!-- PORTAAL PREVIEW -->
+<section aria-labelledby="portaal-title" style="background:#FBF4EA">
+<div style="max-width:1320px;margin:0 auto;padding:clamp(56px,7vw,100px) max(20px,4vw) clamp(80px,9vw,128px);display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+<div class="o-rv" style="flex:1 1 360px;min-width:0">
+<p class="o-label" style="margin:0 0 16px">Jouw eigen pagina</p>
+<h2 id="portaal-title" class="o-h" style="font-size:clamp(36px,4.6vw,64px);margin-bottom:20px">Alles op <span class="o-it">één plek</span></h2>
+<p style="margin:0 0 24px;font-size:19px;line-height:1.6;max-width:46ch;color:#3E4F4C">In het portaal zie je je volgende afspraak, je volgende opdracht en wie je begeleider is. Simpel en duidelijk.</p>
+<a class="o-btn o-btn-dark" href="Inloggen.dc.html">Bekijk de demo <span class="o-arrow" aria-hidden="true" style="color:#1C5B52"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</div>
+<div class="o-rv" style="flex:1 1 380px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px">
+<div class="o-card" style="background:#1C5B52;color:#FBF4EA;padding:26px;border-radius:32px;display:flex;flex-direction:column;gap:8px"><p class="o-label" style="margin:0;color:#9FD9C8">Mijn volgende afspraak</p><p class="o-h" style="font-size:28px;color:#FBF4EA">vr 23 okt · 09:30</p><p style="margin:0;color:#D7F1E6">Begeleidingsgesprek · online</p></div>
+<div class="o-card" style="padding:26px;border-radius:32px;display:flex;flex-direction:column;gap:8px;background:#FFF3E8"><p class="o-label" style="margin:0;color:#9B3A22">Mijn volgende opdracht</p><p class="o-h" style="font-size:22px;line-height:1.1">Veiligheidswoorden in het magazijn</p><p style="margin:0;color:#5B6B68">Vaktaal · 15 minuten</p></div>
+<div class="o-card" style="padding:26px;border-radius:32px;display:flex;flex-direction:column;gap:8px"><p class="o-label" style="margin:0">Mijn begeleider</p><div style="display:flex;gap:12px;align-items:center"><span aria-hidden="true" style="width:46px;height:46px;border-radius:50%;background:#BFE8D8;color:#1C5B52;display:grid;place-items:center;font-weight:700">NB</span><p style="margin:0;font-weight:600;font-size:18px">Noor Bakker</p></div></div>
+<p style="grid-column:1/-1;margin:0;font-size:13px;color:#5B6B68;font-weight:600">Voorbeeld · fictieve gegevens</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="dn-cta" style="position:relative;overflow:hidden;background:#FBF4EA">
+<div class="o-blob" aria-hidden="true" style="width:66vw;height:66vw;max-width:880px;max-height:880px;left:50%;top:50%;margin:-33vw 0 0 -33vw;background:radial-gradient(circle at 40% 35%,#FFD2B5,#FFA876 55%,#F9C6A5);opacity:.9;animation-duration:24s"></div>
+<div class="o-blob" aria-hidden="true" style="width:26vw;height:26vw;max-width:340px;max-height:340px;right:4vw;bottom:-6vw;background:#BFE8D8;opacity:.9;animation-delay:-9s"></div>
+<div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(100px,13vw,190px) max(20px,4vw);text-align:center">
+<h2 id="dn-cta" class="o-h o-rv" style="margin:0 auto;font-size:clamp(52px,9vw,150px);line-height:.92">Zet de <span class="o-it">eerste stap.</span></h2>
+<p class="o-rv" style="margin:28px auto 40px;max-width:40ch;font-size:21px;line-height:1.5;color:#3E4F4C">Stuur ons een kort bericht. We nemen contact met je op.</p>
+<div class="o-rv"><a class="o-btn o-btn-dark" href="Contact.dc.html">Ik wil begeleiding <span class="o-arrow" aria-hidden="true" style="color:#1C5B52"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+</div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,760px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5400}}'>
+const OPTIES = [
+{ id: 'geenwerk', label: 'Ik heb nu geen werk', kop: 'Je wilt een stap zetten naar werk', tekst: 'Misschien heb je lang niet gewerkt. Of je weet nog niet wat je wilt. Dat is oké. We beginnen bij wat jij kunt en wilt.', stappen: ['We praten over wat je leuk vindt en wat je goed kunt.', 'We maken een plan met kleine stappen.', 'Je oefent met dingen die je nodig hebt voor werk.'], taal: 'Niet iedereen heeft hulp met taal nodig. Jij krijgt de hulp die bij jou past.' },
+{ id: 'uitkering', label: 'Ik heb een uitkering', kop: 'Je wilt weer aan het werk', tekst: 'Je hebt een uitkering en wilt graag werken. Samen met jou en de gemeente kijken we wat een goede volgende stap is.', stappen: ['We praten met jou en met je contactpersoon bij de gemeente.', 'We maken doelen die je kunt halen.', 'We blijven je helpen, ook als je begint met werken.'], taal: 'De gemeente ziet alleen wat we samen hebben afgesproken. Niet je hele dossier.' },
+{ id: 'nieuwebaan', label: 'Ik heb net een baan', kop: 'Je wilt dat het goed gaat op je werk', tekst: 'Je bent net begonnen. Je wilt je werk goed doen en houden. Wij helpen jou én je baas om elkaar goed te begrijpen.', stappen: ['We komen kijken op je werk.', 'We oefenen met woorden en situaties van jouw werk.', 'We praten samen met je baas over wat goed gaat en wat beter kan.'], taal: 'Je baas ziet alleen de werkafspraken. Niet je persoonlijke gesprekken.' },
+{ id: 'taal', label: 'Ik wil beter Nederlands', kop: 'Je wilt Nederlands leren voor je werk', tekst: 'Je wilt instructies begrijpen, vragen stellen en meepraten met collega’s. We oefenen met de woorden die jij op je werk nodig hebt.', stappen: ['We kijken welke woorden en zinnen je op je werk nodig hebt.', 'Je krijgt korte opdrachten van 10 tot 20 minuten.', 'Je oefent op je werk, en je begeleider geeft tips.'], taal: 'We oefenen met echte dingen van jouw werk: briefjes, borden, gesprekken.' }
+];
+class Component extends DCLogic {
+constructor(p) { super(p); this.state = { sel: 'geenwerk' }; }
+renderVals() {
+const cur = OPTIES.find(o => o.id === this.state.sel) || OPTIES[0];
+return { opties: OPTIES.map(o => ({ label: o.label, pressed: o.id === cur.id ? 'true' : 'false', pick: () => this.setState({ sel: o.id }) })), cur: Object.assign({}, cur, { stappen: cur.stappen.map((t, i) => ({ n: i + 1, t })) }) };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voor gemeenten — Verbind &amp; Go</title>
+<meta name="description" content="Eén traject voor taal, werk en persoonlijke doelen: intake, individuele doelen, uitvoering, evaluatie en nazorg, met voortgang op vooraf afgesproken indicatoren.">
+<meta property="og:title" content="Voor gemeenten — Verbind &amp; Go">
+<meta property="og:description" content="Eén traject voor taal, werk en persoonlijke doelen: intake, individuele doelen, uitvoering, evaluatie en nazorg, met voortgang op vooraf afgesproken indicatoren.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+
+<meta name="theme-color" content="#1F5D5A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231F5D5A'/%3E%3Cpath d='M12 20c16 0 18 12 28 12M12 44c16 0 18-12 28-12M12 32h36' fill='none' stroke='%23FFFFFF' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='32' r='6' fill='%23F0862B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+*{box-sizing:border-box}
+a{color:#1F5D5A}a:hover{color:#17494A}
+:focus-visible{outline:3px solid #F0862B;outline-offset:3px;border-radius:6px}
+a[href="#inhoud"]:focus{top:12px!important}
+button{font:inherit}
+.l-h{font-family:'Outfit',system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;line-height:1.05;margin:0;color:#1B2A2A;text-wrap:balance}
+.l-or{color:#F0862B}
+.l-label{font:700 12px/1.3 'Figtree',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1F5D5A}
+.l-bar{width:56px;height:4px;border-radius:4px;background:#F0862B}
+.l-btn{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 26px;border-radius:12px;font:600 16px/1 'Figtree',system-ui,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s ease,box-shadow .25s ease,color .2s ease}
+.l-btn:hover{transform:translateY(-2px)}
+.l-btn-primary{background:#1F5D5A;color:#FFFFFF}.l-btn-primary:hover{background:#17494A;color:#FFFFFF;box-shadow:0 14px 28px -14px rgba(31,93,90,.6)}
+.l-btn-orange{background:#F0862B;color:#FFFFFF}.l-btn-orange:hover{background:#DB7620;color:#FFFFFF}
+.l-btn-outline{background:#FFFFFF;border:1.5px solid #F0862B;color:#C96A1A}.l-btn-outline:hover{background:#FFF4EA;color:#C96A1A}
+.l-card{background:#FAF7F2;border:1px solid #EAE2D6;border-radius:18px;padding:clamp(24px,3vw,36px);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.l-card:hover{transform:translateY(-4px);box-shadow:0 24px 44px -28px rgba(31,93,90,.4)}
+.l-num{flex:none;width:44px;height:44px;border-radius:50%;background:#F0862B;color:#FFFFFF;display:grid;place-items:center;font:700 19px 'Outfit',sans-serif}
+.l-photo{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(135deg,#DCEFEA 0%,#F3EDE4 60%,#FBE3CC 100%);display:grid;place-items:center;min-height:260px;aspect-ratio:4/3;max-width:100%}
+.l-photo span{position:absolute;left:16px;bottom:16px;z-index:1;background:rgba(255,255,255,.9);border:1.5px dashed #F0862B;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;color:#8A4A12;max-width:calc(100% - 32px)}
+.l-photo svg{opacity:.6}
+.l-fase{display:flex;flex-direction:column;gap:8px;padding:18px 20px;border-radius:14px;border:1.5px solid #D7CFC2;background:#FFFFFF;text-align:left;cursor:pointer;color:#1B2A2A;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s ease,border-color .2s ease,color .2s ease}
+.l-fase:hover{transform:translateY(-3px);border-color:#1F5D5A}
+.l-fase[aria-selected="true"]{background:#1F5D5A;color:#FFFFFF;border-color:#1F5D5A}
+.l-fase[aria-selected="true"] .l-label{color:#9FD3C8}
+.l-fase .l-num{width:32px;height:32px;font-size:15px}
+.l-panel{animation:l-fade .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes l-fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.l-toggle{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;border:1.5px solid #D7CFC2;background:#FFFFFF;cursor:pointer;min-height:50px;line-height:1.4;transition:border-color .2s ease,background .2s ease}
+.l-toggle input{width:20px;height:20px;accent-color:#1F5D5A;flex:none}
+.l-toggle:has(input:checked){border-color:#1F5D5A;background:#E7F3F0}
+.l-prog{height:8px;border-radius:999px;background:#EAE2D6;overflow:hidden}
+.l-prog i{display:block;height:100%;background:#F0862B;border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.l-mark{background:#FBE3CC;color:#8A4A12;border:1.5px dashed #F0862B;border-radius:8px;padding:1px 8px;font-size:13px;font-weight:600}
+.l-w{display:inline-block;animation:l-up .8s cubic-bezier(.2,.8,.2,1) both}
+.l-w:nth-child(2){animation-delay:.06s}.l-w:nth-child(3){animation-delay:.12s}.l-w:nth-child(4){animation-delay:.18s}.l-w:nth-child(5){animation-delay:.24s}.l-w:nth-child(6){animation-delay:.3s}
+@keyframes l-up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.l-fade{animation:l-fade .9s .35s cubic-bezier(.2,.8,.2,1) both}
+@supports (animation-timeline: view()){.l-rv{animation:l-rise linear both;animation-timeline:view();animation-range:entry 5% entry 35%}@keyframes l-rise{from{opacity:.15;transform:translateY(28px)}to{opacity:1;transform:none}}}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+/* @site-css */
+/* ==========================================================================
+   Verbind & GO — gedeelde designlaag v3 ("ultra modern")
+   Bron: design/site.css · wordt met tools/sync_css.py in elke pagina gezet.
+   Basis blijft: wit/warm wit, petrol #1F5D5A, oranje #F0862B, Outfit + Figtree.
+   ========================================================================== */
+:root{
+  --ink:#0F1F1F;--ink-2:#4F6260;--bg:#FFFFFF;--bg-2:#F7F4EE;--bg-band:#E9F4F1;
+  --petrol:#1F5D5A;--petrol-2:#17494A;--petrol-deep:#0D3534;--teal:#2BB3A3;--teal-2:#9FD3C8;
+  --orange:#F0862B;--orange-2:#DB7620;--coral:#FF6A4D;--violet:#8A5BB5;
+  --line:rgba(15,31,31,.08);--line-2:rgba(15,31,31,.14);
+  --r-s:14px;--r-m:20px;--r-l:28px;--r-xl:36px;
+  --sh-1:0 1px 2px rgba(15,31,31,.04),0 10px 30px -24px rgba(15,31,31,.25);
+  --sh-2:0 2px 4px rgba(15,31,31,.05),0 30px 60px -32px rgba(31,93,90,.45);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg)}
+::selection{background:#FBE3CC;color:#5C2A0E}
+
+/* --- typografie --- */
+.l-h{font-weight:800;letter-spacing:-0.04em;line-height:1;color:var(--ink)}
+h1.l-h{letter-spacing:-0.05em;line-height:.98}
+.l-or{background:linear-gradient(92deg,var(--orange) 0%,var(--coral) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.l-label{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--petrol)}
+.l-label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--teal))}
+.l-bar{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--teal) 60%,var(--petrol))}
+main p{text-wrap:pretty}
+
+/* --- knoppen --- */
+.l-btn{border-radius:999px;min-height:56px;padding:0 28px;font-weight:600;letter-spacing:-0.005em;box-shadow:none;position:relative;overflow:hidden;isolation:isolate}
+.l-btn svg{transition:transform .3s var(--ease)}
+.l-btn:hover svg{transform:translateX(4px)}
+.l-btn-primary{background:var(--petrol-deep);color:#FFFFFF;box-shadow:0 14px 30px -16px rgba(13,53,52,.8)}
+.l-btn-primary::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#2A7A74,var(--petrol) 55%,var(--petrol-deep));opacity:1;transition:opacity .3s ease}
+.l-btn-primary:hover{color:#FFFFFF;transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(13,53,52,.9)}
+.l-btn-primary:hover::before{opacity:.85}
+.l-btn-orange{background:linear-gradient(135deg,#F9A45C 0%,var(--orange) 55%,var(--orange-2) 100%);color:#FFFFFF;box-shadow:0 14px 30px -16px rgba(240,134,43,.9)}
+.l-btn-orange:hover{color:#FFFFFF;transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(240,134,43,.95)}
+.l-btn-outline{background:rgba(255,255,255,.7);border:1.5px solid var(--line-2);color:var(--petrol);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.l-btn-outline:hover{border-color:var(--petrol);background:#FFFFFF;color:var(--petrol);transform:translateY(-2px)}
+.l-btn-glass{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.35);color:#FFFFFF;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.l-btn-glass:hover{background:rgba(255,255,255,.2);border-color:#FFFFFF;color:#FFFFFF;transform:translateY(-2px)}
+.l-submit{border-radius:999px;background:linear-gradient(135deg,#F9A45C,var(--orange) 55%,var(--orange-2));box-shadow:0 14px 30px -16px rgba(240,134,43,.9)}
+
+/* --- kaarten en vlakken --- */
+.l-card{background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s ease,border-color .3s ease}
+.l-card:hover{transform:translateY(-6px);box-shadow:var(--sh-2);border-color:rgba(43,179,163,.45)}
+.l-icon{width:64px;height:64px;border-radius:20px;background:linear-gradient(145deg,#E9F4F1,#FFFFFF);border:1px solid rgba(31,93,90,.12);box-shadow:inset 0 1px 0 #FFFFFF,0 8px 18px -12px rgba(31,93,90,.5);color:var(--petrol)}
+.l-icon::before{width:14px;height:14px;right:-4px;top:-4px;background:linear-gradient(135deg,#F9A45C,var(--orange));box-shadow:0 0 0 3px #FFFFFF}
+.l-num{background:linear-gradient(135deg,#F9A45C,var(--orange) 60%,var(--orange-2));box-shadow:0 10px 18px -8px rgba(240,134,43,.7),inset 0 1px 0 rgba(255,255,255,.3)}
+.l-photo{border-radius:var(--r-l);background:linear-gradient(135deg,#D6EFEA 0%,#F4EFE6 55%,#FBE3CC 100%);box-shadow:inset 0 0 0 1px rgba(31,93,90,.08),0 40px 70px -48px rgba(31,93,90,.55)}
+.l-photo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(31,93,90,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,93,90,.07) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%)}
+.l-photo::after{content:"";position:absolute;width:60%;aspect-ratio:1;right:-20%;top:-25%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.35),transparent 65%);filter:blur(30px)}
+.l-photo span{border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1}
+.l-chip{border-radius:999px;background:rgba(255,255,255,.8);border:1.5px solid rgba(240,134,43,.5)}
+.l-mark,.lf-mark{border-radius:999px}
+
+/* --- hero --- */
+.l-hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#F7F4EE 0%,#FFFFFF 100%);padding-top:92px}
+.lh{margin-bottom:-92px}
+main > section:first-child:not(.l-hero){padding-top:92px}
+.l-hero::before,.l-hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}
+.l-hero::before{width:min(64vw,760px);aspect-ratio:1;right:-14vw;top:-32%;background:radial-gradient(circle at 40% 40%,rgba(43,179,163,.34),rgba(31,93,90,.12) 45%,transparent 70%);animation:l-drift 18s ease-in-out infinite alternate}
+.l-hero::after{width:min(42vw,480px);aspect-ratio:1;left:-10vw;bottom:-36%;background:radial-gradient(circle at 50% 50%,rgba(240,134,43,.26),transparent 65%);animation:l-drift 22s ease-in-out infinite alternate-reverse}
+@keyframes l-drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-4%,6%,0) scale(1.08)}}
+.l-hero .l-label{padding:9px 14px 9px 10px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(31,93,90,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 2px rgba(15,31,31,.05)}
+.l-hero .l-label::before{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(240,134,43,.2)}
+.l-hero h1.l-h{font-size:clamp(44px,6.6vw,92px)}
+.l-hero .l-tile .l-label{display:block;padding:0;border:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;letter-spacing:.16em;font-size:11px}
+.l-hero .l-tile .l-label::before{display:none}
+.l-float{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:999px;background:rgba(255,255,255,.86);border:1px solid rgba(31,93,90,.12);box-shadow:0 14px 30px -18px rgba(15,31,31,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-weight:600;font-size:14px;color:var(--ink);white-space:nowrap;animation:l-float 6s ease-in-out infinite}
+.l-float i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#E9F4F1,#CFE9E3);color:var(--petrol);flex:none}
+.l-float.o i{background:linear-gradient(135deg,#FBE3CC,#F7B57E);color:#8A4A12}
+@keyframes l-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (max-width:640px){.l-float{display:none}}
+.l-tag{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px 0 10px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(31,93,90,.14);color:var(--petrol);font-weight:600;font-size:14px;text-decoration:none;transition:background .2s ease,border-color .2s ease,transform .25s var(--ease)}
+.l-tag i{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.l-tag:hover{background:#FFFFFF;border-color:var(--petrol);transform:translateY(-1px)}
+
+/* bento in de hero */
+.l-bento{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:14px;min-width:0}
+.l-b-photo{grid-row:1/3;min-height:380px;aspect-ratio:auto}
+.l-tile{border-radius:24px;padding:18px 18px 16px;background:rgba(255,255,255,.86);border:1px solid rgba(31,93,90,.12);box-shadow:var(--sh-1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-width:0;transition:transform .4s var(--ease),box-shadow .4s ease}
+.l-tile:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.l-tile-dark{background:linear-gradient(145deg,#276E6A,var(--petrol) 60%,var(--petrol-deep));color:#FFFFFF;border-color:transparent}
+.l-mini{display:grid;grid-template-columns:minmax(78px,auto) 1fr;gap:10px;align-items:center;font-size:12.5px;font-weight:600;color:var(--ink);margin-top:7px}
+.l-mini div{height:8px;border-radius:999px;background:#F1EBE1;overflow:hidden}
+.l-mini i{display:block;height:100%;border-radius:999px}
+@media (max-width:640px){.l-bento{grid-template-columns:1fr}.l-b-photo{grid-row:auto;min-height:240px}}
+
+/* --- marquee met diensten --- */
+.l-marq{position:relative;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.l-marq ul{list-style:none;margin:0;padding:0;display:flex;gap:10px;width:max-content;animation:l-marq 38s linear infinite}
+.l-marq:hover ul,.l-marq:focus-within ul{animation-play-state:paused}
+.l-marq li{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px 0 12px;border-radius:999px;border:1px solid var(--line);background:#FFFFFF;font-weight:600;font-size:15px;color:var(--petrol);white-space:nowrap}
+.l-marq li svg{color:var(--orange);flex:none}
+@keyframes l-marq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.l-marq{mask-image:none;-webkit-mask-image:none}.l-marq ul{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+
+/* --- secties --- */
+main > section[style*="#E7F3F0"]{background:radial-gradient(80% 60% at 100% 0%,rgba(43,179,163,.16),transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(240,134,43,.10),transparent 60%),var(--bg-band)!important}
+main > section[style*="#FAF7F2"]:not(.l-hero):not(.l-dark){background:var(--bg-2)!important}
+.l-dark.l-dark{background:linear-gradient(135deg,#1C5B58 0%,#124645 50%,var(--petrol-deep) 100%)!important}
+main > section[style*="background:#1F5D5A"],.l-dark,.l-cta{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,#1C5B58 0%,#124645 50%,var(--petrol-deep) 100%)!important;color:#FFFFFF}
+main > section[style*="background:#1F5D5A"]::before,.l-dark::before,.l-cta::before{content:"";position:absolute;z-index:-1;width:min(60vw,640px);aspect-ratio:1;right:-10vw;top:-50%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.5),transparent 65%);filter:blur(40px)}
+main > section[style*="background:#1F5D5A"]::after,.l-dark::after,.l-cta::after{content:"";position:absolute;z-index:-1;width:min(40vw,420px);aspect-ratio:1;left:-8vw;bottom:-60%;border-radius:50%;background:radial-gradient(circle,rgba(240,134,43,.38),transparent 65%);filter:blur(40px)}
+.l-dark .l-h,main > section[style*="background:#1F5D5A"] .l-h{color:#FFFFFF}
+.l-dark .l-label,main > section[style*="background:#1F5D5A"] .l-label{color:var(--teal-2)}
+.l-dark .l-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#FFFFFF;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.l-dark .l-card:hover{border-color:rgba(159,211,200,.6)}
+.l-dark .l-card .l-h{color:#FFFFFF}
+.l-dark .l-card p,.l-dark .l-dlist span{color:#D6EAE5}
+.l-dark p[style*="#4F6260"],.l-dark span[style*="#4F6260"]{color:#D6EAE5!important}
+.l-dark .l-dlist strong{color:#FFFFFF}
+.l-dark .l-label::before{background:linear-gradient(90deg,var(--orange),var(--teal-2))}
+.l-dark .l-dlist li{border-color:rgba(255,255,255,.12)}
+.l-grain{position:relative}
+.l-grain::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.8'/></svg>")}
+
+/* --- homepagina-onderdelen --- */
+.l-strip{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center}
+.l-strip li{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14px;color:var(--petrol);padding:6px 0}
+.l-strip svg{color:var(--orange);flex:none}
+.l-grid2{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.l-aud{grid-column:span 4;padding:0;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.l-dienst{grid-column:span 4;background:#FFFFFF}
+@media (max-width:1080px){.l-aud{grid-column:span 6}.l-dienst{grid-column:span 12}}
+@media (max-width:720px){.l-aud,.l-dienst{grid-column:span 12}}
+.l-aud-photo{position:relative;min-height:180px;background:linear-gradient(135deg,#D6EFEA,#F4EFE6 70%,#FBE3CC);display:grid;place-items:start start;padding:14px;overflow:hidden}
+.l-aud-photo.o{background:linear-gradient(135deg,#FBE3CC,#F4EFE6 60%,#D6EFEA)}
+.l-aud-photo.v{background:linear-gradient(135deg,#E6DDF2,#F4EFE6 60%,#D6EFEA)}
+.l-aud-photo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(31,93,90,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,93,90,.07) 1px,transparent 1px);background-size:24px 24px;mask-image:radial-gradient(80% 80% at 50% 50%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(80% 80% at 50% 50%,#000 20%,transparent 100%)}
+.l-aud-photo span{position:relative;background:rgba(255,255,255,.9);border:1.5px dashed var(--orange);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600;color:#8A4A12}
+.l-aud-body{padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:12px;flex:1}
+.l-aud .l-icon{width:56px;height:56px;border-radius:16px;margin-top:-50px;background:#FFFFFF;position:relative;z-index:1}
+.l-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-weight:700;color:var(--orange-2);text-decoration:none;min-height:44px}
+.l-more svg{transition:transform .3s var(--ease)}
+.l-aud:hover .l-more svg,.l-more:hover svg{transform:translateX(4px)}
+.l-dlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.l-dlist li{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:1px solid #F1EBE1;line-height:1.45}
+.l-dlist li:first-child{border-top:0}
+.l-dlist strong{font-size:15.5px}
+.l-dlist span{font-size:14px;color:var(--ink-2)}
+.l-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative}
+.l-steps::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--orange),var(--teal) 50%,var(--petrol))}
+.l-steps li{position:relative;display:flex;flex-direction:column;gap:10px;min-width:0}
+.l-steps li p{margin:0;color:var(--ink-2);line-height:1.55;font-size:15px}
+.l-steps li svg{color:var(--petrol);margin-top:8px}
+.l-node{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 19px 'Outfit',sans-serif;color:#FFFFFF;background:linear-gradient(135deg,#F9A45C,var(--orange) 60%,var(--orange-2));box-shadow:0 0 0 6px var(--bg-band),0 10px 18px -8px rgba(240,134,43,.7)}
+@media (max-width:980px){.l-steps{grid-template-columns:1fr;gap:26px}.l-steps::before{left:22px;right:auto;top:24px;bottom:24px;width:3px;height:auto;background:linear-gradient(180deg,var(--orange),var(--teal) 50%,var(--petrol))}.l-steps li{display:grid;grid-template-columns:48px 1fr;column-gap:16px}.l-steps li .l-node{grid-row:1/4}.l-steps li svg{display:none}}
+.l-over{position:absolute;right:-16px;top:-18px;z-index:2;max-width:280px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.92);border:1px solid rgba(31,93,90,.12);box-shadow:0 20px 40px -24px rgba(15,31,31,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media (max-width:640px){.l-over{position:static;margin-top:12px;max-width:none}}
+.l-sit{border-radius:16px;padding:12px 14px;border:1px solid transparent;transition:background .2s ease,border-color .2s ease;display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.l-sit:hover{background:#FFFFFF;border-color:var(--line)}
+.l-sits{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.l-sitc{position:relative;padding:24px 22px 22px;border-radius:22px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s ease,border-color .2s ease}
+.l-sitc span{display:block;font:800 13px/1 'Outfit',sans-serif;letter-spacing:.12em;color:var(--orange);margin-bottom:12px}
+.l-sitc::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--orange),var(--teal));opacity:0;transition:opacity .25s ease}
+.l-sitc:hover{transform:translateY(-4px);box-shadow:var(--sh-2);border-color:rgba(43,179,163,.45)}
+.l-sitc:hover::after{opacity:1}
+.l-sitc p{margin:0;line-height:1.55}
+
+/* portaalkader */
+.l-mock{border-radius:24px;background:#FFFFFF;border:1px solid rgba(255,255,255,.25);box-shadow:0 2px 4px rgba(15,31,31,.06),0 50px 90px -40px rgba(0,0,0,.6);overflow:hidden;min-width:0;transform:perspective(1400px) rotateY(-6deg) rotateX(3deg);transition:transform .7s var(--ease)}
+.l-mock:hover{transform:perspective(1400px) rotateY(0) rotateX(0)}
+.l-mock-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid #F1EBE1;background:#FAF7F2}
+.l-mock-bar i{width:10px;height:10px;border-radius:50%;background:#E3DACB}
+.l-mock-bar span{margin-left:auto;font-size:11px;font-weight:600;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.l-mock-body{display:grid;grid-template-columns:96px 1fr}
+.l-mock-side{padding:16px 12px;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,#154746,var(--petrol-deep))}
+.l-mock-side b{display:block;height:10px;border-radius:999px;background:rgba(255,255,255,.18);width:85%}
+.l-mock-side b:first-child{background:var(--orange);height:26px;border-radius:9px;width:100%}
+.l-mock-main{padding:16px;color:var(--ink)}
+.l-mock-title{font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.03em;color:var(--petrol);margin-bottom:12px}
+.l-mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.l-mock-card{border:1px solid #F1EBE1;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0;background:#FFFFFF}
+.l-mock-card small{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#2A7A74}
+.l-mock-card strong{font-family:'Outfit',system-ui,sans-serif;font-size:17px;letter-spacing:-0.02em;line-height:1.15}
+.l-mock-card em{font-style:normal;font-size:12px;color:var(--ink-2)}
+.l-mock-card.dark{background:linear-gradient(145deg,#276E6A,var(--petrol) 60%,var(--petrol-deep));color:#FFFFFF;border-color:transparent}
+.l-mock-card.dark small{color:var(--teal-2)}.l-mock-card.dark em{color:#D6EAE5}
+.l-mock-card.wide{grid-column:1/3;flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px 12px}
+.l-mock-card.wide strong{flex:1 1 200px}.l-mock-card.wide small{flex:1 1 100%}
+.l-mock-card.wide u{display:block;width:88px;height:30px;border-radius:999px;background:linear-gradient(135deg,#F9A45C,var(--orange) 60%,var(--orange-2))}
+@media (max-width:560px){.l-mock-body{grid-template-columns:1fr}.l-mock-side{display:none}.l-mock{transform:none}}
+
+/* --- pagina-specifieke componenten (aanpak, gemeenten, werkgevers, inloggen, contact) --- */
+.l-stepbtn,.l-fase,.l-tab,.l-role,.l-choice,.l-toggle{border-radius:18px}
+.l-stepbtn[aria-selected="true"],.l-tab[aria-selected="true"],.l-fase[aria-selected="true"],.l-role[aria-pressed="true"]{background:linear-gradient(135deg,#276E6A,var(--petrol) 60%,var(--petrol-2));box-shadow:0 14px 28px -16px rgba(31,93,90,.8)}
+.l-panel{border-radius:var(--r-l)}
+.l-track i{background:linear-gradient(90deg,var(--orange),var(--teal))}
+.l-prog i{background:linear-gradient(90deg,var(--orange),var(--teal))}
+input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
+.l-choice:has(input:checked){background:var(--bg-band);border-color:var(--petrol)}
+
+/* --- scroll reveal, iets rustiger --- */
+@supports (animation-timeline: view()){.l-rv{animation-range:entry 0% entry 28%}}
+
+/* --- footer v3 --- */
+.lf{background:linear-gradient(180deg,var(--petrol-deep),#0A2A2A);color:#C9DDD9;font-family:'Figtree',system-ui,sans-serif;position:relative;isolation:isolate;overflow:hidden}
+.lf::before{content:"";position:absolute;z-index:-1;width:min(70vw,760px);aspect-ratio:1;right:-20vw;top:-40%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.28),transparent 65%);filter:blur(50px)}
+.lf-logo{color:#FFFFFF}
+.lf-link{color:#C9DDD9;min-height:40px;display:inline-flex;align-items:center;text-decoration:none;font-weight:500;transition:color .2s ease,transform .2s ease}
+.lf-link:hover{color:#FFFFFF;transform:translateX(3px)}
+.lf-big{font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:clamp(56px,12vw,180px);letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.06);white-space:nowrap;pointer-events:none;user-select:none;margin:40px 0 -20px}
+.lf-mark{background:rgba(251,227,204,.14);color:#F7B57E;border-color:#F7B57E}
+
+@media (prefers-reduced-motion: reduce){.l-hero::before,.l-hero::after,.l-float,.l-marq ul{animation:none!important}.l-mock{transform:none}}
+/* @/site-css */
+</style>
+
+<style>
+body{margin:0}
+:root{--ink:#0F1F1F;--petrol:#1F5D5A;--petrol-deep:#0D3534;--orange:#F0862B;--ease:cubic-bezier(.2,.8,.2,1)}
+.lh{position:sticky;top:0;z-index:50;font-family:'Figtree',system-ui,sans-serif;color:var(--ink);padding:12px max(12px,2vw) 0;pointer-events:none}
+.lh-bar{pointer-events:auto;max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:8px 8px 8px 20px;border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.7);box-shadow:0 1px 2px rgba(15,31,31,.05),0 18px 40px -28px rgba(15,31,31,.35),inset 0 0 0 1px rgba(15,31,31,.05)}
+.lh-logo{display:flex;align-items:center;text-decoration:none;color:var(--petrol);min-height:44px;font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:25px;letter-spacing:-0.04em}
+.lh-logo b{color:var(--orange);font-weight:800}
+.lh-nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;padding:3px;border-radius:999px;background:rgba(15,31,31,.045)}
+.lh-nav::-webkit-scrollbar{display:none}
+.lh-nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:999px;text-decoration:none;white-space:nowrap;font:500 14.5px/1 'Figtree',system-ui,sans-serif;color:#3E5250;transition:color .2s ease,background .2s ease}
+.lh-nav a:hover{color:var(--petrol);background:rgba(255,255,255,.9)}
+.lh-nav a[aria-current="page"]{color:var(--petrol);font-weight:700;background:#FFFFFF;box-shadow:0 1px 2px rgba(15,31,31,.08),0 6px 14px -10px rgba(15,31,31,.3)}
+.lh-acts{display:flex;gap:6px;align-items:center}
+.lh-cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--petrol-deep);color:#FFFFFF;text-decoration:none;font-weight:600;font-size:14.5px;position:relative;isolation:isolate;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s ease;box-shadow:0 10px 22px -14px rgba(13,53,52,.9)}
+.lh-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#2A7A74,var(--petrol) 55%,var(--petrol-deep))}
+.lh-cta:hover{transform:translateY(-1px);box-shadow:0 16px 30px -16px rgba(13,53,52,.95);color:#FFFFFF}
+.lh-login{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(15,31,31,.12);color:var(--petrol);text-decoration:none;font-weight:600;font-size:14.5px;background:rgba(255,255,255,.5);transition:border-color .2s ease,background .2s ease}
+.lh-login:hover{border-color:var(--petrol);background:#FFFFFF}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+@media (max-width:860px){.lh-nav{order:3;flex:1 1 100%;justify-content:flex-start}.lh-bar{border-radius:28px;padding:10px 10px 10px 16px}.lh-nav a{min-height:38px;padding:0 13px;font-size:14px}.lh-login span{display:none}.lh-login{padding:0 12px}}
+@media (prefers-reduced-motion: reduce){.lh *{transition:none!important}}
+</style>
+
+<style>
+body{margin:0}
+.lf{background:linear-gradient(180deg,#0D3534,#0A2A2A);color:#C9DDD9;font-family:'Figtree',system-ui,sans-serif;position:relative;isolation:isolate;overflow:hidden}
+.lf::before{content:"";position:absolute;z-index:-1;width:min(70vw,760px);aspect-ratio:1;right:-20vw;top:-40%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.28),transparent 65%);filter:blur(50px)}
+.lf-in{max-width:1280px;margin:0 auto;padding:64px max(20px,4vw) 28px}
+.lf-top{display:flex;flex-wrap:wrap;gap:40px 56px;justify-content:space-between;align-items:flex-start}
+.lf-logo{display:inline-flex;align-items:center;text-decoration:none;color:#FFFFFF;font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:28px;letter-spacing:-0.04em;min-height:44px}
+.lf-logo b{color:#F0862B;font-weight:800}
+.lf-h{margin:0 0 10px;font-weight:700;color:#FFFFFF;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.lf-link{color:#C9DDD9;min-height:40px;display:inline-flex;align-items:center;text-decoration:none;font-weight:500;transition:color .2s ease,transform .2s ease}
+.lf-link:hover{color:#FFFFFF;transform:translateX(3px)}
+.lf-mark{background:rgba(251,227,204,.12);color:#F7B57E;border:1.5px dashed #F7B57E;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:600}
+.lf-cta{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;background:linear-gradient(135deg,#F9A45C,#F0862B 55%,#DB7620);color:#FFFFFF;text-decoration:none;font-weight:600;box-shadow:0 14px 30px -16px rgba(240,134,43,.9);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.lf-cta:hover{transform:translateY(-2px);color:#FFFFFF}
+.lf-big{font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:clamp(64px,13vw,190px);letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.05);white-space:nowrap;pointer-events:none;user-select:none;margin:48px 0 -24px;text-align:center}
+.lf-bot{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:#9FB8B3}
+:focus-visible{outline:3px solid #F0862B;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.lf *{transition:none!important}}
+</style>
+
+<style>[data-settled] .o-w,[data-settled] .o-fade{animation:none!important;opacity:1!important;transform:none!important}</style>
+</head>
+<body>
+<div id="app"></div>
+<script>window.SITE_CONFIG={"organisatie": "Verbind & GO", "email": "", "telefoon": "", "formEndpoint": ""};</script>
+<script src="runtime.js"></script>
+<script>
+DC.register("Gemeenten",{"tpl": "<div style=\"font-family:'Figtree',system-ui,sans-serif;color:#1B2A2A;background:#FFFFFF;overflow-x:clip\">\n<dc-import name=\"Header\" active=\"gemeenten\" hint-size=\"100%,80px\"><\/dc-import>\n<main id=\"inhoud\">\n\n<section class=\"l-hero\" aria-labelledby=\"gm-title\" style=\"background:#FAF7F2\">\n<div style=\"max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,88px) max(20px,4vw) clamp(56px,7vw,96px);display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center\">\n<div style=\"flex:1 1 420px;min-width:0\">\n<p class=\"l-label l-fade\" style=\"margin:0 0 20px;animation-delay:.05s\">Voor gemeenten<\/p>\n<h1 id=\"gm-title\" class=\"l-h\" style=\"font-size:clamp(40px,5.6vw,70px);max-width:14ch\"><span class=\"l-w\">Taal,<\/span> <span class=\"l-w\">werk<\/span> <span class=\"l-w\">en<\/span> <span class=\"l-w\">doelen<\/span> <span class=\"l-w l-or\">in één traject.<\/span><\/h1>\n<p class=\"l-fade\" style=\"margin:22px 0 0;max-width:54ch;font-size:18px;line-height:1.6;color:#4F6260\">We begeleiden inwoners op weg naar passend werk, onder wie mensen met een bijstandsuitkering. Iedere deelnemer start vanuit eigen mogelijkheden en doelen. U krijgt een duidelijke aanpak, vaste evaluatiemomenten en voortgang op indicatoren die we vooraf samen afspreken.<\/p>\n<div class=\"l-fade\" style=\"display:flex;flex-wrap:wrap;gap:12px;margin-top:30px\"><a class=\"l-btn l-btn-primary\" href=\"contact.html\">Bespreek een samenwerking <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/svg><\/a><a class=\"l-btn l-btn-outline\" href=\"#indicatoren\">Zo delen we voortgang<\/a><\/div>\n<\/div>\n<div class=\"l-fade\" style=\"flex:1 1 380px;min-width:0;animation-delay:.2s\"><div class=\"l-photo\" role=\"img\" aria-label=\"Plek voor een foto van een gesprek tussen begeleider en contactpersoon van de gemeente\"><svg width=\"120\" height=\"120\" viewBox=\"0 0 120 120\" fill=\"none\" aria-hidden=\"true\"><path d=\"M20 50 60 28l40 22M28 50v38M48 50v38M72 50v38M92 50v38M16 92h88\" stroke=\"#1F5D5A\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/svg><span>FOTO IN TE VULLEN: overleg met de gemeente<\/span><\/div><\/div>\n<\/div>\n<\/section>\n\n<!-- WAT U KRIJGT -->\n<section aria-labelledby=\"krijgt-title\" style=\"background:#FFFFFF\">\n<div style=\"max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,96px) max(20px,4vw)\">\n<div class=\"l-rv\" style=\"text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:36px\"><h2 id=\"krijgt-title\" class=\"l-h\" style=\"font-size:clamp(30px,4vw,46px)\">Wat u van ons krijgt<\/h2><div class=\"l-bar\" aria-hidden=\"true\"><\/div><\/div>\n<div class=\"l-rv\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px\">\n<div class=\"l-card\"><p class=\"l-label\" style=\"margin:0 0 10px\">Startpunt<\/p><h3 class=\"l-h\" style=\"font-size:20px\">Mogelijkheden en doelen van de inwoner<\/h3><\/div>\n<div class=\"l-card\"><p class=\"l-label\" style=\"margin:0 0 10px\">Vorm<\/p><h3 class=\"l-h\" style=\"font-size:20px\">Maatwerk binnen vijf vaste fasen<\/h3><\/div>\n<div class=\"l-card\"><p class=\"l-label\" style=\"margin:0 0 10px\">Inzicht<\/p><h3 class=\"l-h\" style=\"font-size:20px\">Voortgang op afgesproken indicatoren<\/h3><\/div>\n<div class=\"l-card\"><p class=\"l-label\" style=\"margin:0 0 10px\">Gegevens<\/p><h3 class=\"l-h\" style=\"font-size:20px\">Alleen delen wat nodig is<\/h3><\/div>\n<\/div>\n<\/div>\n<\/section>\n\n<!-- FASEN -->\n<section aria-labelledby=\"fase-title\" style=\"background:#E7F3F0\">\n<div style=\"max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,88px) max(20px,4vw)\">\n<div class=\"l-rv\" style=\"display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:flex-end;margin-bottom:28px\">\n<div><h2 id=\"fase-title\" class=\"l-h\" style=\"font-size:clamp(30px,4vw,46px)\">Vijf fasen, één vaste begeleider<\/h2><div class=\"l-bar\" style=\"margin-top:14px\" aria-hidden=\"true\"><\/div><\/div>\n<p style=\"margin:0;max-width:44ch;color:#4F6260;line-height:1.6\">De fasen zijn vast, de inhoud is maatwerk. Klik op een fase om te zien wat er gebeurt en wat u ervan terugziet.<\/p>\n<\/div>\n<div class=\"l-rv\" role=\"tablist\" aria-label=\"Fasen\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px\">\n<sc-for list=\"{{fasen}}\" as=\"f\" hint-placeholder-count=\"5\"><button type=\"button\" role=\"tab\" class=\"l-fase\" aria-selected=\"{{f.selected}}\" onClick=\"{{f.pick}}\"><span class=\"l-num\">{{f.n}}<\/span><span class=\"l-h\" style=\"font-size:19px;color:inherit\">{{f.label}}<\/span><\/button><\/sc-for>\n<\/div>\n<div class=\"l-rv\" style=\"margin-top:18px;display:flex;flex-wrap:wrap;gap:18px\">\n<div class=\"l-panel\" style=\"flex:2 1 460px;min-width:0;background:#1F5D5A;color:#FFFFFF;border-radius:18px;padding:clamp(24px,3.4vw,40px)\">\n<p class=\"l-label\" style=\"margin:0 0 12px;color:#9FD3C8\">Fase {{cur.n}} · {{cur.label}}<\/p>\n<h3 class=\"l-h\" style=\"font-size:clamp(24px,2.6vw,32px);color:#FFFFFF;margin-bottom:14px\">{{cur.kop}}<\/h3>\n<p style=\"margin:0 0 14px;line-height:1.65;color:#D6EAE5\">{{cur.tekst}}<\/p>\n<ul style=\"margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:#D6EAE5;line-height:1.5\"><sc-for list=\"{{cur.punten}}\" as=\"p\" hint-placeholder-count=\"3\"><li style=\"display:flex;gap:10px\"><span aria-hidden=\"true\" style=\"color:#F0862B\">●<\/span>{{p.t}}<\/li><\/sc-for><\/ul>\n<\/div>\n<div class=\"l-panel\" style=\"flex:1 1 280px;min-width:0;background:#FFFFFF;border:1px solid #EAE2D6;border-radius:18px;padding:clamp(24px,3.4vw,36px);display:flex;flex-direction:column;gap:12px\">\n<p class=\"l-label\" style=\"margin:0\">Wat u terugziet<\/p>\n<h3 class=\"l-h\" style=\"font-size:22px\">{{cur.voorU}}<\/h3>\n<p style=\"margin:0;line-height:1.6;color:#4F6260\">{{cur.voorUtekst}}<\/p>\n<div style=\"margin-top:auto;padding-top:12px;border-top:1px solid #EAE2D6\"><div style=\"display:flex;justify-content:space-between;font-size:13px;color:#4F6260;margin-bottom:6px\"><span>Traject<\/span><span>fase {{cur.n}} van 5<\/span><\/div><div class=\"l-prog\"><i style=\"width:{{cur.pct}}%\"><\/i><\/div><\/div>\n<\/div>\n<\/div>\n<\/div>\n<\/section>\n\n<!-- INDICATOREN -->\n<section id=\"indicatoren\" aria-labelledby=\"ind-title\" style=\"background:#FFFFFF\">\n<div style=\"max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,96px) max(20px,4vw);display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start\">\n<div class=\"l-rv\" style=\"flex:1 1 400px;min-width:0\">\n<h2 id=\"ind-title\" class=\"l-h\" style=\"font-size:clamp(30px,4vw,44px)\">Afgesproken indicatoren, geen losse cijfers<\/h2>\n<div class=\"l-bar\" style=\"margin:14px 0 18px\" aria-hidden=\"true\"><\/div>\n<p style=\"margin:0 0 20px;line-height:1.65;color:#4F6260;max-width:54ch\">Welke voortgang we delen, spreken we vooraf met u af. Vink hieronder aan wat u wilt zien; de samenvatting verandert mee. Zo werkt het ook in het portaal.<\/p>\n<div style=\"display:flex;flex-direction:column;gap:8px\"><sc-for list=\"{{inds}}\" as=\"i\" hint-placeholder-count=\"5\"><label class=\"l-toggle\"><input type=\"checkbox\" checked=\"{{i.on}}\" onChange=\"{{i.toggle}}\"/><span>{{i.label}}<\/span><\/label><\/sc-for><\/div>\n<p style=\"margin:20px 0 0;line-height:1.6;color:#4F6260;max-width:54ch\">We geven geen scores of automatische oordelen over iemands inzetbaarheid. Elke stand wordt toegelicht door de begeleider.<\/p>\n<\/div>\n<figure class=\"l-rv\" style=\"flex:1 1 360px;min-width:0;margin:0\">\n<div class=\"l-card\" style=\"background:#FAF7F2;box-shadow:0 30px 60px -36px rgba(31,93,90,.45)\">\n<div style=\"display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px\"><span class=\"l-h\" style=\"font-size:20px\">Voortgangssamenvatting<\/span><span class=\"l-mark\">Demo · fictief<\/span><\/div>\n<sc-if value=\"{{noneOn}}\" hint-placeholder-val=\"{{ false }}\"><p style=\"margin:0;padding:20px;border:1.5px dashed #D7CFC2;border-radius:12px;text-align:center;color:#4F6260;line-height:1.5\">Geen indicatoren gekozen. U ziet dan alleen de toelichting van de begeleider.<\/p><\/sc-if>\n<dl style=\"margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px\"><sc-for list=\"{{shown}}\" as=\"s\" hint-placeholder-count=\"4\"><div class=\"l-panel\" style=\"border-top:2px solid #F0862B;padding-top:8px\"><dt class=\"l-label\" style=\"font-size:11px\">{{s.label}}<\/dt><dd style=\"margin:4px 0 0;font-weight:600\">{{s.waarde}}<\/dd><\/div><\/sc-for><\/dl>\n<p style=\"margin:18px 0 0;padding:14px 16px;background:#FFFFFF;border:1px solid #EAE2D6;border-radius:12px;line-height:1.55;font-size:15px\">“Werkt sinds drie weken op een proefplaats. Komt afspraken na en oefent met werkinstructies.” <span style=\"color:#4F6260\">— toelichting begeleider<\/span><\/p>\n<\/div>\n<figcaption style=\"margin-top:12px;font-size:14px;color:#4F6260\">Voorbeeld uit de portaaldemo. Alle gegevens zijn fictief.<\/figcaption>\n<\/figure>\n<\/div>\n<\/section>\n\n<!-- PRIVACY -->\n<section aria-labelledby=\"priv-title\" style=\"background:#FAF7F2\">\n<div style=\"max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,88px) max(20px,4vw)\">\n<div class=\"l-rv\" style=\"text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:36px\"><h2 id=\"priv-title\" class=\"l-h\" style=\"font-size:clamp(30px,4vw,46px)\">Alleen delen wat nodig is<\/h2><div class=\"l-bar\" aria-hidden=\"true\"><\/div><\/div>\n<div class=\"l-rv\" style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px\">\n<div class=\"l-card\" style=\"background:#FFFFFF\"><p class=\"l-label\" style=\"margin:0 0 10px\">U ziet<\/p><h3 class=\"l-h\" style=\"font-size:20px;margin-bottom:8px\">Toegewezen trajecten en afgesproken voortgang<\/h3><p style=\"margin:0;line-height:1.6;color:#4F6260\">Geen automatische toegang tot het volledige dossier.<\/p><\/div>\n<div class=\"l-card\" style=\"background:#FFFFFF\"><p class=\"l-label\" style=\"margin:0 0 10px\">Blijft intern<\/p><h3 class=\"l-h\" style=\"font-size:20px;margin-bottom:8px\">Notities, opdrachten en persoonlijke gesprekken<\/h3><p style=\"margin:0;line-height:1.6;color:#4F6260\">Die blijven bij de begeleider en de deelnemer.<\/p><\/div>\n<div class=\"l-card\" style=\"background:#FFFFFF\"><p class=\"l-label\" style=\"margin:0 0 10px\">Vragen we niet standaard<\/p><h3 class=\"l-h\" style=\"font-size:20px;margin-bottom:8px\">BSN, medische gegevens, reden van de uitkering<\/h3><p style=\"margin:0;line-height:1.6;color:#4F6260\">Alleen als het voor de opdracht echt nodig is en is afgesproken.<\/p><\/div>\n<div class=\"l-card\" style=\"background:#FFFFFF;border:1.5px dashed #F0862B\"><p class=\"l-label\" style=\"margin:0 0 10px;color:#C96A1A\">Nog vast te leggen<\/p><h3 class=\"l-h\" style=\"font-size:20px;margin-bottom:8px\">Gegevensdeling, bewaartermijnen, verwerking<\/h3><p style=\"margin:0\"><mark class=\"l-mark\">NOG VAST TE STELLEN<\/mark><\/p><\/div>\n<\/div>\n<div class=\"l-rv\" style=\"display:flex;flex-wrap:wrap;gap:40px;margin-top:48px\">\n<div style=\"flex:1 1 360px;min-width:0\"><h3 class=\"l-h\" style=\"font-size:24px;margin-bottom:10px\">Samenwerkingsvormen<\/h3><p style=\"margin:0;line-height:1.65;max-width:56ch;color:#4F6260\">We bespreken graag welke vorm past bij uw opdracht en uw regio. <mark class=\"l-mark\">IN TE VULLEN: samenwerkingsvormen, inkoop of contractering, werkgebied<\/mark><\/p><\/div>\n<div style=\"flex:1 1 360px;min-width:0\"><h3 class=\"l-h\" style=\"font-size:24px;margin-bottom:10px\">Als andere hulp nodig is<\/h3><p style=\"margin:0;line-height:1.65;max-width:56ch;color:#4F6260\">Wij bieden geen zorg, schuldhulpverlening of andere specialistische hulp. Als een deelnemer dat nodig heeft, stemmen we af met u en de deelnemer, en denken we mee over doorverwijzing.<\/p><\/div>\n<\/div>\n<\/div>\n<\/section>\n\n<section aria-labelledby=\"gm-cta\" style=\"background:#1F5D5A;color:#FFFFFF\">\n<div style=\"max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,72px) max(20px,4vw);display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between\">\n<div class=\"l-rv\"><h2 id=\"gm-cta\" class=\"l-h\" style=\"font-size:clamp(30px,4vw,44px);color:#FFFFFF\">Laten we de opdracht samen scherp maken.<\/h2><div class=\"l-bar\" style=\"margin:14px 0 12px\" aria-hidden=\"true\"><\/div><p style=\"margin:0;color:#D6EAE5;line-height:1.6;max-width:52ch\">Wij zoeken gemeenten die met ons willen samenwerken in een pilot.<\/p><\/div>\n<a class=\"l-btn l-btn-orange l-rv\" href=\"contact.html\" style=\"min-height:58px;padding:0 30px;font-size:17px\">Bespreek een samenwerking <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/svg><\/a>\n<\/div>\n<\/section>\n<\/main>\n<dc-import name=\"Footer\" hint-size=\"100%,360px\"><\/dc-import>\n<\/div>", "props": {"$preview": {"width": 1440, "height": 4600}}, "src": "\nconst FASEN = [\n{ n: 1, label: 'Intake', kop: 'Een persoonlijk gesprek, geen vragenlijst', tekst: 'We praten over werkervaring, wensen, mogelijkheden en wat iemand nodig heeft. We vragen alleen wat voor het traject nodig is.', punten: ['Gesprek met een vaste begeleider', 'Waar het past: korte afstemming met uw contactpersoon', 'Geen BSN, medische gegevens of uitkeringsdetails'], voorU: 'Korte terugkoppeling', voorUtekst: 'Of het traject past en wat een logische eerste focus is.' },\n{ n: 2, label: 'Doelen', kop: 'Concrete doelen, samen met de deelnemer', tekst: 'Geen algemene ambities, maar doelen die je op het werk kunt zien. Bijvoorbeeld een vast weekritme, werktaal voor een sector, of oefenen met sollicitatiegesprekken.', punten: ['Twee tot vier doelen per periode', 'Per doel: wanneer is het gelukt?', 'Afspraak over evaluatiemomenten'], voorU: 'Trajectplan', voorUtekst: 'Met doelen, acties, verantwoordelijke begeleider en evaluatiemomenten.' },\n{ n: 3, label: 'Uitvoering', kop: 'Coaching, taal, digitaal en oefenen in de praktijk', tekst: 'Coaching, taalonderwijs, digitale vaardigheden en praktische opdrachten. Waar mogelijk op de werkvloer, in afstemming met een werkgever.', punten: ['Vaste contactmomenten', 'Korte opdrachten voor werktaal, vaktaal, digitale vaardigheden en werknemersvaardigheden', 'Driegesprekken met werkgever waar van toepassing'], voorU: 'Tussentijdse voortgang', voorUtekst: 'Op de indicatoren die we vooraf hebben afgesproken, met toelichting van de begeleider.' },\n{ n: 4, label: 'Evaluatie', kop: 'Terugkijken en bijstellen', tekst: 'Op vaste momenten kijken we met de deelnemer, en waar afgesproken met u en de werkgever, terug. Doelen worden bijgesteld als dat nodig is.', punten: ['Evaluatie met alle betrokkenen volgens afspraak', 'Doorgaan, bijstellen of afronden', 'Geen scores, wel concrete voorbeelden'], voorU: 'Evaluatieverslag', voorUtekst: 'Met de uitkomsten die voor uw opdracht zijn afgesproken.' },\n{ n: 5, label: 'Nazorg', kop: 'Bereikbaar blijven als het werk is begonnen', tekst: 'Na de start op het werk of na afronding blijven we bereikbaar, op basis van de afspraken in de opdracht.', punten: ['Contact volgens afspraak', 'Snel schakelen als er iets verandert', 'Duidelijk wie wanneer contact opneemt'], voorU: 'Nazorgafspraken', voorUtekst: 'Over duur en vorm van nazorg, en wanneer het traject echt is afgerond.' }\n];\nconst INDS = [\n{ id: 'fase', label: 'Fase van het traject', waarde: 'Starten op het werk' },\n{ id: 'stap', label: 'Stap richting werk', waarde: 'Proefplaatsing' },\n{ id: 'afspraken', label: 'Deelname aan afspraken', waarde: 'Alle afspraken bijgewoond' },\n{ id: 'doelen', label: 'Status van de doelen', waarde: '2 afgesproken, beide in uitvoering' },\n{ id: 'nazorg', label: 'Afspraken over nazorg', waarde: 'Nog af te spreken bij evaluatie' }\n];\nclass Component extends DCLogic {\nconstructor(p) { super(p); this.state = { fase: 3, on: { fase: true, stap: true, afspraken: true, doelen: true, nazorg: false } }; }\nrenderVals() {\nconst cur = FASEN.find(f => f.n === this.state.fase) || FASEN[0];\nconst on = this.state.on; const shown = INDS.filter(i => on[i.id]);\nreturn { fasen: FASEN.map(f => ({ n: f.n, label: f.label, selected: f.n === cur.n ? 'true' : 'false', pick: () => this.setState({ fase: f.n }) })), cur: Object.assign({}, cur, { punten: cur.punten.map(t => ({ t })), pct: Math.round(cur.n / 5 * 100) }), inds: INDS.map(i => ({ label: i.label, on: !!on[i.id], toggle: () => this.setState({ on: Object.assign({}, this.state.on, { [i.id]: !this.state.on[i.id] }) }) })), shown, noneOn: shown.length === 0 };\n}\n}\n"});
+DC.register("Header",{"tpl": "<header class=\"lh\">\n<a href=\"#inhoud\" style=\"position:absolute;left:12px;top:-60px;pointer-events:auto;z-index:60;background:#F0862B;color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none\">Naar de inhoud<\/a>\n<div class=\"lh-bar\">\n<a class=\"lh-logo\" href=\"index.html\" aria-label=\"Verbind &amp; Go, naar de homepage\">Verbind<b>&amp;<\/b>GO<\/a>\n<nav class=\"lh-nav\" aria-label=\"Hoofdmenu\">\n<sc-for list=\"{{links}}\" as=\"l\" hint-placeholder-count=\"6\">\n<a href=\"{{l.href}}\" aria-current=\"{{l.current}}\">{{l.label}}<\/a>\n<\/sc-for>\n<\/nav>\n<div class=\"lh-acts\">\n<a class=\"lh-login\" href=\"inloggen.html\" aria-label=\"Inloggen op het portaal\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" fill=\"none\"><rect x=\"3\" y=\"7\" width=\"10\" height=\"7\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><path d=\"M5.5 7V5a2.5 2.5 0 0 1 5 0v2\" stroke=\"currentColor\" stroke-width=\"1.6\"/><\/svg><span>Inloggen<\/span><\/a>\n<a class=\"lh-cta\" href=\"contact.html\">Contact<\/a>\n<\/div>\n<\/div>\n<\/header>", "props": {"active": {"editor": "enum", "options": ["home", "aanpak", "gemeenten", "werkgevers", "over", "contact", "inloggen"], "default": "home"}, "$preview": {"width": 1440, "height": 96}}, "src": "\nclass Component extends DCLogic {\nrenderVals() {\nconst active = this.props.active ?? 'home';\nconst items = [['home', 'Home', 'index.html'], ['aanpak', 'Onze aanpak', 'aanpak.html'], ['gemeenten', 'Voor gemeenten', 'gemeenten.html'], ['werkgevers', 'Voor werkgevers', 'werkgevers.html'], ['over', 'Over ons', 'over-ons.html']];\nreturn { links: items.map(([key, label, href]) => ({ label, href, current: key === active ? 'page' : undefined })) };\n}\n}\n"});
+DC.register("Footer",{"tpl": "<footer class=\"lf\">\n<div class=\"lf-in\">\n<div class=\"lf-top\">\n<div style=\"flex:1 1 300px;min-width:0\">\n<a class=\"lf-logo\" href=\"index.html\" aria-label=\"Verbind &amp; Go, naar de homepage\">Verbind<b>&amp;<\/b>GO<\/a>\n<p style=\"margin:14px 0 20px;max-width:38ch;line-height:1.65\">Taal, digitale vaardigheden, coaching en begeleiding op de werkvloer. Samen op weg naar werk dat blijft.<\/p>\n<a class=\"lf-cta\" href=\"contact.html\">Plan een kennismaking <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><\/svg><\/a>\n<\/div>\n<nav aria-label=\"Voetmenu\" style=\"flex:1 1 160px\">\n<p class=\"lf-h\">Pagina's<\/p>\n<ul style=\"list-style:none;margin:0;padding:0;display:flex;flex-direction:column\">\n<li><a class=\"lf-link\" href=\"aanpak.html\">Onze aanpak<\/a><\/li>\n<li><a class=\"lf-link\" href=\"gemeenten.html\">Voor gemeenten<\/a><\/li>\n<li><a class=\"lf-link\" href=\"werkgevers.html\">Voor werkgevers<\/a><\/li>\n<li><a class=\"lf-link\" href=\"over-ons.html\">Over ons<\/a><\/li>\n<li><a class=\"lf-link\" href=\"contact.html\">Contact<\/a><\/li>\n<li><a class=\"lf-link\" href=\"inloggen.html\">Inloggen portaal<\/a><\/li>\n<\/ul>\n<\/nav>\n<div style=\"flex:1 1 200px;min-width:0\">\n<p class=\"lf-h\">Diensten<\/p>\n<ul style=\"list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;line-height:1.5\">\n<li>Werktaal en vaktaal<\/li><li>Digitale vaardigheden<\/li><li>Begeleiding richting werk<\/li><li>Coaching van werknemer en werkgever<\/li><li>Begeleiding tijdens het werk<\/li><li>Nazorg<\/li>\n<\/ul>\n<\/div>\n<div style=\"flex:1 1 220px;min-width:0\">\n<p class=\"lf-h\">Contact<\/p>\n<ul style=\"list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;line-height:1.5\">\n<li data-site=\"email\"><mark class=\"lf-mark\">IN TE VULLEN: e-mailadres<\/mark><\/li>\n<li data-site=\"telefoon\"><mark class=\"lf-mark\">IN TE VULLEN: telefoonnummer<\/mark><\/li>\n<li data-site=\"adres\"><mark class=\"lf-mark\">IN TE VULLEN: adres of werkgebied<\/mark><\/li>\n<\/ul>\n<\/div>\n<\/div>\n<p class=\"lf-big\" aria-hidden=\"true\">Verbind&amp;GO<\/p>\n<div class=\"lf-bot\">\n<span>© Verbind &amp; GO · KvK <mark class=\"lf-mark\" data-site=\"kvk\" style=\"padding:0 8px\">IN TE VULLEN<\/mark><\/span>\n<span data-site=\"privacy\">Privacyverklaring <mark class=\"lf-mark\" style=\"padding:0 8px\">NOG OP TE STELLEN<\/mark><\/span>\n<span data-site=\"status\">Eerste versie · formulieren nog niet aangesloten<\/span>\n<\/div>\n<\/div>\n<\/footer>", "props": {"$preview": {"width": 1440, "height": 560}}, "src": "\nclass Component extends DCLogic {\nrenderVals() { return {}; }\n}\n"});
+DC.mount("Gemeenten", '#app');
+</script>
+</body>
+</html>

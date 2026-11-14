@@ -1,0 +1,17 @@
+{
+  "_uitleg": "Vul hier de bedrijfsgegevens in. Alles wat leeg blijft, blijft op de site zichtbaar als 'IN TE VULLEN'. Daarna: python3 tools/build.py (of push naar GitHub; de site wordt dan automatisch opnieuw gebouwd).",
+  "organisatie": "Verbind & GO",
+  "domein": "",
+  "email": "",
+  "telefoon": "",
+  "bereikbaarheid": "",
+  "adres": "",
+  "kvk": "",
+  "privacyUrl": "",
+  "formEndpoint": "",
+  "_formEndpoint_uitleg": "Een formulier-endpoint dat JSON accepteert, bijvoorbeeld van Formspree (https://formspree.io/f/xxxx) of Web3Forms. Leeg = demostand: het formulier verstuurt niets en zegt dat ook.",
+  "ogImage": "",
+  "supabaseUrl": "https://tqxnjouxtimcgjvcmxjm.supabase.co",
+  "supabaseKey": "sb_publishable_VgycS_QCI8iwohx92Y5qyw_LQ5hXhqI",
+  "_supabase_uitleg": "Publieke sleutel van het portaal (Supabase). Toegang wordt in de database afgedwongen; zie supabase/README.md."
+}

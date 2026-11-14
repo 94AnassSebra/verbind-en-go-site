@@ -1,0 +1,11 @@
+# Netlify: koppel de GitHub-repo of sleep de map dist/ naar app.netlify.com/drop.
+[build]
+  command = "python3 tools/sync_css.py && python3 tools/build.py project dist"
+  publish = "dist"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
