@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /portaal.html
+Sitemap: https://verbindengo.nl/sitemap.xml

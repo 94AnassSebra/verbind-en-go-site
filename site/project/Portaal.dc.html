@@ -132,8 +132,8 @@ input,select,textarea,button{font:inherit}
 .p-big span{-webkit-text-fill-color:#4F6260;color:#4F6260}
 .p-btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 8px 18px -12px rgba(31,93,90,.7);background:linear-gradient(135deg,#276E6A,#1F5D5A 70%)}
 .p-btn:hover{background:linear-gradient(135deg,#2A7A74,#246864 70%)}
-.p-btn-primary{background:linear-gradient(135deg,#F7A052,#F0862B 60%,#DB7620);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 22px -12px rgba(240,134,43,.8)}
-.p-btn-primary:hover{background:linear-gradient(135deg,#F7A052,#E87A22 60%,#D06E1A)}
+.p-btn-primary{background:#F0862B;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 10px 22px -12px rgba(240,134,43,.8)}
+.p-btn-primary:hover{background:#DB7620}
 .p-btn-ghost{background:rgba(255,255,255,.6);box-shadow:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .p-btn-ghost:hover{background:#FFFFFF;border-color:#1F5D5A}
 .p-row{border-radius:16px;border-color:rgba(241,235,225,.9);box-shadow:0 1px 2px rgba(27,42,42,.03);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease,border-color .2s ease}
@@ -142,6 +142,9 @@ input,select,textarea,button{font:inherit}
 .p-prog i,.p-bar i{background-image:linear-gradient(90deg,rgba(255,255,255,.25),rgba(255,255,255,0))}
 .p-ring circle.val{filter:drop-shadow(0 2px 3px rgba(27,42,42,.12))}
 .p-domcard{border-radius:22px}
+.p-bg{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px 24px}
+.p-bg dt{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2A7A74;margin-bottom:4px}
+.p-bg dd{margin:0;line-height:1.5}
 .p-field input,.p-field select,.p-field textarea{border-radius:14px;background:rgba(255,255,255,.9)}
 .p-modal{border-radius:24px;box-shadow:0 40px 80px -30px rgba(6,26,30,.6)}
 .p-empty{border-radius:20px;background:rgba(255,255,255,.4)}
@@ -155,12 +158,12 @@ input,select,textarea,button{font:inherit}
 .p-side .p-card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);color:#FFFFFF;box-shadow:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .p-side .p-card p{color:#FFFFFF!important}
 .p-side .p-card p + p{color:#A9C9C3!important}
-.p-side .p-card span[aria-hidden]{background:linear-gradient(135deg,#F9A45C,#F0862B)!important;color:#FFFFFF!important}
+.p-side .p-card span[aria-hidden]{background:#F0862B!important;color:#FFFFFF!important}
 .p-nav button{color:#CFE1DD;border-radius:16px}
 .p-nav button:hover{background:rgba(255,255,255,.08);color:#FFFFFF}
 .p-nav button[aria-current="page"]{background:rgba(255,255,255,.14);color:#FFFFFF;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 10px 22px -16px rgba(0,0,0,.6)}
 .p-nav .ic{background:rgba(255,255,255,.08);color:#9FD3C8}
-.p-nav button[aria-current="page"] .ic{background:linear-gradient(135deg,#F9A45C,#F0862B);color:#FFFFFF}
+.p-nav button[aria-current="page"] .ic{background:#F0862B;color:#FFFFFF}
 .p-nav button:hover .ic{background:rgba(255,255,255,.14)}
 .p-side .p-nc{color:#8FB1AB;border-color:rgba(255,255,255,.2)}
 .p-side .p-btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:#FFFFFF}
@@ -399,8 +402,8 @@ input,select,textarea,button{font:inherit}
 
 <!-- ================= DEELNEMERS (begeleider) ================= -->
 <sc-if value="{{isDeelnemers}}" hint-placeholder-val="{{ false }}">
-<p class="p-label" style="margin:0 0 8px">Deelnemers</p>
-<h1 class="p-h1" style="margin-bottom:8px">Aan mij toegewezen</h1>
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px"><div><p class="p-label" style="margin:0 0 8px">Deelnemers</p>
+<h1 class="p-h1">Aan mij toegewezen</h1></div><button type="button" class="p-btn p-btn-primary" onClick="{{openDeel}}">+ Nieuwe deelnemer</button></div>
 <p style="margin:0 0 20px;color:#4F6260;line-height:1.5;max-width:70ch">Je ziet alleen deelnemers die aan jou zijn toegewezen. Andere deelnemers van Verbind &amp; Go zijn niet zichtbaar.</p>
 <div class="p-grid">
 <sc-for list="{{myDeelnemers}}" as="d" hint-placeholder-count="2">
@@ -432,6 +435,22 @@ input,select,textarea,button{font:inherit}
 </dl>
 <button type="button" class="p-btn p-btn-ghost" onClick="{{goProg}}" style="align-self:flex-start">Progressie bekijken</button>
 </section>
+
+<sc-if value="{{tj.bgShow}}" hint-placeholder-val="{{ true }}">
+<section class="p-card" style="margin-bottom:16px" aria-labelledby="tj-bg">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px"><h2 class="p-h2" id="tj-bg">Achtergrond</h2><span style="font-size:13px;color:#4F6260">Zichtbaar voor deelnemer en begeleider · niet voor werkgever of gemeente</span></div>
+<dl class="p-bg">
+<div><dt>Situatie</dt><dd>{{tj.bg.situatie}}</dd></div>
+<div><dt>Taal</dt><dd>{{tj.bg.taal}}</dd></div>
+<div><dt>Opleiding</dt><dd>{{tj.bg.opleiding}}</dd></div>
+<div><dt>Werkervaring</dt><dd>{{tj.bg.werkervaring}}</dd></div>
+<div><dt>Interesses en wensen</dt><dd>{{tj.bg.interesses}}</dd></div>
+<div><dt>Ondersteuningsbehoefte</dt><dd>{{tj.bg.ondersteuning}}</dd></div>
+<div><dt>Opdrachtgever</dt><dd>{{tj.bg.opdrachtgever}}</dd></div>
+<div><dt>Gestart</dt><dd>{{tj.bg.start}}</dd></div>
+</dl>
+</section>
+</sc-if>
 
 <div class="p-grid" style="align-items:start">
 <section class="p-card" aria-labelledby="tj-goals">
@@ -672,12 +691,19 @@ input,select,textarea,button{font:inherit}
 <sc-if value="{{isBeheer}}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:20px">
 <div><p class="p-label" style="margin:0 0 8px">Beheer</p><h1 class="p-h1">Gebruikers en rollen</h1></div>
-<button type="button" class="p-btn p-btn-primary" onClick="{{notConnected}}">+ Gebruiker uitnodigen</button>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="p-btn p-btn-ghost" onClick="{{notConnected}}">+ Gebruiker uitnodigen</button><button type="button" class="p-btn p-btn-primary" onClick="{{openDeel}}">+ Nieuwe deelnemer</button></div>
 </div>
 <section class="p-card" style="margin-bottom:16px">
 <h2 class="p-h2" style="margin-bottom:12px">Gebruikers</h2>
 <div style="overflow-x:auto"><table class="p-tbl" style="min-width:680px"><thead><tr><th scope="col">Naam</th><th scope="col">Organisatie</th><th scope="col">Rol</th><th scope="col">Status</th><th scope="col"></th></tr></thead><tbody>
 <sc-for list="{{users}}" as="u" hint-placeholder-count="5"><tr><td style="font-weight:600">{{u.naam}}</td><td style="color:#4F6260">{{u.org}}</td><td><label for="{{u.selId}}" style="position:absolute;left:-9999px">Rol van {{u.naam}}</label><select id="{{u.selId}}" value="{{u.rol}}" onChange="{{u.setRol}}"><option value="deelnemer">Deelnemer</option><option value="begeleider">Begeleider</option><option value="werkgever">Werkgever</option><option value="gemeente">Gemeente</option><option value="beheerder">Beheerder</option></select></td><td><span class="p-pill {{u.cls}}">{{u.statusLabel}}</span></td><td style="text-align:right"><button type="button" class="p-btn p-btn-ghost p-btn-sm" onClick="{{u.toggle}}">{{u.toggleLabel}}</button></td></tr></sc-for>
+</tbody></table></div>
+</section>
+<section class="p-card" style="margin-bottom:16px">
+<h2 class="p-h2" style="margin-bottom:4px">Deelnemers</h2>
+<p style="margin:0 0 12px;color:#4F6260;font-size:14px">Als beheerder zie je wie er in het portaal staat en wie het traject begeleidt. De inhoud van het dossier (achtergrond, notities, metingen) is alleen zichtbaar voor de begeleider en de deelnemer zelf.</p>
+<div style="overflow-x:auto"><table class="p-tbl" style="min-width:560px"><thead><tr><th scope="col">Naam</th><th scope="col">Fase</th><th scope="col">Status</th><th scope="col">Opdrachtgever</th><th scope="col">Gestart</th></tr></thead><tbody>
+<sc-for list="{{adminDeel}}" as="d" hint-placeholder-count="3"><tr><td style="font-weight:600">{{d.naam}}</td><td style="color:#4F6260">{{d.fase}}</td><td><span class="p-pill {{d.cls}}">{{d.statusLabel}}</span></td><td style="color:#4F6260">{{d.opdrachtgever}}</td><td style="color:#4F6260">{{d.start}}</td></tr></sc-for>
 </tbody></table></div>
 </section>
 <section class="p-card">
@@ -694,6 +720,35 @@ input,select,textarea,button{font:inherit}
 </div>
 
 <!-- ================= MODALS ================= -->
+<sc-if value="{{modalDeel}}" hint-placeholder-val="{{ false }}">
+<div class="p-overlay" role="dialog" aria-modal="true" aria-labelledby="nd-title">
+<form class="p-modal" onSubmit="{{submitDeel}}" novalidate style="width:min(100%,760px)">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><p class="p-label" style="margin:0 0 6px">Nieuwe deelnemer</p><h2 class="p-h2" id="nd-title" style="margin:0">Achtergrond en start van het traject</h2></div><button type="button" class="p-btn p-btn-ghost p-btn-sm" onClick="{{closeModal}}" aria-label="Sluiten">✕</button></div>
+<p style="margin:0;font-size:14px;color:#4F6260;line-height:1.5">Vul alleen in wat nodig is voor de begeleiding. Geen BSN, geen medische gegevens, geen uitkeringsdossier.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px">
+<div class="p-field {{nf.naamBad}}"><label for="nd-naam">Naam</label><input id="nd-naam" type="text" value="{{nf.naam}}" onChange="{{nf.setNaam}}" aria-describedby="nd-naam-err"><sc-if value="{{nf.naamErr}}" hint-placeholder-val="{{ false }}"><p class="p-err" id="nd-naam-err">Vul de naam in.</p></sc-if></div>
+<div class="p-field"><label for="nd-situatie">Situatie</label><select id="nd-situatie" value="{{nf.situatie}}" onChange="{{nf.setSituatie}}"><option value="Statushouder">Statushouder</option><option value="Nieuwkomer (anders)">Nieuwkomer (anders)</option><option value="Bijstandsuitkering">Bijstandsuitkering</option><option value="Werkend, wil doorgroeien">Werkend, wil doorgroeien</option><option value="Anders">Anders</option></select></div>
+<div class="p-field"><label for="nd-taal">Taal (indicatie)</label><input id="nd-taal" type="text" value="{{nf.taal}}" onChange="{{nf.setTaal}}" placeholder="Bijv. Nederlands A2, Arabisch moedertaal"></div>
+<div class="p-field"><label for="nd-opleiding">Opleiding</label><input id="nd-opleiding" type="text" value="{{nf.opleiding}}" onChange="{{nf.setOpleiding}}"></div>
+<div class="p-field"><label for="nd-werk">Werkervaring</label><input id="nd-werk" type="text" value="{{nf.werkervaring}}" onChange="{{nf.setWerkervaring}}"></div>
+<div class="p-field"><label for="nd-int">Interesses en wensen</label><input id="nd-int" type="text" value="{{nf.interesses}}" onChange="{{nf.setInteresses}}"></div>
+<div class="p-field"><label for="nd-opdr">Opdrachtgever</label><input id="nd-opdr" type="text" value="{{nf.opdrachtgever}}" onChange="{{nf.setOpdrachtgever}}" placeholder="Gemeente of werkgever"></div>
+<div class="p-field"><label for="nd-start">Startdatum</label><input id="nd-start" type="date" value="{{nf.start}}" onChange="{{nf.setStart}}"></div>
+</div>
+<div class="p-field"><label for="nd-onder">Ondersteuningsbehoefte</label><textarea id="nd-onder" rows="3" value="{{nf.ondersteuning}}" onChange="{{nf.setOndersteuning}}" placeholder="Waar heeft deze persoon hulp bij nodig om aan het werk te komen of te blijven?"></textarea></div>
+<fieldset style="border:0;margin:0;padding:0"><legend style="font-weight:600;margin-bottom:8px">Domeinen in het traject</legend>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<label class="p-check" style="flex:1 1 180px"><input type="checkbox" checked="{{nf.dWerktaal}}" onChange="{{nf.setDWerktaal}}"><span>Werktaal</span></label>
+<label class="p-check" style="flex:1 1 180px"><input type="checkbox" checked="{{nf.dVaktaal}}" onChange="{{nf.setDVaktaal}}"><span>Vaktaal</span></label>
+<label class="p-check" style="flex:1 1 180px"><input type="checkbox" checked="{{nf.dDigitaal}}" onChange="{{nf.setDDigitaal}}"><span>Digitale vaardigheden</span></label>
+<label class="p-check" style="flex:1 1 180px"><input type="checkbox" checked="{{nf.dWerk}}" onChange="{{nf.setDWerk}}"><span>Werkcompetenties</span></label>
+<label class="p-check" style="flex:1 1 180px"><input type="checkbox" checked="{{nf.dSamen}}" onChange="{{nf.setDSamen}}"><span>Samenwerking</span></label>
+</div></fieldset>
+<div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap"><button type="button" class="p-btn p-btn-ghost" onClick="{{closeModal}}">Annuleren</button><button type="submit" class="p-btn p-btn-primary">Deelnemer toevoegen</button></div>
+</form>
+</div>
+</sc-if>
+
 <sc-if value="{{modalGoal}}" hint-placeholder-val="{{ false }}">
 <div class="p-overlay" role="dialog" aria-modal="true" aria-labelledby="m-goal">
 <form class="p-modal" onSubmit="{{submitGoal}}" novalidate>
@@ -794,9 +849,9 @@ users: [
 { id: 'u-beheer', naam: 'Beheerder demo', rol: 'beheerder', org: 'Verbind & Go', actief: true }
 ],
 deelnemers: [
-{ id: 'd1', userId: 'u-samira', naam: 'Samira Haddad', coachId: 'u-noor', wgId: 'u-petra', gemId: 'u-kees', functie: 'Orderpicker (proefplaatsing)', fase: 'Starten op het werk', stap: 'Proefplaatsing', status: 'actief', taal: true, focus: 'Werktaal en vaktaal logistiek', domeinen: ['werktaal', 'vaktaal', 'digitaal', 'werk', 'samen'], startpunt: 'Spreekt Nederlands op A2-niveau, werkt sinds drie weken op een proefplaats in het magazijn. Begrijpt mondelinge instructies nog niet altijd en vraagt zelden na.', evalDate: '2026-11-05' },
-{ id: 'd2', userId: 'u-daniel', naam: 'Daniël Vos', coachId: 'u-noor', wgId: null, gemId: 'u-kees', functie: 'Oriëntatie op werk', fase: 'Doelen afspreken', stap: 'Oriëntatie', status: 'actief', taal: false, focus: 'Werkritme en coaching', domeinen: ['werk', 'samen'], startpunt: 'Spreekt vloeiend Nederlands. Heeft vijf jaar niet gewerkt en wil weer aan de slag, bij voorkeur in de techniek. Vindt een vast dagritme en feedback krijgen nog lastig.', evalDate: '2026-11-19' },
-{ id: 'd3', userId: 'u-tomasz', naam: 'Tomasz Nowak', coachId: 'u-yusuf', wgId: null, gemId: null, functie: 'Schoonmaakmedewerker', fase: 'Starten op het werk', stap: 'Betaald werk', status: 'actief', taal: true, focus: 'Vaktaal facilitair', domeinen: ['werktaal', 'vaktaal', 'digitaal', 'werk', 'samen'], startpunt: 'Werkt al in vaste dienst. Praat makkelijk, maar leest etiketten en werkbriefjes nog niet goed. Traject via de werkgever.', evalDate: '2026-11-12' }
+{ id: 'd1', userId: 'u-samira', naam: 'Samira Haddad', coachId: 'u-noor', wgId: 'u-petra', gemId: 'u-kees', functie: 'Orderpicker (proefplaatsing)', fase: 'Starten op het werk', stap: 'Proefplaatsing', status: 'actief', taal: true, focus: 'Werktaal en vaktaal logistiek', domeinen: ['werktaal', 'vaktaal', 'digitaal', 'werk', 'samen'], achtergrond: { situatie: 'Statushouder, sinds 2024 in Nederland', taal: 'Nederlands A2 (mondeling sterker dan schriftelijk)', opleiding: 'Middelbare school afgerond in land van herkomst', werkervaring: 'Vier jaar winkelmedewerker; in Nederland proefplaatsing magazijn', interesses: 'Logistiek, later teamleider', ondersteuning: 'Werktaal op de vloer, uren-app, zelfvertrouwen bij navragen', opdrachtgever: 'Gemeente Voorbeeldstad', start: '2026-09-15' }, startpunt: 'Spreekt Nederlands op A2-niveau, werkt sinds drie weken op een proefplaats in het magazijn. Begrijpt mondelinge instructies nog niet altijd en vraagt zelden na.', evalDate: '2026-11-05' },
+{ id: 'd2', userId: 'u-daniel', naam: 'Daniël Vos', coachId: 'u-noor', wgId: null, gemId: 'u-kees', achtergrond: { situatie: 'Bijstandsuitkering, langere tijd niet gewerkt', taal: 'Nederlands moedertaal', opleiding: 'Mbo 2 techniek', werkervaring: 'Productiewerk en bezorging', interesses: 'Techniek, buitenwerk', ondersteuning: 'Werkritme opbouwen, coaching bij solliciteren', opdrachtgever: 'Gemeente Voorbeeldstad', start: '2026-10-01' }, functie: 'Oriëntatie op werk', fase: 'Doelen afspreken', stap: 'Oriëntatie', status: 'actief', taal: false, focus: 'Werkritme en coaching', domeinen: ['werk', 'samen'], startpunt: 'Spreekt vloeiend Nederlands. Heeft vijf jaar niet gewerkt en wil weer aan de slag, bij voorkeur in de techniek. Vindt een vast dagritme en feedback krijgen nog lastig.', evalDate: '2026-11-19' },
+{ id: 'd3', userId: 'u-tomasz', naam: 'Tomasz Nowak', coachId: 'u-yusuf', wgId: null, gemId: null, achtergrond: { situatie: 'Arbeidsmigrant, werkt al; wil doorgroeien', taal: 'Nederlands A1–A2', opleiding: 'Vakopleiding schoonmaak (Polen)', werkervaring: 'Zes jaar schoonmaak, waarvan twee in Nederland', interesses: 'Voorman worden', ondersteuning: 'Vaktaal, werkoverleg, digitaal roosteren', opdrachtgever: 'Werkgever (eigen traject)', start: '2026-09-01' }, functie: 'Schoonmaakmedewerker', fase: 'Starten op het werk', stap: 'Betaald werk', status: 'actief', taal: true, focus: 'Vaktaal facilitair', domeinen: ['werktaal', 'vaktaal', 'digitaal', 'werk', 'samen'], startpunt: 'Werkt al in vaste dienst. Praat makkelijk, maar leest etiketten en werkbriefjes nog niet goed. Traject via de werkgever.', evalDate: '2026-11-12' }
 ],
 doelen: [
 { id: 'g1', deelId: 'd1', titel: 'Veiligheidswoorden in het magazijn herkennen', omschrijving: 'Samira herkent de 12 veiligheidswoorden op borden en in instructies en weet wat ze moet doen.', soort: 'vaktaal', status: 'bezig', wg: true },
@@ -914,8 +969,7 @@ const STATUS = {
 gepland: ['Gepland', 'p-info'], afgerond: ['Afgerond', 'p-ok'], wijziging: ['Wijziging aangevraagd', 'p-warn'],
 open: ['Nog te starten', 'p-mute'], bezig: ['In uitvoering', 'p-info'], behaald: ['Behaald', 'p-ok'],
 toegewezen: ['Te doen', 'p-warn'], ingeleverd: ['Ingeleverd, wacht op feedback', 'p-info'], feedback: ['Feedback ontvangen', 'p-ok'],
-actief: ['Actief traject', 'p-ok'], afgesloten: ['Afgesloten', 'p-mute']
-};
+actief: ['Actief traject', 'p-ok'], afgesloten: ['Afgesloten', 'p-mute'], intake: ['Intake', 'p-info'] };
 const MASTERY = { oefenen: ['Nog oefenen', 'p-warn'], hulp: ['Lukt met hulp', 'p-info'], zelf: ['Lukt zelfstandig', 'p-ok'] };
 
 class Component extends DCLogic {
@@ -969,6 +1023,19 @@ set({ forms: Object.assign({}, S.forms, { [name]: Object.assign({}, S.forms[name
 const err = (k) => !!S.errs[k];
 const closeModal = () => set({ modal: null, errs: {} });
 
+const ND_DEF = { naam: '', situatie: 'Statushouder', taal: '', opleiding: '', werkervaring: '', interesses: '', opdrachtgever: '', start: DEMO_TODAY, ondersteuning: '', dWerktaal: true, dVaktaal: true, dDigitaal: true, dWerk: true, dSamen: true };
+const openDeel = () => set({ modal: 'deel', forms: Object.assign({}, S.forms, { deel: Object.assign({}, ND_DEF) }), errs: {} });
+const submitDeel = (e) => {
+e.preventDefault();
+const f = form('deel', ND_DEF);
+if (!f.naam.trim()) { set({ errs: { 'deel.naam': true } }); return; }
+const dom = [['werktaal', f.dWerktaal], ['vaktaal', f.dVaktaal], ['digitaal', f.dDigitaal], ['werk', f.dWerk], ['samen', f.dSamen]].filter(x => x[1]).map(x => x[0]);
+const d = clone(D); const id = 'd' + Date.now();
+d.deelnemers.push({ id, userId: null, naam: f.naam.trim(), coachId: role === 'begeleider' ? ROLE_USER[role] : null, wgId: null, gemId: null, functie: '', fase: 'Kennismaken', stap: 'Intake', status: 'intake', taal: f.dWerktaal || f.dVaktaal, focus: dom.length ? 'Traject met ' + dom.length + ' domeinen' : 'Nog geen domeinen', domeinen: dom, achtergrond: { situatie: f.situatie, taal: f.taal.trim(), opleiding: f.opleiding.trim(), werkervaring: f.werkervaring.trim(), interesses: f.interesses.trim(), ondersteuning: f.ondersteuning.trim(), opdrachtgever: f.opdrachtgever.trim(), start: f.start }, startpunt: f.ondersteuning.trim() ? 'Startpunt: ' + f.ondersteuning.trim() : 'Startpunt wordt bij de kennismaking vastgelegd.', evalDate: '' });
+set({ data: d, modal: null, errs: {}, selDeel: role === 'begeleider' ? id : S.selDeel });
+this.toast('ok', f.naam.trim() + ' is toegevoegd' + (role === 'begeleider' ? ' en aan jou toegewezen. Leg bij de kennismaking de nulmeting vast.' : '. Wijs onder Toewijzingen een begeleider toe.'));
+if (role === 'begeleider') go('traject', { selDeel: id });
+};
 const openGoal = () => set({ modal: 'goal', forms: Object.assign({}, S.forms, { goal: { titel: '', oms: '', soort: 'werktaal', wg: false } }), errs: {} });
 const submitGoal = (e) => {
 e.preventDefault();
@@ -1110,7 +1177,8 @@ const tasks = D.opdrachten.filter(t => t.deelId === tjDeel.id).map(taskRow);
 const evals = D.evaluaties.filter(ev => ev.deelId === tjDeel.id && evalVisible(ev)).sort((x, y) => y.datum.localeCompare(x.datum)).map(evalRow);
 const notes = D.notities.filter(n => n.deelId === tjDeel.id).map(n => ({ datum: fmt(n.datum), tekst: n.tekst }));
 const docs = D.documenten.filter(doc => doc.deelId === tjDeel.id && docVisible(doc)).map(docRow);
-tj = { naam: tjDeel.naam, voornaam: voornaam(tjDeel.naam), kop: role === 'deelnemer' ? 'Mijn traject' : 'Persoonlijk traject', startpunt: tjDeel.startpunt, fase: tjDeel.fase, statusLabel: sl, cls, coach: userName(tjDeel.coachId), evalDate: fmt(tjDeel.evalDate), goals, goalNone: goals.length === 0, appts, apptNone: appts.length === 0, tasks, taskNone: tasks.length === 0, evals, evalNone: evals.length === 0, notes, docs };
+const bgRaw = tjDeel.achtergrond || {}; const bg = { situatie: bgRaw.situatie || '—', taal: bgRaw.taal || '—', opleiding: bgRaw.opleiding || '—', werkervaring: bgRaw.werkervaring || '—', interesses: bgRaw.interesses || '—', ondersteuning: bgRaw.ondersteuning || '—', opdrachtgever: bgRaw.opdrachtgever || '—', start: bgRaw.start ? fmt(bgRaw.start) : '—' };
+tj = { bg, bgShow: role === 'begeleider' || role === 'deelnemer', naam: tjDeel.naam, voornaam: voornaam(tjDeel.naam), kop: role === 'deelnemer' ? 'Mijn traject' : 'Persoonlijk traject', startpunt: tjDeel.startpunt, fase: tjDeel.fase, statusLabel: sl, cls, coach: userName(tjDeel.coachId), evalDate: tjDeel.evalDate ? fmt(tjDeel.evalDate) : 'Nog in te plannen', goals, goalNone: goals.length === 0, appts, apptNone: appts.length === 0, tasks, taskNone: tasks.length === 0, evals, evalNone: evals.length === 0, notes, docs };
 }
 const addNote = () => { const v = (S.drafts.note || '').trim(); if (!v) { this.toast('err', 'Schrijf eerst een notitie.'); return; } const d = clone(D); d.notities.unshift({ id: 'n' + Date.now(), deelId: tjDeel.id, datum: DEMO_TODAY, tekst: v }); set({ data: d, drafts: Object.assign({}, S.drafts, { note: '' }) }); this.toast('ok', 'Interne notitie opgeslagen. Niet zichtbaar voor deelnemer, werkgever of gemeente.'); };
 
@@ -1235,6 +1303,9 @@ const levelLegend = [1, 2, 3, 4].map(n => ({ n, label: LEVELS[n][0], uitleg: LEV
 const af = form('appt', { deel: S.selDeel, titel: '', datum: '', tijd: '', waarType: 'kantoor', metWg: false, shared: false, task: '', toel: '' });
 const afDeel = deel(af.deel) || tjDeel;
 const gf = form('goal', { titel: '', oms: '', soort: 'werktaal', wg: false });
+const nfRaw = form('deel', ND_DEF);
+const nf = Object.assign({}, nfRaw, { naamBad: err('deel.naam') ? 'bad' : '', naamErr: err('deel.naam'), setNaam: setForm('deel', 'naam'), setSituatie: setForm('deel', 'situatie'), setTaal: setForm('deel', 'taal'), setOpleiding: setForm('deel', 'opleiding'), setWerkervaring: setForm('deel', 'werkervaring'), setInteresses: setForm('deel', 'interesses'), setOpdrachtgever: setForm('deel', 'opdrachtgever'), setStart: setForm('deel', 'start'), setOndersteuning: setForm('deel', 'ondersteuning'), setDWerktaal: setForm('deel', 'dWerktaal', true), setDVaktaal: setForm('deel', 'dVaktaal', true), setDDigitaal: setForm('deel', 'dDigitaal', true), setDWerk: setForm('deel', 'dWerk', true), setDSamen: setForm('deel', 'dSamen', true) });
+const adminDeel = D.deelnemers.map(d => { const [sl, cls] = st(d.status); const a = d.achtergrond || {}; return { naam: d.naam, fase: d.fase || '—', statusLabel: sl, cls, opdrachtgever: a.opdrachtgever || '—', start: a.start ? fmt(a.start) : '—' }; });
 const ef = form('ev', { deel: S.selDeel, type: 'observatie', tekst: '', wg: false, gem: false });
 
 return {
@@ -1255,7 +1326,7 @@ agendaTitle: role === 'deelnemer' ? 'Mijn afspraken' : role === 'werkgever' ? 'G
 agList: S.agendaMode === 'list', agWeek: S.agendaMode === 'week', setList: () => set({ agendaMode: 'list' }), setWeek: () => set({ agendaMode: 'week' }),
 agenda: { items: agendaItems, none: agendaItems.length === 0, emptyText: role === 'werkgever' ? 'Er is nog geen werkafspraak met u gedeeld.' : 'Nog geen afspraken.' },
 week, weekLabel, prevWeek: () => set({ weekOffset: S.weekOffset - 1 }), nextWeek: () => set({ weekOffset: S.weekOffset + 1 }), thisWeek: () => set({ weekOffset: 0 }),
-openAppt, submitAppt, openGoal, submitGoal, openEval, submitEval,
+openAppt, submitAppt, openGoal, submitGoal, openEval, submitEval, openDeel, submitDeel, nf, adminDeel, modalDeel: S.modal === 'deel',
 modalGoal: S.modal === 'goal', modalAppt: S.modal === 'appt', modalEval: S.modal === 'eval',
 tj, noteDraft: S.drafts.note || '', setNote: setDraft('note'), addNote,
 lerenTitle: role === 'deelnemer' ? 'Mijn opdrachten' : 'Opdrachten van mijn deelnemers',

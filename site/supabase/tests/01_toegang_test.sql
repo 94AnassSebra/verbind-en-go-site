@@ -68,7 +68,7 @@ end $$;
 set role authenticated;
 
 -- begeleider Noor: alles van haar deelnemers
-select pg_temp.check('noor', 'deelnemers', 'select * from public.deelnemers', 2);
+select pg_temp.check('noor', 'deelnemers', 'select id, naam from public.deelnemers', 2);
 select pg_temp.check('noor', 'doelen (incl. intern)', 'select * from public.doelen', 2);
 select pg_temp.check('noor', 'notities', 'select * from public.notities', 1);
 select pg_temp.check('noor', 'evaluaties', 'select * from public.evaluaties', 2);
@@ -76,11 +76,11 @@ select pg_temp.check('noor', 'niveaus per vaardigheid', 'select * from public.me
 select pg_temp.check('noor', 'documenten', 'select * from public.documenten', 2);
 select pg_temp.check('noor', 'logboek (geen toegang)', 'select * from public.logboek', 0);
 -- andere begeleider Bram: niets
-select pg_temp.check('bram', 'deelnemers', 'select * from public.deelnemers', 0);
+select pg_temp.check('bram', 'deelnemers', 'select id, naam from public.deelnemers', 0);
 select pg_temp.check('bram', 'notities', 'select * from public.notities', 0);
 select pg_temp.check('bram', 'metingen', 'select * from public.metingen', 0);
 -- deelnemer Samira: alleen eigen traject
-select pg_temp.check('samira', 'deelnemers (alleen zichzelf)', 'select * from public.deelnemers', 1);
+select pg_temp.check('samira', 'deelnemers (alleen zichzelf)', 'select id, naam from public.deelnemers', 1);
 select pg_temp.check('samira', 'doelen (ook interne doelen van begeleider, want eigen traject)', 'select * from public.doelen', 2);
 select pg_temp.check('samira', 'notities (nooit)', 'select * from public.notities', 0);
 select pg_temp.check('samira', 'afspraken', 'select * from public.afspraken', 2);
@@ -88,7 +88,7 @@ select pg_temp.check('samira', 'opdrachten', 'select * from public.opdrachten', 
 select pg_temp.check('samira', 'documenten (alleen gedeeld met deelnemer)', 'select * from public.documenten', 1);
 select pg_temp.check('samira', 'niveaus', 'select * from public.meting_niveaus', 6);
 -- werkgever Petra: alleen gedeeld, geen taal
-select pg_temp.check('petra', 'deelnemers (alleen Samira)', 'select * from public.deelnemers', 1);
+select pg_temp.check('petra', 'deelnemers (alleen Samira)', 'select id, naam from public.deelnemers', 1);
 select pg_temp.check('petra', 'doelen (alleen gedeeld)', 'select * from public.doelen', 1);
 select pg_temp.check('petra', 'notities (nooit)', 'select * from public.notities', 0);
 select pg_temp.check('petra', 'evaluaties (alleen gedeeld)', 'select * from public.evaluaties', 1);
@@ -97,7 +97,7 @@ select pg_temp.check('petra', 'opdrachten (nooit)', 'select * from public.opdrac
 select pg_temp.check('petra', 'niveaus (alleen digitaal/werk/samen: 4 van 6)', 'select * from public.meting_niveaus', 4);
 select pg_temp.check('petra', 'documenten (niet gedeeld met werkgever)', 'select * from public.documenten', 0);
 -- gemeente Kees: samenvatting
-select pg_temp.check('kees', 'deelnemers (beide)', 'select * from public.deelnemers', 2);
+select pg_temp.check('kees', 'deelnemers (beide)', 'select id, naam from public.deelnemers', 2);
 select pg_temp.check('kees', 'doelen (alleen gedeeld)', 'select * from public.doelen', 1);
 select pg_temp.check('kees', 'notities (nooit)', 'select * from public.notities', 0);
 select pg_temp.check('kees', 'afspraken (nooit)', 'select * from public.afspraken', 0);
@@ -109,7 +109,7 @@ select pg_temp.check('kees', 'documenten (gedeeld met gemeente)', 'select * from
 select pg_temp.check('admin', 'profielen (zonder e-mailkolom)', 'select id, naam, rol from public.profielen', 7);
 select pg_temp.check('petra', 'profielen (alleen betrokkenen bij eigen traject: Noor, Samira, Kees, zichzelf)', 'select id, naam, rol from public.profielen', 4);
 select pg_temp.check('admin', 'profielen met e-mail via functie', 'select * from public.beheer_gebruikers()', 7);
-select pg_temp.check('admin', 'deelnemers (namen)', 'select * from public.deelnemers', 2);
+select pg_temp.check('admin', 'deelnemers (namen)', 'select id, naam from public.deelnemers', 2);
 select pg_temp.check('admin', 'toewijzingen', 'select * from public.toewijzingen', 5);
 select pg_temp.check('admin', 'notities (nooit)', 'select * from public.notities', 0);
 select pg_temp.check('admin', 'evaluaties (nooit)', 'select * from public.evaluaties', 0);
@@ -134,7 +134,7 @@ select pg_temp.check('petra', 'notities via join', 'select n.* from public.notit
 -- Bram probeert een deelnemer in te voegen: mag (rol begeleider), maar ziet hem daarna niet zonder toewijzing
 select pg_temp.als('bram');
 insert into public.deelnemers (naam) values ('Nieuwe deelnemer van Bram');
-select pg_temp.check('bram', 'nieuwe deelnemer zonder toewijzing (ziet 0)', 'select * from public.deelnemers', 0);
+select pg_temp.check('bram', 'nieuwe deelnemer zonder toewijzing (ziet 0)', 'select id, naam from public.deelnemers', 0);
 -- beheerder zet rol via functie; gewone gebruiker mag eigen rol niet veranderen
 select pg_temp.als('admin');
 select public.beheer_profiel('00000000-0000-0000-0000-000000000006', 'begeleider', '10000000-0000-0000-0000-000000000001', true);
