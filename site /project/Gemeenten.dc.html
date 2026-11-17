@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Voor gemeenten — Verbind&amp;GO</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&amp;family=Figtree:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+*{box-sizing:border-box}
+a{color:#1F5D5A}a:hover{color:#17494A}
+:focus-visible{outline:3px solid #F0862B;outline-offset:3px;border-radius:6px}
+a[href="#inhoud"]:focus{top:12px!important}
+button{font:inherit}
+.l-h{font-family:'Outfit',system-ui,sans-serif;font-weight:700;letter-spacing:-0.025em;line-height:1.05;margin:0;color:#1B2A2A;text-wrap:balance}
+.l-or{color:#F0862B}
+.l-label{font:700 12px/1.3 'Figtree',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1F5D5A}
+.l-bar{width:56px;height:4px;border-radius:4px;background:#F0862B}
+.l-btn{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 26px;border-radius:12px;font:600 16px/1 'Figtree',system-ui,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s ease,box-shadow .25s ease,color .2s ease}
+.l-btn:hover{transform:translateY(-2px)}
+.l-btn-primary{background:#1F5D5A;color:#FFFFFF}.l-btn-primary:hover{background:#17494A;color:#FFFFFF;box-shadow:0 14px 28px -14px rgba(31,93,90,.6)}
+.l-btn-orange{background:#F0862B;color:#FFFFFF}.l-btn-orange:hover{background:#DB7620;color:#FFFFFF}
+.l-btn-outline{background:#FFFFFF;border:1.5px solid #F0862B;color:#C96A1A}.l-btn-outline:hover{background:#FFF4EA;color:#C96A1A}
+.l-card{background:#FAF7F2;border:1px solid #EAE2D6;border-radius:18px;padding:clamp(24px,3vw,36px);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.l-card:hover{transform:translateY(-4px);box-shadow:0 24px 44px -28px rgba(31,93,90,.4)}
+.l-num{flex:none;width:44px;height:44px;border-radius:50%;background:#F0862B;color:#FFFFFF;display:grid;place-items:center;font:700 19px 'Outfit',sans-serif}
+.l-photo{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(135deg,#DCEFEA 0%,#F3EDE4 60%,#FBE3CC 100%);display:grid;place-items:center;min-height:260px;aspect-ratio:4/3;max-width:100%}
+.l-photo span{position:absolute;left:16px;bottom:16px;z-index:1;background:rgba(255,255,255,.9);border:1.5px dashed #F0862B;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;color:#8A4A12;max-width:calc(100% - 32px)}
+.l-photo svg{opacity:.6}
+.l-fase{display:flex;flex-direction:column;gap:8px;padding:18px 20px;border-radius:14px;border:1.5px solid #D7CFC2;background:#FFFFFF;text-align:left;cursor:pointer;color:#1B2A2A;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s ease,border-color .2s ease,color .2s ease}
+.l-fase:hover{transform:translateY(-3px);border-color:#1F5D5A}
+.l-fase[aria-selected="true"]{background:#1F5D5A;color:#FFFFFF;border-color:#1F5D5A}
+.l-fase[aria-selected="true"] .l-label{color:#9FD3C8}
+.l-fase .l-num{width:32px;height:32px;font-size:15px}
+.l-panel{animation:l-fade .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes l-fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.l-toggle{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;border:1.5px solid #D7CFC2;background:#FFFFFF;cursor:pointer;min-height:50px;line-height:1.4;transition:border-color .2s ease,background .2s ease}
+.l-toggle input{width:20px;height:20px;accent-color:#1F5D5A;flex:none}
+.l-toggle:has(input:checked){border-color:#1F5D5A;background:#E7F3F0}
+.l-prog{height:8px;border-radius:999px;background:#EAE2D6;overflow:hidden}
+.l-prog i{display:block;height:100%;background:#F0862B;border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.l-mark{background:#FBE3CC;color:#8A4A12;border:1.5px dashed #F0862B;border-radius:8px;padding:1px 8px;font-size:13px;font-weight:600}
+.l-w{display:inline-block;animation:l-up .8s cubic-bezier(.2,.8,.2,1) both}
+.l-w:nth-child(2){animation-delay:.06s}.l-w:nth-child(3){animation-delay:.12s}.l-w:nth-child(4){animation-delay:.18s}.l-w:nth-child(5){animation-delay:.24s}.l-w:nth-child(6){animation-delay:.3s}
+@keyframes l-up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.l-fade{animation:l-fade .9s .35s cubic-bezier(.2,.8,.2,1) both}
+@supports (animation-timeline: view()){.l-rv{animation:l-rise linear both;animation-timeline:view();animation-range:entry 5% entry 35%}@keyframes l-rise{from{opacity:.15;transform:translateY(28px)}to{opacity:1;transform:none}}}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+/* @site-css */
+/* ==========================================================================
+   Verbind&GO — gedeelde designlaag v3 ("ultra modern")
+   Bron: design/site.css · wordt met tools/sync_css.py in elke pagina gezet.
+   Basis blijft: wit/warm wit, petrol #1F5D5A, oranje #F0862B, Outfit + Figtree.
+   ========================================================================== */
+:root{
+  --ink:#0F1F1F;--ink-2:#4F6260;--bg:#FFFFFF;--bg-2:#F7F4EE;--bg-band:#E9F4F1;
+  --petrol:#1F5D5A;--petrol-2:#17494A;--petrol-deep:#0D3534;--teal:#2BB3A3;--teal-2:#9FD3C8;
+  --orange:#F0862B;--orange-2:#DB7620;--coral:#F0862B;--violet:#8A5BB5;
+  --line:rgba(15,31,31,.08);--line-2:rgba(15,31,31,.14);
+  --r-s:14px;--r-m:20px;--r-l:28px;--r-xl:36px;
+  --sh-1:0 1px 2px rgba(15,31,31,.04),0 10px 30px -24px rgba(15,31,31,.25);
+  --sh-2:0 2px 4px rgba(15,31,31,.05),0 30px 60px -32px rgba(31,93,90,.45);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg)}
+::selection{background:#FBE3CC;color:#5C2A0E}
+
+/* --- typografie --- */
+.l-h{font-weight:800;letter-spacing:-0.04em;line-height:1.06;color:var(--ink)}
+h1.l-h{letter-spacing:-0.05em;line-height:1.04}
+.l-w{padding-bottom:.06em;margin-bottom:-.06em;line-height:1.1}
+.l-or{color:var(--orange);background:none;-webkit-text-fill-color:var(--orange)}
+.l-gr{color:var(--petrol);-webkit-text-fill-color:var(--petrol)}
+.l-label{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--petrol)}
+.l-label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--teal))}
+.l-bar{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--teal) 60%,var(--petrol))}
+main p{text-wrap:pretty}
+
+/* --- knoppen --- */
+.l-btn{border-radius:999px;min-height:56px;padding:0 28px;font-weight:600;letter-spacing:-0.005em;box-shadow:none;position:relative;overflow:hidden;isolation:isolate}
+.l-btn svg{transition:transform .3s var(--ease)}
+.l-btn:hover svg{transform:translateX(4px)}
+.l-btn-primary{background:var(--petrol-deep);color:#FFFFFF;box-shadow:0 14px 30px -16px rgba(13,53,52,.8)}
+.l-btn-primary::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,#2A7A74,var(--petrol) 55%,var(--petrol-deep));opacity:1;transition:opacity .3s ease}
+.l-btn-primary:hover{color:#FFFFFF;transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(13,53,52,.9)}
+.l-btn-primary:hover::before{opacity:.85}
+.l-btn-orange{background:var(--orange);color:#FFFFFF;box-shadow:0 14px 30px -16px rgba(240,134,43,.9)}
+.l-btn-orange:hover{background:var(--orange-2);color:#FFFFFF;transform:translateY(-2px);box-shadow:0 22px 40px -18px rgba(240,134,43,.95)}
+.l-btn-outline{background:rgba(255,255,255,.7);border:1.5px solid var(--line-2);color:var(--petrol);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.l-btn-outline:hover{border-color:var(--petrol);background:#FFFFFF;color:var(--petrol);transform:translateY(-2px)}
+.l-btn-glass{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.35);color:#FFFFFF;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.l-btn-glass:hover{background:rgba(255,255,255,.2);border-color:#FFFFFF;color:#FFFFFF;transform:translateY(-2px)}
+.l-submit{border-radius:999px;background:var(--orange);box-shadow:0 14px 30px -16px rgba(240,134,43,.9)}
+.l-submit:hover{background:var(--orange-2)}
+
+/* --- kaarten en vlakken --- */
+.l-card{background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s ease,border-color .3s ease}
+.l-card:hover{transform:translateY(-6px);box-shadow:var(--sh-2);border-color:rgba(43,179,163,.45)}
+.l-icon{width:64px;height:64px;border-radius:20px;background:linear-gradient(145deg,#E9F4F1,#FFFFFF);border:1px solid rgba(31,93,90,.12);box-shadow:inset 0 1px 0 #FFFFFF,0 8px 18px -12px rgba(31,93,90,.5);color:var(--petrol)}
+.l-icon::before{width:14px;height:14px;right:-4px;top:-4px;background:var(--orange);box-shadow:0 0 0 3px #FFFFFF}
+.l-num{background:var(--orange);box-shadow:0 10px 18px -8px rgba(240,134,43,.7)}
+.l-photo{border-radius:var(--r-l);background:linear-gradient(135deg,#D6EFEA 0%,#F4EFE6 55%,#FBE3CC 100%);box-shadow:inset 0 0 0 1px rgba(31,93,90,.08),0 40px 70px -48px rgba(31,93,90,.55)}
+.l-photo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(31,93,90,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,93,90,.07) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%);-webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000 30%,transparent 100%)}
+.l-photo::after{content:"";position:absolute;width:60%;aspect-ratio:1;right:-20%;top:-25%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.35),transparent 65%);filter:blur(30px)}
+.l-photo span{border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1}
+.l-chip{border-radius:999px;background:rgba(255,255,255,.8);border:1.5px solid rgba(240,134,43,.5)}
+.l-mark,.lf-mark{border-radius:999px}
+
+/* --- hero --- */
+.l-hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#F7F4EE 0%,#FFFFFF 100%);padding-top:92px}
+.lh{margin-bottom:-92px}
+main > section:first-child:not(.l-hero){padding-top:92px}
+.l-hero::before,.l-hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(70px);pointer-events:none}
+.l-hero::before{width:min(64vw,760px);aspect-ratio:1;right:-14vw;top:-32%;background:radial-gradient(circle at 40% 40%,rgba(43,179,163,.34),rgba(31,93,90,.12) 45%,transparent 70%);animation:l-drift 18s ease-in-out infinite alternate}
+.l-hero::after{width:min(42vw,480px);aspect-ratio:1;left:-10vw;bottom:-36%;background:radial-gradient(circle at 50% 50%,rgba(240,134,43,.26),transparent 65%);animation:l-drift 22s ease-in-out infinite alternate-reverse}
+@keyframes l-drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-4%,6%,0) scale(1.08)}}
+.l-hero .l-label{padding:9px 14px 9px 10px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid rgba(31,93,90,.14);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 2px rgba(15,31,31,.05)}
+.l-hero .l-label::before{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(240,134,43,.2)}
+.l-hero h1.l-h{font-size:clamp(44px,6.6vw,92px)}
+.l-hero .l-tile .l-label{display:block;padding:0;border:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;letter-spacing:.16em;font-size:11px}
+.l-hero .l-tile .l-label::before{display:none}
+.l-float{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:999px;background:rgba(255,255,255,.86);border:1px solid rgba(31,93,90,.12);box-shadow:0 14px 30px -18px rgba(15,31,31,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-weight:600;font-size:14px;color:var(--ink);white-space:nowrap;animation:l-float 6s ease-in-out infinite}
+.l-float i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#E9F4F1,#CFE9E3);color:var(--petrol);flex:none}
+.l-float.o i{background:linear-gradient(135deg,#FBE3CC,#F7B57E);color:#8A4A12}
+@keyframes l-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (max-width:640px){.l-float{display:none}}
+.l-tag{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px 0 10px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(31,93,90,.14);color:var(--petrol);font-weight:600;font-size:14px;text-decoration:none;transition:background .2s ease,border-color .2s ease,transform .25s var(--ease)}
+.l-tag i{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.l-tag:hover{background:#FFFFFF;border-color:var(--petrol);transform:translateY(-1px)}
+
+/* bento in de hero */
+.l-bento{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:14px;min-width:0}
+.l-b-photo{grid-row:1/3;min-height:380px;aspect-ratio:auto}
+.l-tile{border-radius:24px;padding:18px 18px 16px;background:rgba(255,255,255,.86);border:1px solid rgba(31,93,90,.12);box-shadow:var(--sh-1);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-width:0;transition:transform .4s var(--ease),box-shadow .4s ease}
+.l-tile:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.l-tile-dark{background:linear-gradient(145deg,#276E6A,var(--petrol) 60%,var(--petrol-deep));color:#FFFFFF;border-color:transparent}
+.l-mini{display:grid;grid-template-columns:minmax(78px,auto) 1fr;gap:10px;align-items:center;font-size:12.5px;font-weight:600;color:var(--ink);margin-top:7px}
+.l-mini div{height:8px;border-radius:999px;background:#F1EBE1;overflow:hidden}
+.l-mini i{display:block;height:100%;border-radius:999px}
+@media (max-width:640px){.l-bento{grid-template-columns:1fr}.l-b-photo{grid-row:auto;min-height:240px}}
+
+/* --- marquee met diensten --- */
+.l-marq{position:relative;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.l-marq ul{list-style:none;margin:0;padding:0;display:flex;gap:10px;width:max-content;animation:l-marq 38s linear infinite}
+.l-marq:hover ul,.l-marq:focus-within ul{animation-play-state:paused}
+.l-marq li{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px 0 12px;border-radius:999px;border:1px solid var(--line);background:#FFFFFF;font-weight:600;font-size:15px;color:var(--petrol);white-space:nowrap}
+.l-marq li svg{color:var(--orange);flex:none}
+@keyframes l-marq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.l-marq{mask-image:none;-webkit-mask-image:none}.l-marq ul{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+
+/* --- secties --- */
+main > section[style*="#E7F3F0"]{background:radial-gradient(80% 60% at 100% 0%,rgba(43,179,163,.16),transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(240,134,43,.10),transparent 60%),var(--bg-band)!important}
+main > section[style*="#FAF7F2"]:not(.l-hero):not(.l-dark){background:var(--bg-2)!important}
+.l-dark.l-dark{background:linear-gradient(135deg,#1C5B58 0%,#124645 50%,var(--petrol-deep) 100%)!important}
+main > section[style*="background:#1F5D5A"],.l-dark,.l-cta{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,#1C5B58 0%,#124645 50%,var(--petrol-deep) 100%)!important;color:#FFFFFF}
+main > section[style*="background:#1F5D5A"]::before,.l-dark::before,.l-cta::before{content:"";position:absolute;z-index:-1;width:min(60vw,640px);aspect-ratio:1;right:-10vw;top:-50%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.5),transparent 65%);filter:blur(40px)}
+main > section[style*="background:#1F5D5A"]::after,.l-dark::after,.l-cta::after{content:"";position:absolute;z-index:-1;width:min(40vw,420px);aspect-ratio:1;left:-8vw;bottom:-60%;border-radius:50%;background:radial-gradient(circle,rgba(240,134,43,.38),transparent 65%);filter:blur(40px)}
+.l-dark .l-h,main > section[style*="background:#1F5D5A"] .l-h{color:#FFFFFF}
+.l-dark .l-label,main > section[style*="background:#1F5D5A"] .l-label{color:var(--teal-2)}
+.l-dark .l-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#FFFFFF;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.l-dark .l-card:hover{border-color:rgba(159,211,200,.6)}
+.l-dark .l-card .l-h{color:#FFFFFF}
+.l-dark .l-card p,.l-dark .l-dlist span{color:#D6EAE5}
+.l-dark p[style*="#4F6260"],.l-dark span[style*="#4F6260"]{color:#D6EAE5!important}
+.l-dark .l-dlist strong{color:#FFFFFF}
+.l-dark .l-label::before{background:linear-gradient(90deg,var(--orange),var(--teal-2))}
+.l-dark .l-dlist li{border-color:rgba(255,255,255,.12)}
+.l-grain{position:relative}
+.l-grain::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.8'/></svg>")}
+
+/* --- homepagina-onderdelen --- */
+.l-strip{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center}
+.l-strip li{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14px;color:var(--petrol);padding:6px 0}
+.l-strip svg{color:var(--orange);flex:none}
+.l-grid2{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.l-aud{grid-column:span 4;padding:0;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.l-dienst{grid-column:span 4;background:#FFFFFF}
+@media (max-width:1080px){.l-aud{grid-column:span 6}.l-dienst{grid-column:span 12}}
+@media (max-width:720px){.l-aud,.l-dienst{grid-column:span 12}}
+.l-aud-photo{position:relative;min-height:180px;background:linear-gradient(135deg,#D6EFEA,#F4EFE6 70%,#FBE3CC);display:grid;place-items:start start;padding:14px;overflow:hidden}
+.l-aud-photo.o{background:linear-gradient(135deg,#FBE3CC,#F4EFE6 60%,#D6EFEA)}
+.l-aud-photo.v{background:linear-gradient(135deg,#E6DDF2,#F4EFE6 60%,#D6EFEA)}
+.l-aud-photo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(31,93,90,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,93,90,.07) 1px,transparent 1px);background-size:24px 24px;mask-image:radial-gradient(80% 80% at 50% 50%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(80% 80% at 50% 50%,#000 20%,transparent 100%)}
+.l-aud-photo span{position:relative;background:rgba(255,255,255,.9);border:1.5px dashed var(--orange);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600;color:#8A4A12}
+.l-aud-body{padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:12px;flex:1}
+.l-aud .l-icon{width:56px;height:56px;border-radius:16px;margin-top:-50px;background:#FFFFFF;position:relative;z-index:1}
+.l-more{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-weight:700;color:var(--orange-2);text-decoration:none;min-height:44px}
+.l-more svg{transition:transform .3s var(--ease)}
+.l-aud:hover .l-more svg,.l-more:hover svg{transform:translateX(4px)}
+.l-dlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.l-dlist li{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-top:1px solid #F1EBE1;line-height:1.45}
+.l-dlist li:first-child{border-top:0}
+.l-dlist strong{font-size:15.5px}
+.l-dlist span{font-size:14px;color:var(--ink-2)}
+.l-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative}
+.l-steps::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--orange),var(--teal) 50%,var(--petrol))}
+.l-steps li{position:relative;display:flex;flex-direction:column;gap:10px;min-width:0}
+.l-steps li p{margin:0;color:var(--ink-2);line-height:1.55;font-size:15px}
+.l-steps li svg{color:var(--petrol);margin-top:8px}
+.l-node{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 19px 'Outfit',sans-serif;color:#FFFFFF;background:var(--orange);box-shadow:0 0 0 6px var(--bg-band),0 10px 18px -8px rgba(240,134,43,.7)}
+@media (max-width:980px){.l-steps{grid-template-columns:1fr;gap:26px}.l-steps::before{left:22px;right:auto;top:24px;bottom:24px;width:3px;height:auto;background:linear-gradient(180deg,var(--orange),var(--teal) 50%,var(--petrol))}.l-steps li{display:grid;grid-template-columns:48px 1fr;column-gap:16px}.l-steps li .l-node{grid-row:1/4}.l-steps li svg{display:none}}
+.l-over{position:absolute;right:-16px;top:-18px;z-index:2;max-width:280px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.92);border:1px solid rgba(31,93,90,.12);box-shadow:0 20px 40px -24px rgba(15,31,31,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media (max-width:640px){.l-over{position:static;margin-top:12px;max-width:none}}
+.l-sit{border-radius:16px;padding:12px 14px;border:1px solid transparent;transition:background .2s ease,border-color .2s ease;display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.l-sit:hover{background:#FFFFFF;border-color:var(--line)}
+.l-sits{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.l-sitc{position:relative;padding:24px 22px 22px;border-radius:22px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s ease,border-color .2s ease}
+.l-sitc span{display:block;font:800 13px/1 'Outfit',sans-serif;letter-spacing:.12em;color:var(--orange);margin-bottom:12px}
+.l-sitc::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--orange),var(--teal));opacity:0;transition:opacity .25s ease}
+.l-sitc:hover{transform:translateY(-4px);box-shadow:var(--sh-2);border-color:rgba(43,179,163,.45)}
+.l-sitc:hover::after{opacity:1}
+.l-sitc p{margin:0;line-height:1.55}
+
+/* portaalkader */
+.l-mock{border-radius:24px;background:#FFFFFF;border:1px solid rgba(255,255,255,.25);box-shadow:0 2px 4px rgba(15,31,31,.06),0 50px 90px -40px rgba(0,0,0,.6);overflow:hidden;min-width:0;transform:perspective(1400px) rotateY(-6deg) rotateX(3deg);transition:transform .7s var(--ease)}
+.l-mock:hover{transform:perspective(1400px) rotateY(0) rotateX(0)}
+.l-mock-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid #F1EBE1;background:#FAF7F2}
+.l-mock-bar i{width:10px;height:10px;border-radius:50%;background:#E3DACB}
+.l-mock-bar span{margin-left:auto;font-size:11px;font-weight:600;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.l-mock-body{display:grid;grid-template-columns:96px 1fr}
+.l-mock-side{padding:16px 12px;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,#154746,var(--petrol-deep))}
+.l-mock-side b{display:block;height:10px;border-radius:999px;background:rgba(255,255,255,.18);width:85%}
+.l-mock-side b:first-child{background:var(--orange);height:26px;border-radius:9px;width:100%}
+.l-mock-main{padding:16px;color:var(--ink)}
+.l-mock-title{font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.03em;color:var(--petrol);margin-bottom:12px}
+.l-mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.l-mock-card{border:1px solid #F1EBE1;border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0;background:#FFFFFF}
+.l-mock-card small{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#2A7A74}
+.l-mock-card strong{font-family:'Outfit',system-ui,sans-serif;font-size:17px;letter-spacing:-0.02em;line-height:1.15}
+.l-mock-card em{font-style:normal;font-size:12px;color:var(--ink-2)}
+.l-mock-card.dark{background:linear-gradient(145deg,#276E6A,var(--petrol) 60%,var(--petrol-deep));color:#FFFFFF;border-color:transparent}
+.l-mock-card.dark small{color:var(--teal-2)}.l-mock-card.dark em{color:#D6EAE5}
+.l-mock-card.wide{grid-column:1/3;flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px 12px}
+.l-mock-card.wide strong{flex:1 1 200px}.l-mock-card.wide small{flex:1 1 100%}
+.l-mock-card.wide u{display:block;width:88px;height:30px;border-radius:999px;background:var(--orange)}
+@media (max-width:560px){.l-mock-body{grid-template-columns:1fr}.l-mock-side{display:none}.l-mock{transform:none}}
+
+/* --- pagina-specifieke componenten (aanpak, gemeenten, werkgevers, inloggen, contact) --- */
+.l-stepbtn,.l-fase,.l-tab,.l-role,.l-choice,.l-toggle{border-radius:18px}
+.l-stepbtn[aria-selected="true"],.l-tab[aria-selected="true"],.l-fase[aria-selected="true"],.l-role[aria-pressed="true"]{background:linear-gradient(135deg,#276E6A,var(--petrol) 60%,var(--petrol-2));box-shadow:0 14px 28px -16px rgba(31,93,90,.8)}
+.l-panel{border-radius:var(--r-l)}
+.l-track i{background:linear-gradient(90deg,var(--orange),var(--teal))}
+.l-prog i{background:linear-gradient(90deg,var(--orange),var(--teal))}
+input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
+.l-choice:has(input:checked){background:var(--bg-band);border-color:var(--petrol)}
+
+/* --- scroll reveal, iets rustiger --- */
+@supports (animation-timeline: view()){.l-rv{animation-range:entry 0% entry 28%}}
+
+/* --- footer v3 --- */
+.lf{background:linear-gradient(180deg,var(--petrol-deep),#0A2A2A);color:#C9DDD9;font-family:'Figtree',system-ui,sans-serif;position:relative;isolation:isolate;overflow:hidden}
+.lf::before{content:"";position:absolute;z-index:-1;width:min(70vw,760px);aspect-ratio:1;right:-20vw;top:-40%;border-radius:50%;background:radial-gradient(circle,rgba(43,179,163,.28),transparent 65%);filter:blur(50px)}
+.lf-logo{color:#FFFFFF}
+.lf-link{color:#C9DDD9;min-height:40px;display:inline-flex;align-items:center;text-decoration:none;font-weight:500;transition:color .2s ease,transform .2s ease}
+.lf-link:hover{color:#FFFFFF;transform:translateX(3px)}
+.lf-big{font-family:'Outfit',system-ui,sans-serif;font-weight:800;font-size:clamp(56px,12vw,180px);letter-spacing:-0.06em;line-height:.85;color:rgba(255,255,255,.06);white-space:nowrap;pointer-events:none;user-select:none;margin:40px 0 -20px}
+.lf-mark{background:rgba(251,227,204,.14);color:#F7B57E;border-color:#F7B57E}
+
+@media (prefers-reduced-motion: reduce){.l-hero::before,.l-hero::after,.l-float,.l-marq ul{animation:none!important}.l-mock{transform:none}}
+
+/* --- illustraties (vervangen foto-plekken) --- */
+.l-art{position:relative;overflow:hidden;border-radius:var(--r-l);aspect-ratio:4/3;min-height:260px;max-width:100%;box-shadow:inset 0 0 0 1px rgba(31,93,90,.08),0 40px 70px -48px rgba(31,93,90,.55);background:#0B2E2D}
+.l-art.l-b-photo{aspect-ratio:auto;min-height:380px}
+.l-art svg,.l-aud-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.l-aud-art{position:relative;height:180px;overflow:hidden;background:#0B2E2D}
+.l-flow{stroke-dasharray:8 14;animation:l-dash 7s linear infinite}
+@keyframes l-dash{to{stroke-dashoffset:-220}}
+@media (max-width:640px){.l-art.l-b-photo{min-height:260px}}
+@media (prefers-reduced-motion: reduce){.l-flow{animation:none;stroke-dasharray:none}}
+
+/* Kernwaarden (Over ons) */
+.l-kw{position:relative;overflow:hidden;color:#FFFFFF;background:radial-gradient(600px 400px at 88% 0%,rgba(43,179,163,.35),transparent 70%),radial-gradient(500px 360px at 0% 100%,rgba(240,134,43,.22),transparent 70%),linear-gradient(135deg,#174A48,#0B2E2D 60%,#071F1E)}
+.l-kw-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.l-kw-item{position:relative;padding:26px 24px 26px;border-radius:var(--r-l);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.l-kw-item:hover{transform:translateY(-3px);border-color:rgba(159,227,214,.5);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
+.l-kw-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.l-kw-ic{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:#FFFFFF;color:#1F5D5A;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.l-kw-item:nth-child(3n+2) .l-kw-ic{color:#F0862B}
+.l-kw-n{font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.08em;color:#9FE3D6}
+.l-kw-item h3{font-size:22px;color:#FFFFFF;margin:0 0 10px}
+.l-kw-item p{margin:0;line-height:1.62;color:#D6EAE5;font-size:16px}
+@media (prefers-reduced-motion: reduce){.l-kw-item,.l-kw-item:hover{transition:none;transform:none}}
+
+/* Missie en visie (Over ons) */
+.l-mvsec{background:#FFFFFF}
+.l-mv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:start}
+.l-mv{position:relative;overflow:hidden;border-radius:var(--r-l);padding:clamp(26px,3.4vw,44px);border:1px solid #EAE2D6;background:#FAF7F2}
+.l-mv-v{background:#E7F3F0;border-color:#CFE6E1}
+.l-mv::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:#F0862B}
+.l-mv-v::before{background:#2BB3A3}
+.l-mv-head{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.l-mv h2{font-size:clamp(30px,3.6vw,42px);margin:0}
+.l-mv-lead{margin:0 0 16px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#0F1F1F;font-weight:500}
+.l-mv p:not(.l-mv-lead):not(.l-label):not(.l-mv-kern){margin:0 0 14px;line-height:1.65;color:#4F6260}
+.l-mv-kern{display:flex;align-items:center;gap:12px;margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(31,93,90,.15);font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:17px;color:#1F5D5A}
+.l-mv-kern span{flex:none;width:28px;height:3px;border-radius:2px;background:#F0862B}
+.l-mv-v .l-mv-kern span{background:#2BB3A3}
+/* @/site-css */
+</style>
+</helmet>
+<div style="font-family:'Figtree',system-ui,sans-serif;color:#1B2A2A;background:#FFFFFF;overflow-x:clip">
+<dc-import name="Header" active="gemeenten" hint-size="100%,80px"></dc-import>
+<main id="inhoud">
+
+<section class="l-hero" aria-labelledby="gm-title" style="background:#FAF7F2">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,88px) max(20px,4vw) clamp(56px,7vw,96px);display:flex;flex-wrap:wrap;gap:40px 56px;align-items:center">
+<div style="flex:1 1 420px;min-width:0">
+<p class="l-label l-fade" style="margin:0 0 20px;animation-delay:.05s">Voor gemeenten</p>
+<h1 id="gm-title" class="l-h" style="font-size:clamp(40px,5.6vw,70px);max-width:14ch"><span class="l-w">Taal,</span> <span class="l-w">werk</span> <span class="l-w">en</span> <span class="l-w">doelen</span> <span class="l-w l-or">in één traject.</span></h1>
+<p class="l-fade" style="margin:22px 0 0;max-width:54ch;font-size:18px;line-height:1.6;color:#4F6260">We begeleiden inwoners op weg naar passend werk: statushouders, andere nieuwkomers en mensen met een afstand tot de arbeidsmarkt, zoals inwoners met een bijstandsuitkering. Het kabinet wil werk vanaf 2027 nadrukkelijker centraal stellen in de inburgering; wij helpen u om daar nu al op voor te sorteren. Iedere deelnemer start vanuit eigen mogelijkheden en doelen. U krijgt een duidelijke aanpak, vaste evaluatiemomenten en voortgang op indicatoren die we vooraf samen afspreken.</p>
+<div class="l-fade" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px"><a class="l-btn l-btn-primary" href="Contact.dc.html">Bespreek een samenwerking <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="l-btn l-btn-outline" href="#indicatoren">Zo delen we voortgang</a></div>
+</div>
+<div class="l-fade" style="flex:1 1 380px;min-width:0;animation-delay:.2s"><div class="l-art" role="img" aria-label="Illustratie: gemeente, werkgever en Verbind&amp;GO verbonden rond de inwoner"><svg viewBox="0 0 480 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="igbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#174A48"/><stop offset=".55" stop-color="#0B2E2D"/><stop offset="1" stop-color="#071F1E"/></linearGradient>
+<filter id="igblur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"/></filter>
+<filter id="igsoft" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="14"/></filter>
+<filter id="igglow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="igsh" x="-100%" y="-200%" width="300%" height="600%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000" flood-opacity=".22"/></filter>
+<linearGradient id="iggl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".16"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".06"/></linearGradient>
+</defs>
+<rect x="-480" y="-400" width="1440" height="1200" fill="url(#igbg)"/>
+<circle cx="408.0" cy="40.0" r="153.6" fill="#2BB3A3" fill-opacity=".45" filter="url(#igblur)"/>
+<circle cx="38.4" cy="380.0" r="124.80000000000001" fill="#F0862B" fill-opacity=".30" filter="url(#igblur)"/><circle cx="240" cy="205" r="150" fill="none" stroke="#FFFFFF" stroke-opacity="0.1"/><circle cx="240" cy="205" r="112" fill="none" stroke="#FFFFFF" stroke-opacity="0.18"/><circle cx="240" cy="205" r="74" fill="none" stroke="#FFFFFF" stroke-opacity="0.1"/><circle class="l-flow" cx="240" cy="205" r="112" fill="none" stroke="#9FE3D6" stroke-opacity=".7" stroke-width="1.6"/><path d="M240 205 L143.0 149.0" stroke="#2BB3A3" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 5"/><g filter="url(#igsh)"><rect x="117.00515477614286" y="123.0" width="52" height="52" rx="16" fill="#FFFFFF"/></g><g transform="translate(143.00515477614286 149.0) scale(0.95) translate(-13 -12)" fill="none" stroke="#1F5D5A" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 9 13 2l12 7M4 9v12M10 9v12M16 9v12M22 9v12M0 23h26"/></g><rect x="101.20515477614286" y="87.0" width="83.6" height="26" rx="13" fill="url(#iggl)" stroke="#FFFFFF" stroke-opacity=".22"/><text x="143.0" y="104.5" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">Gemeente</text><path d="M240 205 L337.0 149.0" stroke="#9FE3D6" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 5"/><g filter="url(#igsh)"><rect x="310.99484522385717" y="123.0" width="52" height="52" rx="16" fill="#FFFFFF"/></g><g transform="translate(336.99484522385717 149.0) scale(0.95) translate(-13 -12)" fill="none" stroke="#1F5D5A" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="24" height="16" rx="3"/><path d="M8 7V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3M1 14h24"/></g><rect x="291.5948452238572" y="87.0" width="90.8" height="26" rx="13" fill="url(#iggl)" stroke="#FFFFFF" stroke-opacity=".22"/><text x="337.0" y="104.5" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">Werkgever</text><path d="M240 205 L240.0 317.0" stroke="#F0862B" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 5"/><g filter="url(#igsh)"><rect x="214.0" y="291.0" width="52" height="52" rx="16" fill="#FFFFFF"/></g><text x="240.0" y="324.0" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="20" font-weight="800" fill="#F0862B">&amp;</text><rect x="191.0" y="351.0" width="98.0" height="26" rx="13" fill="url(#iggl)" stroke="#FFFFFF" stroke-opacity=".22"/><text x="240.0" y="368.5" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">Verbind&amp;GO</text><circle cx="240" cy="205" r="63.0" fill="#F0862B" fill-opacity=".22" filter="url(#igsoft)"/><circle cx="240" cy="205" r="40" fill="none" stroke="#F0862B" stroke-opacity=".35"/><circle cx="240" cy="205" r="30" fill="#F0862B" filter="url(#igglow)"/><g transform="translate(240 206) scale(1.15)" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round"><circle cx="0" cy="-6" r="5.5"/><path d="M-10 11c1.5-6 5.5-9 10-9s8.5 3 10 9"/></g><text x="240" y="263" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Inwoner</text></svg></div></div>
+</div>
+</section>
+
+<!-- WAT U KRIJGT -->
+<section aria-labelledby="krijgt-title" style="background:#FFFFFF">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,96px) max(20px,4vw)">
+<div class="l-rv" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:36px"><h2 id="krijgt-title" class="l-h" style="font-size:clamp(30px,4vw,46px)">Wat u van ons krijgt</h2><div class="l-bar" aria-hidden="true"></div></div>
+<div class="l-rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
+<div class="l-card"><p class="l-label" style="margin:0 0 10px">Startpunt</p><h3 class="l-h" style="font-size:20px">Mogelijkheden en doelen van de inwoner</h3></div>
+<div class="l-card"><p class="l-label" style="margin:0 0 10px">Vorm</p><h3 class="l-h" style="font-size:20px">Maatwerk binnen vijf vaste stappen</h3></div>
+<div class="l-card"><p class="l-label" style="margin:0 0 10px">Inzicht</p><h3 class="l-h" style="font-size:20px">Voortgang op afgesproken indicatoren</h3></div>
+<div class="l-card"><p class="l-label" style="margin:0 0 10px">Gegevens</p><h3 class="l-h" style="font-size:20px">Alleen delen wat nodig is</h3></div>
+</div>
+</div>
+</section>
+
+<!-- FASEN -->
+<section aria-labelledby="fase-title" style="background:#E7F3F0">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,88px) max(20px,4vw)">
+<div class="l-rv" style="display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:flex-end;margin-bottom:28px">
+<div><h2 id="fase-title" class="l-h" style="font-size:clamp(30px,4vw,46px)">Vijf stappen, één vaste begeleider</h2><div class="l-bar" style="margin-top:14px" aria-hidden="true"></div></div>
+<p style="margin:0;max-width:44ch;color:#4F6260;line-height:1.6">De fasen zijn vast, de inhoud is maatwerk. Klik op een fase om te zien wat er gebeurt en wat u ervan terugziet.</p>
+</div>
+<div class="l-rv" role="tablist" aria-label="Stappen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px">
+<sc-for list="{{fasen}}" as="f" hint-placeholder-count="5"><button type="button" role="tab" class="l-fase" aria-selected="{{f.selected}}" onClick="{{f.pick}}"><span class="l-num">{{f.n}}</span><span class="l-h" style="font-size:19px;color:inherit">{{f.label}}</span></button></sc-for>
+</div>
+<div class="l-rv" style="margin-top:18px;display:flex;flex-wrap:wrap;gap:18px">
+<div class="l-panel" style="flex:2 1 460px;min-width:0;background:#1F5D5A;color:#FFFFFF;border-radius:18px;padding:clamp(24px,3.4vw,40px)">
+<p class="l-label" style="margin:0 0 12px;color:#9FD3C8">Stap {{cur.n}} · {{cur.label}}</p>
+<h3 class="l-h" style="font-size:clamp(24px,2.6vw,32px);color:#FFFFFF;margin-bottom:14px">{{cur.kop}}</h3>
+<p style="margin:0 0 14px;line-height:1.65;color:#D6EAE5">{{cur.tekst}}</p>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:#D6EAE5;line-height:1.5"><sc-for list="{{cur.punten}}" as="p" hint-placeholder-count="3"><li style="display:flex;gap:10px"><span aria-hidden="true" style="color:#F0862B">●</span>{{p.t}}</li></sc-for></ul>
+</div>
+<div class="l-panel" style="flex:1 1 280px;min-width:0;background:#FFFFFF;border:1px solid #EAE2D6;border-radius:18px;padding:clamp(24px,3.4vw,36px);display:flex;flex-direction:column;gap:12px">
+<p class="l-label" style="margin:0">Wat u terugziet</p>
+<h3 class="l-h" style="font-size:22px">{{cur.voorU}}</h3>
+<p style="margin:0;line-height:1.6;color:#4F6260">{{cur.voorUtekst}}</p>
+<div style="margin-top:auto;padding-top:12px;border-top:1px solid #EAE2D6"><div style="display:flex;justify-content:space-between;font-size:13px;color:#4F6260;margin-bottom:6px"><span>Traject</span><span>stap {{cur.n}} van 5</span></div><div class="l-prog"><i style="width:{{cur.pct}}%"></i></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INDICATOREN -->
+<section id="indicatoren" aria-labelledby="ind-title" style="background:#FFFFFF">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,96px) max(20px,4vw);display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+<div class="l-rv" style="flex:1 1 400px;min-width:0">
+<h2 id="ind-title" class="l-h" style="font-size:clamp(30px,4vw,44px)">Afgesproken indicatoren, geen losse cijfers</h2>
+<div class="l-bar" style="margin:14px 0 18px" aria-hidden="true"></div>
+<p style="margin:0 0 20px;line-height:1.65;color:#4F6260;max-width:54ch">Welke voortgang we delen, spreken we vooraf met u af. Vink hieronder aan wat u wilt zien; de samenvatting verandert mee. Zo werkt het ook in het portaal.</p>
+<div style="display:flex;flex-direction:column;gap:8px"><sc-for list="{{inds}}" as="i" hint-placeholder-count="5"><label class="l-toggle"><input type="checkbox" checked="{{i.on}}" onChange="{{i.toggle}}"><span>{{i.label}}</span></label></sc-for></div>
+<p style="margin:20px 0 0;line-height:1.6;color:#4F6260;max-width:54ch">We geven geen scores of automatische oordelen over iemands inzetbaarheid. Elke stand wordt toegelicht door de begeleider.</p>
+</div>
+<figure class="l-rv" style="flex:1 1 360px;min-width:0;margin:0">
+<div class="l-card" style="background:#FAF7F2;box-shadow:0 30px 60px -36px rgba(31,93,90,.45)">
+<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px"><span class="l-h" style="font-size:20px">Voortgangssamenvatting</span><span class="l-mark">Demo · fictief</span></div>
+<sc-if value="{{noneOn}}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:20px;border:1.5px dashed #D7CFC2;border-radius:12px;text-align:center;color:#4F6260;line-height:1.5">Geen indicatoren gekozen. U ziet dan alleen de toelichting van de begeleider.</p></sc-if>
+<dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px"><sc-for list="{{shown}}" as="s" hint-placeholder-count="4"><div class="l-panel" style="border-top:2px solid #F0862B;padding-top:8px"><dt class="l-label" style="font-size:11px">{{s.label}}</dt><dd style="margin:4px 0 0;font-weight:600">{{s.waarde}}</dd></div></sc-for></dl>
+<p style="margin:18px 0 0;padding:14px 16px;background:#FFFFFF;border:1px solid #EAE2D6;border-radius:12px;line-height:1.55;font-size:15px">“Werkt sinds drie weken op een proefplaats. Komt afspraken na en oefent met werkinstructies.” <span style="color:#4F6260">— toelichting begeleider</span></p>
+</div>
+<figcaption style="margin-top:12px;font-size:14px;color:#4F6260">Voorbeeld van een voortgangsoverzicht. Alle gegevens zijn fictief.</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- PRIVACY -->
+<section aria-labelledby="priv-title" style="background:#FAF7F2">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,88px) max(20px,4vw)">
+<div class="l-rv" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:36px"><h2 id="priv-title" class="l-h" style="font-size:clamp(30px,4vw,46px)">Alleen delen wat nodig is</h2><div class="l-bar" aria-hidden="true"></div></div>
+<div class="l-rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px">
+<div class="l-card" style="background:#FFFFFF"><p class="l-label" style="margin:0 0 10px">U ziet</p><h3 class="l-h" style="font-size:20px;margin-bottom:8px">Toegewezen trajecten en afgesproken voortgang</h3><p style="margin:0;line-height:1.6;color:#4F6260">Geen automatische toegang tot het volledige dossier.</p></div>
+<div class="l-card" style="background:#FFFFFF"><p class="l-label" style="margin:0 0 10px">Blijft intern</p><h3 class="l-h" style="font-size:20px;margin-bottom:8px">Notities, opdrachten en persoonlijke gesprekken</h3><p style="margin:0;line-height:1.6;color:#4F6260">Die blijven bij de begeleider en de deelnemer.</p></div>
+<div class="l-card" style="background:#FFFFFF"><p class="l-label" style="margin:0 0 10px">Vragen we niet standaard</p><h3 class="l-h" style="font-size:20px;margin-bottom:8px">BSN, medische gegevens, reden van de uitkering</h3><p style="margin:0;line-height:1.6;color:#4F6260">Alleen als het voor de opdracht echt nodig is en is afgesproken.</p></div>
+<div class="l-card" style="background:#FFFFFF;border:1.5px dashed #F0862B"><p class="l-label" style="margin:0 0 10px;color:#C96A1A">Nog vast te leggen</p><h3 class="l-h" style="font-size:20px;margin-bottom:8px">Gegevensdeling, bewaartermijnen, verwerking</h3><p style="margin:0"><mark class="l-mark">NOG VAST TE STELLEN</mark></p></div>
+</div>
+<div class="l-rv" style="display:flex;flex-wrap:wrap;gap:40px;margin-top:48px">
+<div style="flex:1 1 360px;min-width:0"><h3 class="l-h" style="font-size:24px;margin-bottom:10px">Samenwerkingsvormen</h3><p style="margin:0;line-height:1.65;max-width:56ch;color:#4F6260">We bespreken graag welke vorm past bij uw opdracht en uw regio. <mark class="l-mark">IN TE VULLEN: samenwerkingsvormen, inkoop of contractering, werkgebied</mark></p></div>
+<div style="flex:1 1 360px;min-width:0"><h3 class="l-h" style="font-size:24px;margin-bottom:10px">Als andere hulp nodig is</h3><p style="margin:0;line-height:1.65;max-width:56ch;color:#4F6260">Wij bieden geen zorg, schuldhulpverlening of andere specialistische hulp. Als een deelnemer dat nodig heeft, stemmen we af met u en de deelnemer, en denken we mee over doorverwijzing.</p></div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="gm-cta" style="background:#1F5D5A;color:#FFFFFF">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,72px) max(20px,4vw);display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between">
+<div class="l-rv"><h2 id="gm-cta" class="l-h" style="font-size:clamp(30px,4vw,44px);color:#FFFFFF">Samen werken aan werk voor uw inwoners.</h2><div class="l-bar" style="margin:14px 0 12px" aria-hidden="true"></div><p style="margin:0;color:#D6EAE5;line-height:1.6;max-width:52ch">In een eerste gesprek bespreken we uw opgave, de doelgroep en hoe we de voortgang inzichtelijk maken.</p></div>
+<a class="l-btn l-btn-orange l-rv" href="Contact.dc.html" style="min-height:58px;padding:0 30px;font-size:17px">Bespreek een samenwerking <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+</section>
+</main>
+<dc-import name="Footer" hint-size="100%,360px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4600}}'>
+const FASEN = [
+{ n: 1, label: 'Kennismaking deelnemer', kop: 'Een persoonlijk gesprek, geen vragenlijst', tekst: 'We praten over werkervaring, wensen, mogelijkheden en wat iemand nodig heeft. We vragen alleen wat voor het traject nodig is.', punten: ['Gesprek met een vaste begeleider', 'Waar het past: korte afstemming met uw contactpersoon', 'Geen BSN, medische gegevens of uitkeringsdetails'], voorU: 'Korte terugkoppeling', voorUtekst: 'Of het traject past en wat een logische eerste focus is.' },
+{ n: 2, label: 'Doelen afspreken', kop: 'Concrete doelen, samen met de deelnemer', tekst: 'Geen algemene ambities, maar doelen die je op het werk kunt zien. Bijvoorbeeld een vast weekritme, werktaal voor een sector, of oefenen met sollicitatiegesprekken.', punten: ['Twee tot vier doelen per periode', 'Per doel: wanneer is het gelukt?', 'Afspraak over evaluatiemomenten'], voorU: 'Trajectplan', voorUtekst: 'Met doelen, acties, verantwoordelijke begeleider en evaluatiemomenten.' },
+{ n: 3, label: 'Leren en oefenen', kop: 'Coaching, taal, digitaal en oefenen in de praktijk', tekst: 'Coaching, taalonderwijs, digitale vaardigheden en praktische opdrachten. Waar mogelijk op de werkvloer, in afstemming met een werkgever.', punten: ['Vaste contactmomenten', 'Korte opdrachten voor werktaal, vaktaal, digitale vaardigheden en werknemersvaardigheden', 'Driegesprekken met werkgever waar van toepassing'], voorU: 'Tussentijdse voortgang', voorUtekst: 'Op de indicatoren die we vooraf hebben afgesproken, met toelichting van de begeleider.' },
+{ n: 4, label: 'Starten of groeien op het werk', kop: 'Begeleiding op de plek waar het telt', tekst: 'Zodra er een werkplek of proefplaats is, begeleiden we op of naast de werkvloer. Werkafspraken maken we samen met de leidinggevende.', punten: ['Driegesprekken met deelnemer en werkgever', 'Werkafspraken en werkdoelen op papier', 'Taal en digitale vaardigheden gekoppeld aan het werk'] },
+{ n: 5, label: 'Evalueren en nazorg', kop: 'Terugkijken, bijstellen en bereikbaar blijven', tekst: 'Op vaste momenten kijken we met de deelnemer, en waar afgesproken met u en de werkgever, terug. Na de start of afronding blijven we bereikbaar volgens de afspraken in de opdracht.', punten: ['Evaluatie met alle betrokkenen volgens afspraak', 'Voortgang op de vooraf afgesproken indicatoren', 'Nazorg en snel schakelen als er iets verandert'] }
+];
+const INDS = [
+{ id: 'fase', label: 'Stap in het traject', waarde: 'Starten op het werk' },
+{ id: 'stap', label: 'Stap richting werk', waarde: 'Proefplaatsing' },
+{ id: 'afspraken', label: 'Deelname aan afspraken', waarde: 'Alle afspraken bijgewoond' },
+{ id: 'doelen', label: 'Status van de doelen', waarde: '2 afgesproken, beide in uitvoering' },
+{ id: 'nazorg', label: 'Afspraken over nazorg', waarde: 'Nog af te spreken bij evaluatie' }
+];
+class Component extends DCLogic {
+constructor(p) { super(p); this.state = { fase: 3, on: { fase: true, stap: true, afspraken: true, doelen: true, nazorg: false } }; }
+renderVals() {
+const cur = FASEN.find(f => f.n === this.state.fase) || FASEN[0];
+const on = this.state.on; const shown = INDS.filter(i => on[i.id]);
+return { fasen: FASEN.map(f => ({ n: f.n, label: f.label, selected: f.n === cur.n ? 'true' : 'false', pick: () => this.setState({ fase: f.n }) })), cur: Object.assign({}, cur, { punten: cur.punten.map(t => ({ t })), pct: Math.round(cur.n / 5 * 100) }), inds: INDS.map(i => ({ label: i.label, on: !!on[i.id], toggle: () => this.setState({ on: Object.assign({}, this.state.on, { [i.id]: !this.state.on[i.id] }) }) })), shown, noneOn: shown.length === 0 };
+}
+}
+</script>
+</body>
+</html>
