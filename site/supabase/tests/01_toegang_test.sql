@@ -5,14 +5,14 @@
 begin;
 
 -- fictieve accounts (trigger maakt de profielen)
-insert into auth.users (id, email, raw_user_meta_data) values
- ('00000000-0000-0000-0000-000000000001', 'noor@voorbeeld.nl',  '{"naam":"Noor Bakker","rol":"begeleider"}'),
- ('00000000-0000-0000-0000-000000000002', 'samira@voorbeeld.nl','{"naam":"Samira Haddad","rol":"deelnemer"}'),
- ('00000000-0000-0000-0000-000000000003', 'petra@voorbeeld.nl', '{"naam":"Petra de Wit","rol":"werkgever"}'),
- ('00000000-0000-0000-0000-000000000004', 'kees@voorbeeld.nl',  '{"naam":"Kees Jansen","rol":"gemeente"}'),
- ('00000000-0000-0000-0000-000000000005', 'admin@voorbeeld.nl', '{"naam":"Beheer","rol":"beheerder"}'),
- ('00000000-0000-0000-0000-000000000006', 'bram@voorbeeld.nl',  '{"naam":"Bram (andere begeleider)","rol":"begeleider"}'),
- ('00000000-0000-0000-0000-000000000007', 'daniel@voorbeeld.nl','{"naam":"Daniël Vos","rol":"deelnemer"}');
+insert into auth.users (id, email, raw_app_meta_data) values
+ ('00000000-0000-0000-0000-000000000001', 'noor@voorbeeld.nl',  '{"rol":"begeleider"}'),
+ ('00000000-0000-0000-0000-000000000002', 'samira@voorbeeld.nl','{"rol":"deelnemer"}'),
+ ('00000000-0000-0000-0000-000000000003', 'petra@voorbeeld.nl', '{"rol":"werkgever"}'),
+ ('00000000-0000-0000-0000-000000000004', 'kees@voorbeeld.nl',  '{"rol":"gemeente"}'),
+ ('00000000-0000-0000-0000-000000000005', 'admin@voorbeeld.nl', '{"rol":"beheerder"}'),
+ ('00000000-0000-0000-0000-000000000006', 'bram@voorbeeld.nl',  '{"rol":"begeleider"}'),
+ ('00000000-0000-0000-0000-000000000007', 'daniel@voorbeeld.nl','{"rol":"deelnemer"}');
 
 insert into public.organisaties (id, naam, soort) values
  ('10000000-0000-0000-0000-000000000001', 'Verbind & GO', 'verbind'),
@@ -147,6 +147,17 @@ do $$ begin
     insert into verwacht values ('samira', 'eigen rol wijzigen (moet geweigerd worden)', 1, 1);
   end;
 end $$;
+-- zelf aanmelden met een verzonnen rol: wordt een inactieve deelnemer zonder toegang
+reset role;
+insert into auth.users (id, email, raw_user_meta_data) values ('00000000-0000-0000-0000-000000000099', 'hacker@voorbeeld.nl', '{"rol":"beheerder"}');
+insert into verwacht select 'aanmelder', 'zelf aanmelden als beheerder (moet inactieve deelnemer zijn)', 1, count(*)::int from public.profielen where id = '00000000-0000-0000-0000-000000000099' and rol = 'deelnemer' and not actief;
+set role authenticated;
+select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-000000000099', true);
+insert into verwacht select 'aanmelder', 'is_beheerder (moet 0 zijn)', 0, (public.is_beheerder())::int;
+insert into verwacht select 'aanmelder', 'deelnemers zien (moet 0 zijn)', 0, count(*)::int from public.deelnemers;
+insert into verwacht select 'aanmelder', 'organisaties zien (moet 0 zijn)', 0, count(*)::int from public.organisaties;
+select pg_temp.check('petra', 'organisaties (alleen eigen, als die is ingesteld)', 'select * from public.organisaties', 0);
+select pg_temp.check('noor', 'organisaties (begeleider ziet alle)', 'select * from public.organisaties', 3);
 -- anon ziet niets
 reset role; set role anon;
 do $$ declare n int; begin

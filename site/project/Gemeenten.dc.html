@@ -76,6 +76,7 @@ body{background:var(--bg)}
 h1.l-h{letter-spacing:-0.05em;line-height:1.04}
 .l-w{padding-bottom:.06em;margin-bottom:-.06em;line-height:1.1}
 .l-or{color:var(--orange);background:none;-webkit-text-fill-color:var(--orange)}
+.l-gr{color:var(--petrol);-webkit-text-fill-color:var(--petrol)}
 .l-label{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--petrol)}
 .l-label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--teal))}
 .l-bar{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--teal) 60%,var(--petrol))}
@@ -262,6 +263,44 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 .lf-mark{background:rgba(251,227,204,.14);color:#F7B57E;border-color:#F7B57E}
 
 @media (prefers-reduced-motion: reduce){.l-hero::before,.l-hero::after,.l-float,.l-marq ul{animation:none!important}.l-mock{transform:none}}
+
+/* --- illustraties (vervangen foto-plekken) --- */
+.l-art{position:relative;overflow:hidden;border-radius:var(--r-l);aspect-ratio:4/3;min-height:260px;max-width:100%;box-shadow:inset 0 0 0 1px rgba(31,93,90,.08),0 40px 70px -48px rgba(31,93,90,.55);background:#0B2E2D}
+.l-art.l-b-photo{aspect-ratio:auto;min-height:380px}
+.l-art svg,.l-aud-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.l-aud-art{position:relative;height:180px;overflow:hidden;background:#0B2E2D}
+.l-flow{stroke-dasharray:8 14;animation:l-dash 7s linear infinite}
+@keyframes l-dash{to{stroke-dashoffset:-220}}
+@media (max-width:640px){.l-art.l-b-photo{min-height:260px}}
+@media (prefers-reduced-motion: reduce){.l-flow{animation:none;stroke-dasharray:none}}
+
+/* Kernwaarden (Over ons) */
+.l-kw{position:relative;overflow:hidden;color:#FFFFFF;background:radial-gradient(600px 400px at 88% 0%,rgba(43,179,163,.35),transparent 70%),radial-gradient(500px 360px at 0% 100%,rgba(240,134,43,.22),transparent 70%),linear-gradient(135deg,#174A48,#0B2E2D 60%,#071F1E)}
+.l-kw-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.l-kw-item{position:relative;padding:26px 24px 26px;border-radius:var(--r-l);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.l-kw-item:hover{transform:translateY(-3px);border-color:rgba(159,227,214,.5);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
+.l-kw-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.l-kw-ic{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:#FFFFFF;color:#1F5D5A;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.l-kw-item:nth-child(3n+2) .l-kw-ic{color:#F0862B}
+.l-kw-n{font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.08em;color:#9FE3D6}
+.l-kw-item h3{font-size:22px;color:#FFFFFF;margin:0 0 10px}
+.l-kw-item p{margin:0;line-height:1.62;color:#D6EAE5;font-size:16px}
+@media (prefers-reduced-motion: reduce){.l-kw-item,.l-kw-item:hover{transition:none;transform:none}}
+
+/* Missie en visie (Over ons) */
+.l-mvsec{background:#FFFFFF}
+.l-mv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:start}
+.l-mv{position:relative;overflow:hidden;border-radius:var(--r-l);padding:clamp(26px,3.4vw,44px);border:1px solid #EAE2D6;background:#FAF7F2}
+.l-mv-v{background:#E7F3F0;border-color:#CFE6E1}
+.l-mv::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:#F0862B}
+.l-mv-v::before{background:#2BB3A3}
+.l-mv-head{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.l-mv h2{font-size:clamp(30px,3.6vw,42px);margin:0}
+.l-mv-lead{margin:0 0 16px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#0F1F1F;font-weight:500}
+.l-mv p:not(.l-mv-lead):not(.l-label):not(.l-mv-kern){margin:0 0 14px;line-height:1.65;color:#4F6260}
+.l-mv-kern{display:flex;align-items:center;gap:12px;margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(31,93,90,.15);font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:17px;color:#1F5D5A}
+.l-mv-kern span{flex:none;width:28px;height:3px;border-radius:2px;background:#F0862B}
+.l-mv-v .l-mv-kern span{background:#2BB3A3}
 /* @/site-css */
 </style>
 </helmet>
@@ -274,10 +313,20 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <div style="flex:1 1 420px;min-width:0">
 <p class="l-label l-fade" style="margin:0 0 20px;animation-delay:.05s">Voor gemeenten</p>
 <h1 id="gm-title" class="l-h" style="font-size:clamp(40px,5.6vw,70px);max-width:14ch"><span class="l-w">Taal,</span> <span class="l-w">werk</span> <span class="l-w">en</span> <span class="l-w">doelen</span> <span class="l-w l-or">in één traject.</span></h1>
-<p class="l-fade" style="margin:22px 0 0;max-width:54ch;font-size:18px;line-height:1.6;color:#4F6260">We begeleiden inwoners op weg naar passend werk: statushouders en andere nieuwkomers, en mensen met een bijstandsuitkering. Vanaf 2027 staat werk centraal in de inburgering; wij helpen u die opgave waar te maken. Iedere deelnemer start vanuit eigen mogelijkheden en doelen. U krijgt een duidelijke aanpak, vaste evaluatiemomenten en voortgang op indicatoren die we vooraf samen afspreken.</p>
+<p class="l-fade" style="margin:22px 0 0;max-width:54ch;font-size:18px;line-height:1.6;color:#4F6260">We begeleiden inwoners op weg naar passend werk: statushouders en andere nieuwkomers, en mensen met een bijstandsuitkering. Het kabinet wil werk vanaf 2027 nadrukkelijker centraal stellen in de inburgering; wij helpen u om daar nu al op voor te sorteren. Iedere deelnemer start vanuit eigen mogelijkheden en doelen. U krijgt een duidelijke aanpak, vaste evaluatiemomenten en voortgang op indicatoren die we vooraf samen afspreken.</p>
 <div class="l-fade" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px"><a class="l-btn l-btn-primary" href="Contact.dc.html">Bespreek een samenwerking <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="l-btn l-btn-outline" href="#indicatoren">Zo delen we voortgang</a></div>
 </div>
-<div class="l-fade" style="flex:1 1 380px;min-width:0;animation-delay:.2s"><div class="l-photo" role="img" aria-label="Plek voor een foto van een gesprek tussen begeleider en contactpersoon van de gemeente"><svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true"><path d="M20 50 60 28l40 22M28 50v38M48 50v38M72 50v38M92 50v38M16 92h88" stroke="#1F5D5A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>FOTO IN TE VULLEN: overleg met de gemeente</span></div></div>
+<div class="l-fade" style="flex:1 1 380px;min-width:0;animation-delay:.2s"><div class="l-art" role="img" aria-label="Illustratie: gemeente, werkgever en Verbind&amp;GO verbonden rond de inwoner"><svg viewBox="0 0 480 400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="igbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#174A48"/><stop offset=".55" stop-color="#0B2E2D"/><stop offset="1" stop-color="#071F1E"/></linearGradient>
+<filter id="igblur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"/></filter>
+<filter id="igsoft" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="14"/></filter>
+<filter id="igglow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="igsh" x="-100%" y="-200%" width="300%" height="600%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000" flood-opacity=".22"/></filter>
+<linearGradient id="iggl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".16"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".06"/></linearGradient>
+</defs>
+<rect x="-480" y="-400" width="1440" height="1200" fill="url(#igbg)"/>
+<circle cx="408.0" cy="40.0" r="153.6" fill="#2BB3A3" fill-opacity=".45" filter="url(#igblur)"/>
+<circle cx="38.4" cy="380.0" r="124.80000000000001" fill="#F0862B" fill-opacity=".30" filter="url(#igblur)"/><circle cx="240" cy="205" r="150" fill="none" stroke="#FFFFFF" stroke-opacity="0.1"/><circle cx="240" cy="205" r="112" fill="none" stroke="#FFFFFF" stroke-opacity="0.18"/><circle cx="240" cy="205" r="74" fill="none" stroke="#FFFFFF" stroke-opacity="0.1"/><circle class="l-flow" cx="240" cy="205" r="112" fill="none" stroke="#9FE3D6" stroke-opacity=".7" stroke-width="1.6"/><path d="M240 205 L143.0 149.0" stroke="#2BB3A3" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 5"/><g filter="url(#igsh)"><rect x="117.00515477614286" y="123.0" width="52" height="52" rx="16" fill="#FFFFFF"/></g><g transform="translate(143.00515477614286 149.0) scale(0.95) translate(-13 -12)" fill="none" stroke="#1F5D5A" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M1 9 13 2l12 7M4 9v12M10 9v12M16 9v12M22 9v12M0 23h26"/></g><rect x="101.20515477614286" y="87.0" width="83.6" height="26" rx="13" fill="url(#iggl)" stroke="#FFFFFF" stroke-opacity=".22"/><text x="143.0" y="104.5" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">Gemeente</text><path d="M240 205 L337.0 149.0" stroke="#9FE3D6" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 5"/><g filter="url(#igsh)"><rect x="310.99484522385717" y="123.0" width="52" height="52" rx="16" fill="#FFFFFF"/></g><g transform="translate(336.99484522385717 149.0) scale(0.95) translate(-13 -12)" fill="none" stroke="#1F5D5A" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="24" height="16" rx="3"/><path d="M8 7V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3M1 14h24"/></g><rect x="291.5948452238572" y="87.0" width="90.8" height="26" rx="13" fill="url(#iggl)" stroke="#FFFFFF" stroke-opacity=".22"/><text x="337.0" y="104.5" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">Werkgever</text><path d="M240 205 L240.0 317.0" stroke="#F0862B" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 5"/><g filter="url(#igsh)"><rect x="214.0" y="291.0" width="52" height="52" rx="16" fill="#FFFFFF"/></g><text x="240.0" y="324.0" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="20" font-weight="800" fill="#F0862B">&amp;</text><rect x="191.0" y="351.0" width="98.0" height="26" rx="13" fill="url(#iggl)" stroke="#FFFFFF" stroke-opacity=".22"/><text x="240.0" y="368.5" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">Verbind&amp;GO</text><circle cx="240" cy="205" r="63.0" fill="#F0862B" fill-opacity=".22" filter="url(#igsoft)"/><circle cx="240" cy="205" r="40" fill="none" stroke="#F0862B" stroke-opacity=".35"/><circle cx="240" cy="205" r="30" fill="#F0862B" filter="url(#igglow)"/><g transform="translate(240 206) scale(1.15)" fill="none" stroke="#FFFFFF" stroke-width="2.3" stroke-linecap="round"><circle cx="0" cy="-6" r="5.5"/><path d="M-10 11c1.5-6 5.5-9 10-9s8.5 3 10 9"/></g><text x="240" y="263" text-anchor="middle" font-family="Outfit, Figtree, system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Inwoner</text></svg></div></div>
 </div>
 </section>
 
@@ -287,7 +336,7 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <div class="l-rv" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:36px"><h2 id="krijgt-title" class="l-h" style="font-size:clamp(30px,4vw,46px)">Wat u van ons krijgt</h2><div class="l-bar" aria-hidden="true"></div></div>
 <div class="l-rv" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
 <div class="l-card"><p class="l-label" style="margin:0 0 10px">Startpunt</p><h3 class="l-h" style="font-size:20px">Mogelijkheden en doelen van de inwoner</h3></div>
-<div class="l-card"><p class="l-label" style="margin:0 0 10px">Vorm</p><h3 class="l-h" style="font-size:20px">Maatwerk binnen vijf vaste fasen</h3></div>
+<div class="l-card"><p class="l-label" style="margin:0 0 10px">Vorm</p><h3 class="l-h" style="font-size:20px">Maatwerk binnen vijf vaste stappen</h3></div>
 <div class="l-card"><p class="l-label" style="margin:0 0 10px">Inzicht</p><h3 class="l-h" style="font-size:20px">Voortgang op afgesproken indicatoren</h3></div>
 <div class="l-card"><p class="l-label" style="margin:0 0 10px">Gegevens</p><h3 class="l-h" style="font-size:20px">Alleen delen wat nodig is</h3></div>
 </div>
@@ -298,15 +347,15 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <section aria-labelledby="fase-title" style="background:#E7F3F0">
 <div style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,88px) max(20px,4vw)">
 <div class="l-rv" style="display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:flex-end;margin-bottom:28px">
-<div><h2 id="fase-title" class="l-h" style="font-size:clamp(30px,4vw,46px)">Vijf fasen, één vaste begeleider</h2><div class="l-bar" style="margin-top:14px" aria-hidden="true"></div></div>
+<div><h2 id="fase-title" class="l-h" style="font-size:clamp(30px,4vw,46px)">Vijf stappen, één vaste begeleider</h2><div class="l-bar" style="margin-top:14px" aria-hidden="true"></div></div>
 <p style="margin:0;max-width:44ch;color:#4F6260;line-height:1.6">De fasen zijn vast, de inhoud is maatwerk. Klik op een fase om te zien wat er gebeurt en wat u ervan terugziet.</p>
 </div>
-<div class="l-rv" role="tablist" aria-label="Fasen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px">
+<div class="l-rv" role="tablist" aria-label="Stappen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px">
 <sc-for list="{{fasen}}" as="f" hint-placeholder-count="5"><button type="button" role="tab" class="l-fase" aria-selected="{{f.selected}}" onClick="{{f.pick}}"><span class="l-num">{{f.n}}</span><span class="l-h" style="font-size:19px;color:inherit">{{f.label}}</span></button></sc-for>
 </div>
 <div class="l-rv" style="margin-top:18px;display:flex;flex-wrap:wrap;gap:18px">
 <div class="l-panel" style="flex:2 1 460px;min-width:0;background:#1F5D5A;color:#FFFFFF;border-radius:18px;padding:clamp(24px,3.4vw,40px)">
-<p class="l-label" style="margin:0 0 12px;color:#9FD3C8">Fase {{cur.n}} · {{cur.label}}</p>
+<p class="l-label" style="margin:0 0 12px;color:#9FD3C8">Stap {{cur.n}} · {{cur.label}}</p>
 <h3 class="l-h" style="font-size:clamp(24px,2.6vw,32px);color:#FFFFFF;margin-bottom:14px">{{cur.kop}}</h3>
 <p style="margin:0 0 14px;line-height:1.65;color:#D6EAE5">{{cur.tekst}}</p>
 <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:#D6EAE5;line-height:1.5"><sc-for list="{{cur.punten}}" as="p" hint-placeholder-count="3"><li style="display:flex;gap:10px"><span aria-hidden="true" style="color:#F0862B">●</span>{{p.t}}</li></sc-for></ul>
@@ -315,7 +364,7 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <p class="l-label" style="margin:0">Wat u terugziet</p>
 <h3 class="l-h" style="font-size:22px">{{cur.voorU}}</h3>
 <p style="margin:0;line-height:1.6;color:#4F6260">{{cur.voorUtekst}}</p>
-<div style="margin-top:auto;padding-top:12px;border-top:1px solid #EAE2D6"><div style="display:flex;justify-content:space-between;font-size:13px;color:#4F6260;margin-bottom:6px"><span>Traject</span><span>fase {{cur.n}} van 5</span></div><div class="l-prog"><i style="width:{{cur.pct}}%"></i></div></div>
+<div style="margin-top:auto;padding-top:12px;border-top:1px solid #EAE2D6"><div style="display:flex;justify-content:space-between;font-size:13px;color:#4F6260;margin-bottom:6px"><span>Traject</span><span>stap {{cur.n}} van 5</span></div><div class="l-prog"><i style="width:{{cur.pct}}%"></i></div></div>
 </div>
 </div>
 </div>
@@ -338,7 +387,7 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px"><sc-for list="{{shown}}" as="s" hint-placeholder-count="4"><div class="l-panel" style="border-top:2px solid #F0862B;padding-top:8px"><dt class="l-label" style="font-size:11px">{{s.label}}</dt><dd style="margin:4px 0 0;font-weight:600">{{s.waarde}}</dd></div></sc-for></dl>
 <p style="margin:18px 0 0;padding:14px 16px;background:#FFFFFF;border:1px solid #EAE2D6;border-radius:12px;line-height:1.55;font-size:15px">“Werkt sinds drie weken op een proefplaats. Komt afspraken na en oefent met werkinstructies.” <span style="color:#4F6260">— toelichting begeleider</span></p>
 </div>
-<figcaption style="margin-top:12px;font-size:14px;color:#4F6260">Voorbeeld uit de portaaldemo. Alle gegevens zijn fictief.</figcaption>
+<figcaption style="margin-top:12px;font-size:14px;color:#4F6260">Voorbeeld van een voortgangsoverzicht. Alle gegevens zijn fictief.</figcaption>
 </figure>
 </div>
 </section>
@@ -362,7 +411,7 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 
 <section aria-labelledby="gm-cta" style="background:#1F5D5A;color:#FFFFFF">
 <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,72px) max(20px,4vw);display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between">
-<div class="l-rv"><h2 id="gm-cta" class="l-h" style="font-size:clamp(30px,4vw,44px);color:#FFFFFF">Laten we de opdracht samen scherp maken.</h2><div class="l-bar" style="margin:14px 0 12px" aria-hidden="true"></div><p style="margin:0;color:#D6EAE5;line-height:1.6;max-width:52ch">Wij zoeken gemeenten die met ons willen samenwerken in een pilot.</p></div>
+<div class="l-rv"><h2 id="gm-cta" class="l-h" style="font-size:clamp(30px,4vw,44px);color:#FFFFFF">Samen werken aan werk voor uw inwoners.</h2><div class="l-bar" style="margin:14px 0 12px" aria-hidden="true"></div><p style="margin:0;color:#D6EAE5;line-height:1.6;max-width:52ch">In een eerste gesprek bespreken we uw opgave, de doelgroep en hoe we de voortgang inzichtelijk maken.</p></div>
 <a class="l-btn l-btn-orange l-rv" href="Contact.dc.html" style="min-height:58px;padding:0 30px;font-size:17px">Bespreek een samenwerking <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 </section>
@@ -372,14 +421,14 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4600}}'>
 const FASEN = [
-{ n: 1, label: 'Intake', kop: 'Een persoonlijk gesprek, geen vragenlijst', tekst: 'We praten over werkervaring, wensen, mogelijkheden en wat iemand nodig heeft. We vragen alleen wat voor het traject nodig is.', punten: ['Gesprek met een vaste begeleider', 'Waar het past: korte afstemming met uw contactpersoon', 'Geen BSN, medische gegevens of uitkeringsdetails'], voorU: 'Korte terugkoppeling', voorUtekst: 'Of het traject past en wat een logische eerste focus is.' },
-{ n: 2, label: 'Doelen', kop: 'Concrete doelen, samen met de deelnemer', tekst: 'Geen algemene ambities, maar doelen die je op het werk kunt zien. Bijvoorbeeld een vast weekritme, werktaal voor een sector, of oefenen met sollicitatiegesprekken.', punten: ['Twee tot vier doelen per periode', 'Per doel: wanneer is het gelukt?', 'Afspraak over evaluatiemomenten'], voorU: 'Trajectplan', voorUtekst: 'Met doelen, acties, verantwoordelijke begeleider en evaluatiemomenten.' },
-{ n: 3, label: 'Uitvoering', kop: 'Coaching, taal, digitaal en oefenen in de praktijk', tekst: 'Coaching, taalonderwijs, digitale vaardigheden en praktische opdrachten. Waar mogelijk op de werkvloer, in afstemming met een werkgever.', punten: ['Vaste contactmomenten', 'Korte opdrachten voor werktaal, vaktaal, digitale vaardigheden en werknemersvaardigheden', 'Driegesprekken met werkgever waar van toepassing'], voorU: 'Tussentijdse voortgang', voorUtekst: 'Op de indicatoren die we vooraf hebben afgesproken, met toelichting van de begeleider.' },
-{ n: 4, label: 'Evaluatie', kop: 'Terugkijken en bijstellen', tekst: 'Op vaste momenten kijken we met de deelnemer, en waar afgesproken met u en de werkgever, terug. Doelen worden bijgesteld als dat nodig is.', punten: ['Evaluatie met alle betrokkenen volgens afspraak', 'Doorgaan, bijstellen of afronden', 'Geen scores, wel concrete voorbeelden'], voorU: 'Evaluatieverslag', voorUtekst: 'Met de uitkomsten die voor uw opdracht zijn afgesproken.' },
-{ n: 5, label: 'Nazorg', kop: 'Bereikbaar blijven als het werk is begonnen', tekst: 'Na de start op het werk of na afronding blijven we bereikbaar, op basis van de afspraken in de opdracht.', punten: ['Contact volgens afspraak', 'Snel schakelen als er iets verandert', 'Duidelijk wie wanneer contact opneemt'], voorU: 'Nazorgafspraken', voorUtekst: 'Over duur en vorm van nazorg, en wanneer het traject echt is afgerond.' }
+{ n: 1, label: 'Kennismaking deelnemer', kop: 'Een persoonlijk gesprek, geen vragenlijst', tekst: 'We praten over werkervaring, wensen, mogelijkheden en wat iemand nodig heeft. We vragen alleen wat voor het traject nodig is.', punten: ['Gesprek met een vaste begeleider', 'Waar het past: korte afstemming met uw contactpersoon', 'Geen BSN, medische gegevens of uitkeringsdetails'], voorU: 'Korte terugkoppeling', voorUtekst: 'Of het traject past en wat een logische eerste focus is.' },
+{ n: 2, label: 'Doelen afspreken', kop: 'Concrete doelen, samen met de deelnemer', tekst: 'Geen algemene ambities, maar doelen die je op het werk kunt zien. Bijvoorbeeld een vast weekritme, werktaal voor een sector, of oefenen met sollicitatiegesprekken.', punten: ['Twee tot vier doelen per periode', 'Per doel: wanneer is het gelukt?', 'Afspraak over evaluatiemomenten'], voorU: 'Trajectplan', voorUtekst: 'Met doelen, acties, verantwoordelijke begeleider en evaluatiemomenten.' },
+{ n: 3, label: 'Leren en oefenen', kop: 'Coaching, taal, digitaal en oefenen in de praktijk', tekst: 'Coaching, taalonderwijs, digitale vaardigheden en praktische opdrachten. Waar mogelijk op de werkvloer, in afstemming met een werkgever.', punten: ['Vaste contactmomenten', 'Korte opdrachten voor werktaal, vaktaal, digitale vaardigheden en werknemersvaardigheden', 'Driegesprekken met werkgever waar van toepassing'], voorU: 'Tussentijdse voortgang', voorUtekst: 'Op de indicatoren die we vooraf hebben afgesproken, met toelichting van de begeleider.' },
+{ n: 4, label: 'Starten of groeien op het werk', kop: 'Begeleiding op de plek waar het telt', tekst: 'Zodra er een werkplek of proefplaats is, begeleiden we op of naast de werkvloer. Werkafspraken maken we samen met de leidinggevende.', punten: ['Driegesprekken met deelnemer en werkgever', 'Werkafspraken en werkdoelen op papier', 'Taal en digitale vaardigheden gekoppeld aan het werk'] },
+{ n: 5, label: 'Evalueren en nazorg', kop: 'Terugkijken, bijstellen en bereikbaar blijven', tekst: 'Op vaste momenten kijken we met de deelnemer, en waar afgesproken met u en de werkgever, terug. Na de start of afronding blijven we bereikbaar volgens de afspraken in de opdracht.', punten: ['Evaluatie met alle betrokkenen volgens afspraak', 'Voortgang op de vooraf afgesproken indicatoren', 'Nazorg en snel schakelen als er iets verandert'] }
 ];
 const INDS = [
-{ id: 'fase', label: 'Fase van het traject', waarde: 'Starten op het werk' },
+{ id: 'fase', label: 'Stap in het traject', waarde: 'Starten op het werk' },
 { id: 'stap', label: 'Stap richting werk', waarde: 'Proefplaatsing' },
 { id: 'afspraken', label: 'Deelname aan afspraken', waarde: 'Alle afspraken bijgewoond' },
 { id: 'doelen', label: 'Status van de doelen', waarde: '2 afgesproken, beide in uitvoering' },

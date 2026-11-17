@@ -63,6 +63,7 @@ body{background:var(--bg)}
 h1.l-h{letter-spacing:-0.05em;line-height:1.04}
 .l-w{padding-bottom:.06em;margin-bottom:-.06em;line-height:1.1}
 .l-or{color:var(--orange);background:none;-webkit-text-fill-color:var(--orange)}
+.l-gr{color:var(--petrol);-webkit-text-fill-color:var(--petrol)}
 .l-label{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--petrol)}
 .l-label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--teal))}
 .l-bar{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--teal) 60%,var(--petrol))}
@@ -249,6 +250,44 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 .lf-mark{background:rgba(251,227,204,.14);color:#F7B57E;border-color:#F7B57E}
 
 @media (prefers-reduced-motion: reduce){.l-hero::before,.l-hero::after,.l-float,.l-marq ul{animation:none!important}.l-mock{transform:none}}
+
+/* --- illustraties (vervangen foto-plekken) --- */
+.l-art{position:relative;overflow:hidden;border-radius:var(--r-l);aspect-ratio:4/3;min-height:260px;max-width:100%;box-shadow:inset 0 0 0 1px rgba(31,93,90,.08),0 40px 70px -48px rgba(31,93,90,.55);background:#0B2E2D}
+.l-art.l-b-photo{aspect-ratio:auto;min-height:380px}
+.l-art svg,.l-aud-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.l-aud-art{position:relative;height:180px;overflow:hidden;background:#0B2E2D}
+.l-flow{stroke-dasharray:8 14;animation:l-dash 7s linear infinite}
+@keyframes l-dash{to{stroke-dashoffset:-220}}
+@media (max-width:640px){.l-art.l-b-photo{min-height:260px}}
+@media (prefers-reduced-motion: reduce){.l-flow{animation:none;stroke-dasharray:none}}
+
+/* Kernwaarden (Over ons) */
+.l-kw{position:relative;overflow:hidden;color:#FFFFFF;background:radial-gradient(600px 400px at 88% 0%,rgba(43,179,163,.35),transparent 70%),radial-gradient(500px 360px at 0% 100%,rgba(240,134,43,.22),transparent 70%),linear-gradient(135deg,#174A48,#0B2E2D 60%,#071F1E)}
+.l-kw-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.l-kw-item{position:relative;padding:26px 24px 26px;border-radius:var(--r-l);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.l-kw-item:hover{transform:translateY(-3px);border-color:rgba(159,227,214,.5);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
+.l-kw-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.l-kw-ic{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:#FFFFFF;color:#1F5D5A;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.l-kw-item:nth-child(3n+2) .l-kw-ic{color:#F0862B}
+.l-kw-n{font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.08em;color:#9FE3D6}
+.l-kw-item h3{font-size:22px;color:#FFFFFF;margin:0 0 10px}
+.l-kw-item p{margin:0;line-height:1.62;color:#D6EAE5;font-size:16px}
+@media (prefers-reduced-motion: reduce){.l-kw-item,.l-kw-item:hover{transition:none;transform:none}}
+
+/* Missie en visie (Over ons) */
+.l-mvsec{background:#FFFFFF}
+.l-mv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:start}
+.l-mv{position:relative;overflow:hidden;border-radius:var(--r-l);padding:clamp(26px,3.4vw,44px);border:1px solid #EAE2D6;background:#FAF7F2}
+.l-mv-v{background:#E7F3F0;border-color:#CFE6E1}
+.l-mv::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:#F0862B}
+.l-mv-v::before{background:#2BB3A3}
+.l-mv-head{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.l-mv h2{font-size:clamp(30px,3.6vw,42px);margin:0}
+.l-mv-lead{margin:0 0 16px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#0F1F1F;font-weight:500}
+.l-mv p:not(.l-mv-lead):not(.l-label):not(.l-mv-kern){margin:0 0 14px;line-height:1.65;color:#4F6260}
+.l-mv-kern{display:flex;align-items:center;gap:12px;margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(31,93,90,.15);font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:17px;color:#1F5D5A}
+.l-mv-kern span{flex:none;width:28px;height:3px;border-radius:2px;background:#F0862B}
+.l-mv-v .l-mv-kern span{background:#2BB3A3}
 /* @/site-css */
 </style>
 </helmet>
@@ -268,6 +307,22 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <div class="l-tile"><p class="l-label" style="margin:0 0 8px">Voor wie</p><p style="margin:0;line-height:1.55">Gemeenten en werkgevers die mensen met een afstand tot de arbeidsmarkt duurzaam aan het werk willen helpen.</p></div>
 <div class="l-tile l-tile-dark"><p class="l-label" style="margin:0 0 8px;color:#9FD3C8">Hoe</p><p style="margin:0;line-height:1.55">Eén vaste begeleider, afspraken op papier, voortgang die iedereen kan volgen in het portaal.</p></div>
 </div>
+</div>
+</section>
+
+<section class="l-mvsec" aria-label="Missie en visie">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,104px) max(20px,4vw)">
+<div class="l-mv-grid">
+<article class="l-mv l-mv-m l-rv" aria-labelledby="mi-title"><div class="l-mv-head"><p class="l-label" style="margin:0">Waarom we bestaan</p><h2 id="mi-title" class="l-h">Onze missie</h2></div><p class="l-mv-lead">Verbind&amp;GO begeleidt statushouders, andere nieuwkomers en mensen met een afstand tot de arbeidsmarkt naar passend, betaald werk dat zij duurzaam kunnen behouden. We verbinden hun talenten en ambities met de mogelijkheden van werkgevers.</p><p>Door beroepsoriëntatie, werkgerichte taalondersteuning, digitale vaardigheden, werknemersvaardigheden, matching en persoonlijke coaching te combineren, bieden we ondersteuning die aansluit bij wat iedere deelnemer nodig heeft. We begeleiden zowel de deelnemer als de werkgever, met aandacht voor een goede start, ontwikkeling op de werkvloer en het behouden van werk.</p><p>We streven naar samenwerking met gemeenten en werkgevers om deelnemers duurzaam naar werk te begeleiden. Voor deelnemers die nog inburgeren, besteden we specifiek aandacht aan het combineren van werk en inburgering.</p><p class="l-mv-kern"><span aria-hidden="true"></span>Kortom: passend, betaald werk dat blijft.</p></article>
+<article class="l-mv l-mv-v l-rv" aria-labelledby="vi-title"><div class="l-mv-head"><p class="l-label" style="margin:0">Waar we in geloven</p><h2 id="vi-title" class="l-h">Onze visie</h2></div><p class="l-mv-lead">Wij geloven in een samenleving waarin iedereen de kans krijgt om talenten te benutten en een zelfstandige toekomst op te bouwen. Passend, betaald werk kan bijdragen aan inkomen, zelfvertrouwen, sociale contacten en persoonlijke ontwikkeling.</p><p>Leren en werken versterken elkaar. Mensen moeten de ruimte krijgen om tijdens het werk hun taal, digitale vaardigheden en werknemersvaardigheden verder te ontwikkelen. Daarbij vraagt ieder mens om een passende aanpak, met aandacht voor talenten, ambities en de ondersteuning die nodig is. Voor mensen die nog inburgeren, vinden wij het belangrijk dat werk en inburgering zo op elkaar aansluiten dat zij elkaar versterken.</p><p>Duurzame arbeidsparticipatie vraagt om inzet van deelnemers, werkgevers en begeleiders, en om betrokkenheid van gemeenten. Wij geloven in heldere afspraken, wederzijds begrip en begeleiding van zowel de deelnemer als de werkgever. Die begeleiding hoort verder te gaan dan de eerste werkdag en geleidelijk af te nemen wanneer de zelfstandigheid groeit. Zo ontstaat ruimte voor een arbeidsrelatie die standhoudt en waarin mensen zich kunnen blijven ontwikkelen.</p><p class="l-mv-kern"><span aria-hidden="true"></span>Kortom: leren en werken versterken elkaar.</p></article>
+</div>
+</div>
+</section>
+
+<section class="l-kw" aria-labelledby="kw-title">
+<div style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,104px) max(20px,4vw);position:relative">
+<div class="l-rv" style="display:flex;flex-wrap:wrap;gap:16px 64px;align-items:flex-end;justify-content:space-between;margin-bottom:40px"><div><p class="l-label" style="margin:0 0 12px;color:#9FE3D6">Waar we voor staan</p><h2 id="kw-title" class="l-h" style="font-size:clamp(32px,4.4vw,52px);color:#FFFFFF">Onze kernwaarden</h2></div><p style="margin:0;max-width:44ch;color:#CFE6E1;line-height:1.6">Zes waarden die bepalen hoe we werken: met deelnemers, met werkgevers en met gemeenten.</p></div>
+<ol class="l-kw-grid l-rv"><li class="l-kw-item"><div class="l-kw-top"><span class="l-kw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span class="l-kw-n" aria-hidden="true">01</span></div><h3 class="l-h">Verbinding</h3><p>We brengen deelnemers, werkgevers en gemeenten samen rond een gezamenlijk doel. We stemmen verwachtingen af, maken duidelijke afspraken en zorgen voor korte communicatielijnen.</p></li><li class="l-kw-item"><div class="l-kw-top"><span class="l-kw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c.6-3.2 2.6-5 5-5s4.4 1.8 5 5M11 20c.6-3.2 2.6-5 5-5s4.4 1.8 5 5"/></svg></span><span class="l-kw-n" aria-hidden="true">02</span></div><h3 class="l-h">Gelijkwaardigheid</h3><p>We benaderen mensen als volwassenen met eigen ervaring, wensen en talenten. We beslissen niet over deelnemers zonder hen en spreken vanuit mogelijkheden, niet vanuit beperkingen of labels.</p></li><li class="l-kw-item"><div class="l-kw-top"><span class="l-kw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.4l-5.2 2.8 1-5.9L3.5 9.2l5.9-.8z"/></svg></span><span class="l-kw-n" aria-hidden="true">03</span></div><h3 class="l-h">Talentgericht werken</h3><p>We beginnen bij wat iemand kan, wil en kan ontwikkelen. Met gesprekken, beroepsoriëntatie en praktijkervaring onderzoeken we welk werk past, voordat we een match maken.</p></li><li class="l-kw-item"><div class="l-kw-top"><span class="l-kw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><span class="l-kw-n" aria-hidden="true">04</span></div><h3 class="l-h">Persoonlijke aandacht</h3><p>Geen twee deelnemers of werkplekken zijn hetzelfde. Daarom stemmen we begeleiding, taalondersteuning en doelen af op de persoon, de werksituatie en praktische omstandigheden.</p></li><li class="l-kw-item"><div class="l-kw-top"><span class="l-kw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="l-kw-n" aria-hidden="true">05</span></div><h3 class="l-h">Betrouwbaarheid</h3><p>We zeggen wat we doen en doen wat we afspreken. We zijn eerlijk over haalbaarheid, leggen verantwoordelijkheden vast, delen gegevens zorgvuldig en beloven geen resultaten die we niet kunnen garanderen.</p></li><li class="l-kw-item"><div class="l-kw-top"><span class="l-kw-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l5-5 4 3 7-8"/><path d="M15 8h5v5"/></svg></span><span class="l-kw-n" aria-hidden="true">06</span></div><h3 class="l-h">Duurzame vooruitgang</h3><p>Een plaatsing is geen eindpunt. We blijven betrokken na de start, evalueren met werknemer en werkgever, sturen tijdig bij en bouwen begeleiding verantwoord af richting zelfstandigheid.</p></li></ol>
 </div>
 </section>
 

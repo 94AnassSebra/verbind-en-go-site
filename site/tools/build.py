@@ -22,6 +22,9 @@ CFG_PATH = ROOT / 'site.config.json'
 CFG = json.loads(CFG_PATH.read_text(encoding='utf-8')) if CFG_PATH.exists() else {}
 CFG = {k: v for k, v in CFG.items() if not k.startswith('_')}
 DIST.mkdir(parents=True, exist_ok=True)
+# oude pagina's opruimen, zodat verwijderde pagina's (zoals de portaaldemo) niet online blijven
+for old in DIST.glob('*.html'):
+    old.unlink()
 
 PAGES = {  # bestandsnaam op het canvas -> bestandsnaam in de export, beschrijving
     'Main.dc.html': ('index.html', 'Verbind & GO brengt taal, digitale vaardigheden, coaching en begeleiding op de werkvloer samen. Voor gemeenten en werkgevers. Samen op weg naar werk dat blijft.'),
@@ -31,7 +34,7 @@ PAGES = {  # bestandsnaam op het canvas -> bestandsnaam in de export, beschrijvi
     'OverOns.dc.html': ('over-ons.html', 'Kennis van NT2-onderwijs, werktaal en vaktaal, digitale vaardigheden, coaching en begeleiding op de werkvloer, in één hand.'),
     'Contact.dc.html': ('contact.html', 'Plan een kennismaking of bespreek een samenwerking met Verbind & GO. Een eerste gesprek verplicht u tot niets.'),
     'Inloggen.dc.html': ('inloggen.html', 'Inloggen op het begeleidingsportaal van Verbind & GO. Iedere rol ziet alleen wat voor die rol bedoeld is.'),
-    'Portaal.dc.html': ('portaal.html', 'Demonstratie van het begeleidingsportaal met fictieve gegevens.'),
+    # Portaal.dc.html (demo) wordt bewust niet gepubliceerd; alleen voor presentaties.
 }
 SHARED = ['Header.dc.html', 'Footer.dc.html']
 VOID = r'(input|br|img|hr|meta|link|source|wbr)'
@@ -109,6 +112,13 @@ base = (CFG.get('domein') or '').rstrip('/')
 if base and not base.startswith('http'):
     base = 'https://' + base
 
+# Beveiliging: lettertypen lokaal (geen verzoeken naar Google), en een Content-Security-Policy.
+import shutil
+shutil.copytree(ROOT / 'fonts', DIST / 'fonts', dirs_exist_ok=True)
+_connect = ["'self'"] + [u for u in [CFG.get('supabaseUrl', ''), re.sub(r'^(https://[^/]+).*$', r'\1', CFG.get('formEndpoint', ''))] if u]
+CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; '
+       "script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; font-src 'self'; "
+       "img-src 'self' data:; connect-src " + ' '.join(_connect) + "; form-action 'self'; base-uri 'self'; object-src 'none'\">")
 written = []
 for name, (out, desc) in PAGES.items():
     key = name.replace('.dc.html', '')
@@ -119,7 +129,7 @@ for name, (out, desc) in PAGES.items():
     for line in heads.split('\n'):
         if line.strip().startswith('<link') and line.strip() in seen: continue
         seen.add(line.strip()); parts.append(line)
-    heads = '\n'.join(parts)
+    heads = '\n'.join(p for p in parts if 'fonts.googleapis.com' not in p and 'fonts.gstatic.com' not in p)
     reg = ''.join('DC.register(%s,%s);\n' % (js_json(k), js_json({'tpl': comps[k]['tpl'], 'props': comps[k]['props'], 'src': comps[k]['src']})) for k in used)
     canonical = f'<link rel="canonical" href="{base}/{"" if out == "index.html" else out}">' if base else ''
     robots = '<meta name="robots" content="noindex,nofollow">' if out in NOINDEX else ''
@@ -138,8 +148,9 @@ for name, (out, desc) in PAGES.items():
 {og_img}
 <meta name="theme-color" content="#1F5D5A">
 <link rel="icon" href="{FAVICON}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{CSP}
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="fonts/fonts.css">
 {canonical}
 {robots}
 {heads}
@@ -161,7 +172,7 @@ for name, (out, desc) in PAGES.items():
     print('geschreven', out)
 
 # 404, robots, sitemap
-(DIST / '404.html').write_text(f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pagina niet gevonden — Verbind &amp; GO</title><link rel="icon" href="{FAVICON}"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@800&family=Figtree:wght@400;600&display=swap"><style>body{{margin:0;font-family:Figtree,system-ui,sans-serif;color:#0F1F1F;background:#F7F4EE;display:grid;place-items:center;min-height:100dvh;padding:24px}}main{{max-width:560px;text-align:center}}h1{{font-family:Outfit,sans-serif;font-weight:800;font-size:clamp(36px,7vw,64px);letter-spacing:-.04em;margin:0 0 12px}}a{{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;background:#0D3534;color:#fff;text-decoration:none;font-weight:600;margin-top:20px}}</style></head><body><main><p style="font-weight:700;letter-spacing:.16em;color:#1F5D5A;font-size:12px">404</p><h1>Deze pagina bestaat niet.</h1><p style="color:#4F6260;line-height:1.6">Misschien is de link verouderd. Ga terug naar de homepage of neem contact met ons op.</p><a href="/">Naar de homepage</a></main></body></html>''', encoding='utf-8')
+(DIST / '404.html').write_text(f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pagina niet gevonden — Verbind &amp; GO</title><link rel="icon" href="{FAVICON}"><link rel="stylesheet" href="/fonts/fonts.css"><style>body{{margin:0;font-family:Figtree,system-ui,sans-serif;color:#0F1F1F;background:#F7F4EE;display:grid;place-items:center;min-height:100dvh;padding:24px}}main{{max-width:560px;text-align:center}}h1{{font-family:Outfit,sans-serif;font-weight:800;font-size:clamp(36px,7vw,64px);letter-spacing:-.04em;margin:0 0 12px}}a{{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:999px;background:#0D3534;color:#fff;text-decoration:none;font-weight:600;margin-top:20px}}</style></head><body><main><p style="font-weight:700;letter-spacing:.16em;color:#1F5D5A;font-size:12px">404</p><h1>Deze pagina bestaat niet.</h1><p style="color:#4F6260;line-height:1.6">Misschien is de link verouderd. Ga terug naar de homepage of neem contact met ons op.</p><a href="/">Naar de homepage</a></main></body></html>''', encoding='utf-8')
 if base:
     today = datetime.date.today().isoformat()
     urls = ''.join(f'<url><loc>{base}/{"" if p == "index.html" else p}</loc><lastmod>{today}</lastmod></url>' for p in written if p not in NOINDEX)

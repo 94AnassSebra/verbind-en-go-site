@@ -70,6 +70,7 @@ body{background:var(--bg)}
 h1.l-h{letter-spacing:-0.05em;line-height:1.04}
 .l-w{padding-bottom:.06em;margin-bottom:-.06em;line-height:1.1}
 .l-or{color:var(--orange);background:none;-webkit-text-fill-color:var(--orange)}
+.l-gr{color:var(--petrol);-webkit-text-fill-color:var(--petrol)}
 .l-label{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--petrol)}
 .l-label::before{content:"";width:22px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--teal))}
 .l-bar{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--teal) 60%,var(--petrol))}
@@ -256,6 +257,44 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 .lf-mark{background:rgba(251,227,204,.14);color:#F7B57E;border-color:#F7B57E}
 
 @media (prefers-reduced-motion: reduce){.l-hero::before,.l-hero::after,.l-float,.l-marq ul{animation:none!important}.l-mock{transform:none}}
+
+/* --- illustraties (vervangen foto-plekken) --- */
+.l-art{position:relative;overflow:hidden;border-radius:var(--r-l);aspect-ratio:4/3;min-height:260px;max-width:100%;box-shadow:inset 0 0 0 1px rgba(31,93,90,.08),0 40px 70px -48px rgba(31,93,90,.55);background:#0B2E2D}
+.l-art.l-b-photo{aspect-ratio:auto;min-height:380px}
+.l-art svg,.l-aud-art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.l-aud-art{position:relative;height:180px;overflow:hidden;background:#0B2E2D}
+.l-flow{stroke-dasharray:8 14;animation:l-dash 7s linear infinite}
+@keyframes l-dash{to{stroke-dashoffset:-220}}
+@media (max-width:640px){.l-art.l-b-photo{min-height:260px}}
+@media (prefers-reduced-motion: reduce){.l-flow{animation:none;stroke-dasharray:none}}
+
+/* Kernwaarden (Over ons) */
+.l-kw{position:relative;overflow:hidden;color:#FFFFFF;background:radial-gradient(600px 400px at 88% 0%,rgba(43,179,163,.35),transparent 70%),radial-gradient(500px 360px at 0% 100%,rgba(240,134,43,.22),transparent 70%),linear-gradient(135deg,#174A48,#0B2E2D 60%,#071F1E)}
+.l-kw-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.l-kw-item{position:relative;padding:26px 24px 26px;border-radius:var(--r-l);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.l-kw-item:hover{transform:translateY(-3px);border-color:rgba(159,227,214,.5);background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05))}
+.l-kw-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.l-kw-ic{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:#FFFFFF;color:#1F5D5A;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.l-kw-item:nth-child(3n+2) .l-kw-ic{color:#F0862B}
+.l-kw-n{font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:15px;letter-spacing:.08em;color:#9FE3D6}
+.l-kw-item h3{font-size:22px;color:#FFFFFF;margin:0 0 10px}
+.l-kw-item p{margin:0;line-height:1.62;color:#D6EAE5;font-size:16px}
+@media (prefers-reduced-motion: reduce){.l-kw-item,.l-kw-item:hover{transition:none;transform:none}}
+
+/* Missie en visie (Over ons) */
+.l-mvsec{background:#FFFFFF}
+.l-mv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px;align-items:start}
+.l-mv{position:relative;overflow:hidden;border-radius:var(--r-l);padding:clamp(26px,3.4vw,44px);border:1px solid #EAE2D6;background:#FAF7F2}
+.l-mv-v{background:#E7F3F0;border-color:#CFE6E1}
+.l-mv::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:#F0862B}
+.l-mv-v::before{background:#2BB3A3}
+.l-mv-head{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.l-mv h2{font-size:clamp(30px,3.6vw,42px);margin:0}
+.l-mv-lead{margin:0 0 16px;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:#0F1F1F;font-weight:500}
+.l-mv p:not(.l-mv-lead):not(.l-label):not(.l-mv-kern){margin:0 0 14px;line-height:1.65;color:#4F6260}
+.l-mv-kern{display:flex;align-items:center;gap:12px;margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(31,93,90,.15);font-family:Outfit,Figtree,system-ui,sans-serif;font-weight:700;font-size:17px;color:#1F5D5A}
+.l-mv-kern span{flex:none;width:28px;height:3px;border-radius:2px;background:#F0862B}
+.l-mv-v .l-mv-kern span{background:#2BB3A3}
 /* @/site-css */
 </style>
 </helmet>
