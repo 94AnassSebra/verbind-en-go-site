@@ -1,4 +1,4 @@
-/* Verbind & Go — kleine runtime voor de standalone export.
+/* Verbind&GO — kleine runtime voor de standalone export.
    Rendert de templates (sc-if, sc-for, dc-import, {{holes}}) zonder de Claude Design-omgeving. */
 (function () {
   'use strict';

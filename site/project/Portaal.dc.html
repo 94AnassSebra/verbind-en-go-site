@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<title>Portaaldemo Verbind &amp; Go</title>
+<title>Portaaldemo Verbind&amp;GO</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -259,9 +259,9 @@ input,select,textarea,button{font:inherit}
 <p class="p-label" id="d-coach">Mijn begeleider</p>
 <div style="display:flex;gap:14px;align-items:center">
 <span aria-hidden="true" style="width:52px;height:52px;border-radius:50%;background:#E7F3F0;color:#1F5D5A;display:grid;place-items:center;font-weight:700;font-size:18px">{{coach.init}}</span>
-<div><p style="margin:0;font-size:19px;font-weight:600">{{coach.naam}}</p><p style="margin:2px 0 0;color:#4F6260">Begeleider bij Verbind &amp; Go</p></div>
+<div><p style="margin:0;font-size:19px;font-weight:600">{{coach.naam}}</p><p style="margin:2px 0 0;color:#4F6260">Begeleider bij Verbind&amp;GO</p></div>
 </div>
-<p style="margin:0;line-height:1.5;color:#3E4F4C">Heb je een vraag? Zeg het bij je volgende afspraak, of bel of mail Verbind &amp; Go.</p>
+<p style="margin:0;line-height:1.5;color:#3E4F4C">Heb je een vraag? Zeg het bij je volgende afspraak, of bel of mail Verbind&amp;GO.</p>
 <span class="p-nc" style="align-self:flex-start;margin-top:auto">Niet aangesloten · bericht sturen</span>
 </section>
 </div>
@@ -404,7 +404,7 @@ input,select,textarea,button{font:inherit}
 <sc-if value="{{isDeelnemers}}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px"><div><p class="p-label" style="margin:0 0 8px">Deelnemers</p>
 <h1 class="p-h1">Aan mij toegewezen</h1></div><button type="button" class="p-btn p-btn-primary" onClick="{{openDeel}}">+ Nieuwe deelnemer</button></div>
-<p style="margin:0 0 20px;color:#4F6260;line-height:1.5;max-width:70ch">Je ziet alleen deelnemers die aan jou zijn toegewezen. Andere deelnemers van Verbind &amp; Go zijn niet zichtbaar.</p>
+<p style="margin:0 0 20px;color:#4F6260;line-height:1.5;max-width:70ch">Je ziet alleen deelnemers die aan jou zijn toegewezen. Andere deelnemers van Verbind&amp;GO zijn niet zichtbaar.</p>
 <div class="p-grid">
 <sc-for list="{{myDeelnemers}}" as="d" hint-placeholder-count="2">
 <section class="p-card" style="display:flex;flex-direction:column;gap:12px">
@@ -772,7 +772,7 @@ input,select,textarea,button{font:inherit}
 <div class="p-field {{af.datumBad}}"><label for="a-datum">Datum</label><input id="a-datum" type="date" value="{{af.datum}}" onChange="{{af.setDatum}}"><sc-if value="{{af.datumErr}}" hint-placeholder-val="{{ false }}"><span class="err">{{af.datumErrText}}</span></sc-if></div>
 <div class="p-field {{af.tijdBad}}"><label for="a-tijd">Tijd</label><input id="a-tijd" type="time" value="{{af.tijd}}" onChange="{{af.setTijd}}"><sc-if value="{{af.tijdErr}}" hint-placeholder-val="{{ false }}"><span class="err">Vul een tijd in.</span></sc-if></div>
 </div>
-<div class="p-field"><label for="a-waar">Locatie of online</label><select id="a-waar" value="{{af.waarType}}" onChange="{{af.setWaarType}}"><option value="kantoor">Kantoor Verbind &amp; Go</option><option value="werkplek">Op de werkplek</option><option value="online">Online (videogesprek)</option></select></div>
+<div class="p-field"><label for="a-waar">Locatie of online</label><select id="a-waar" value="{{af.waarType}}" onChange="{{af.setWaarType}}"><option value="kantoor">Kantoor Verbind&amp;GO</option><option value="werkplek">Op de werkplek</option><option value="online">Online (videogesprek)</option></select></div>
 <fieldset style="border:0;margin:0;padding:0"><legend style="font-weight:600;margin-bottom:8px">Betrokkenen</legend><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px">
 <label class="p-check"><input type="checkbox" checked="{{ true }}" disabled="{{ true }}"><span>Deelnemer en begeleider</span></label>
 <label class="p-check"><input type="checkbox" checked="{{af.metWg}}" onChange="{{af.setMetWg}}"><span>Werkgever ({{af.wgNaam}})</span></label>
@@ -842,11 +842,11 @@ users: [
 { id: 'u-samira', naam: 'Samira Haddad', rol: 'deelnemer', org: 'Deelnemer', actief: true },
 { id: 'u-daniel', naam: 'Daniël Vos', rol: 'deelnemer', org: 'Deelnemer', actief: true },
 { id: 'u-tomasz', naam: 'Tomasz Nowak', rol: 'deelnemer', org: 'Deelnemer', actief: true },
-{ id: 'u-noor', naam: 'Noor Bakker', rol: 'begeleider', org: 'Verbind & Go', actief: true },
-{ id: 'u-yusuf', naam: 'Yusuf El Amrani', rol: 'begeleider', org: 'Verbind & Go', actief: true },
+{ id: 'u-noor', naam: 'Noor Bakker', rol: 'begeleider', org: 'Verbind&GO', actief: true },
+{ id: 'u-yusuf', naam: 'Yusuf El Amrani', rol: 'begeleider', org: 'Verbind&GO', actief: true },
 { id: 'u-petra', naam: 'Petra de Wit', rol: 'werkgever', org: 'Fictief Logistiek BV', actief: true },
 { id: 'u-kees', naam: 'Kees Jansen', rol: 'gemeente', org: 'Gemeente Voorbeeldstad', actief: true },
-{ id: 'u-beheer', naam: 'Beheerder demo', rol: 'beheerder', org: 'Verbind & Go', actief: true }
+{ id: 'u-beheer', naam: 'Beheerder demo', rol: 'beheerder', org: 'Verbind&GO', actief: true }
 ],
 deelnemers: [
 { id: 'd1', userId: 'u-samira', naam: 'Samira Haddad', coachId: 'u-noor', wgId: 'u-petra', gemId: 'u-kees', functie: 'Orderpicker (proefplaatsing)', fase: 'Starten op het werk', stap: 'Proefplaatsing', status: 'actief', taal: true, focus: 'Werktaal en vaktaal logistiek', domeinen: ['werktaal', 'vaktaal', 'digitaal', 'werk', 'samen'], achtergrond: { situatie: 'Statushouder, sinds 2024 in Nederland', taal: 'Nederlands A2 (mondeling sterker dan schriftelijk)', opleiding: 'Middelbare school afgerond in land van herkomst', werkervaring: 'Vier jaar winkelmedewerker; in Nederland proefplaatsing magazijn', interesses: 'Logistiek, later teamleider', ondersteuning: 'Werktaal op de vloer, uren-app, zelfvertrouwen bij navragen', opdrachtgever: 'Gemeente Voorbeeldstad', start: '2026-09-15' }, startpunt: 'Spreekt Nederlands op A2-niveau, werkt sinds drie weken op een proefplaats in het magazijn. Begrijpt mondelinge instructies nog niet altijd en vraagt zelden na.', evalDate: '2026-11-05' },
@@ -863,9 +863,9 @@ doelen: [
 afspraken: [
 { id: 'a1', deelId: 'd1', datum: '2026-10-20', tijd: '10:00', titel: 'Werkplekbezoek magazijn', waar: 'Op de werkplek', met: ['deelnemer', 'begeleider', 'werkgever'], shared: true, status: 'afgerond', toel: 'Kennismaken met de teamleider en de instructiekaarten bekijken.', taskId: null },
 { id: 'a2', deelId: 'd1', datum: '2026-10-23', tijd: '09:30', titel: 'Begeleidingsgesprek', waar: 'Online (videogesprek)', met: ['deelnemer', 'begeleider'], shared: false, status: 'gepland', toel: 'We bespreken de veiligheidswoorden en oefenen met navragen.', taskId: 't1' },
-{ id: 'a3', deelId: 'd2', datum: '2026-10-22', tijd: '14:00', titel: 'Vervolg kennismaking', waar: 'Kantoor Verbind & Go', met: ['deelnemer', 'begeleider'], shared: false, status: 'gepland', toel: 'Doelen bespreken voor de oriëntatie.', taskId: 't3' },
+{ id: 'a3', deelId: 'd2', datum: '2026-10-22', tijd: '14:00', titel: 'Vervolg kennismaking', waar: 'Kantoor Verbind&GO', met: ['deelnemer', 'begeleider'], shared: false, status: 'gepland', toel: 'Doelen bespreken voor de oriëntatie.', taskId: 't3' },
 { id: 'a4', deelId: 'd1', datum: '2026-10-27', tijd: '11:00', titel: 'Driegesprek over de start', waar: 'Op de werkplek', met: ['deelnemer', 'begeleider', 'werkgever'], shared: true, status: 'gepland', toel: '', taskId: null },
-{ id: 'a5', deelId: 'd2', datum: '2026-10-29', tijd: '10:00', titel: 'Oefenen sollicitatiegesprek', waar: 'Kantoor Verbind & Go', met: ['deelnemer', 'begeleider'], shared: false, status: 'gepland', toel: '', taskId: null },
+{ id: 'a5', deelId: 'd2', datum: '2026-10-29', tijd: '10:00', titel: 'Oefenen sollicitatiegesprek', waar: 'Kantoor Verbind&GO', met: ['deelnemer', 'begeleider'], shared: false, status: 'gepland', toel: '', taskId: null },
 { id: 'a6', deelId: 'd3', datum: '2026-10-26', tijd: '15:00', titel: 'Vaktaalles etiketten', waar: 'Op de werkplek', met: ['deelnemer', 'begeleider'], shared: false, status: 'gepland', toel: '', taskId: 't4' }
 ],
 opdrachtenBibliotheek: [
@@ -1059,7 +1059,7 @@ if (!f.tijd) errs['appt.tijd'] = true;
 if (Object.keys(errs).length) { set({ errs }); return; }
 const d = clone(D);
 const dd = deel(f.deel) || deel(S.selDeel);
-const waar = f.waarType === 'online' ? 'Online (videogesprek)' : f.waarType === 'werkplek' ? 'Op de werkplek' : 'Kantoor Verbind & Go';
+const waar = f.waarType === 'online' ? 'Online (videogesprek)' : f.waarType === 'werkplek' ? 'Op de werkplek' : 'Kantoor Verbind&GO';
 const met = ['deelnemer', 'begeleider']; if (f.metWg && dd.wgId) met.push('werkgever');
 const apptId = 'a' + Date.now();
 d.afspraken.push({ id: apptId, deelId: dd.id, datum: f.datum, tijd: f.tijd, titel: f.titel.trim(), waar, met, shared: !!(f.shared && dd.wgId), status: 'gepland', toel: (f.toel || '').trim(), taskId: null });
