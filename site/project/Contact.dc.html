@@ -358,10 +358,10 @@ input[type=text],input[type=email],input[type=tel],textarea{border-radius:16px}
 <sc-if value="{{e.type}}" hint-placeholder-val="{{ false }}"><p class="l-err">{{msg.type}}</p></sc-if>
 </fieldset>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px">
-<div><label for="veld-naam" style="display:block;font-weight:600;margin-bottom:8px">Naam <span style="font-weight:400;color:#4F6260">(verplicht)</span></label><input id="veld-naam" type="text" autocomplete="name" value="{{f.naam}}" onChange="{{on.naam}}" aria-invalid="{{inv.naam}}" class="{{cls.naam}}"><sc-if value="{{e.naam}}" hint-placeholder-val="{{ false }}"><p class="l-err">{{msg.naam}}</p></sc-if></div>
-<div><label for="veld-org" style="display:block;font-weight:600;margin-bottom:8px">Organisatie</label><input id="veld-org" type="text" autocomplete="organization" value="{{f.org}}" onChange="{{on.org}}"></div>
-<div><label for="veld-email" style="display:block;font-weight:600;margin-bottom:8px">E-mailadres</label><input id="veld-email" type="email" autocomplete="email" value="{{f.email}}" onChange="{{on.email}}" aria-invalid="{{inv.email}}" aria-describedby="hint-contact" class="{{cls.email}}"><sc-if value="{{e.email}}" hint-placeholder-val="{{ false }}"><p class="l-err">{{msg.email}}</p></sc-if></div>
-<div><label for="veld-tel" style="display:block;font-weight:600;margin-bottom:8px">Telefoonnummer</label><input id="veld-tel" type="tel" autocomplete="tel" value="{{f.tel}}" onChange="{{on.tel}}" aria-describedby="hint-contact"></div>
+<div><label for="veld-naam" style="display:block;font-weight:600;margin-bottom:8px">Naam <span style="font-weight:400;color:#4F6260">(verplicht)</span></label><input id="veld-naam" type="text" autocomplete="name" value="{{f.naam}}" onChange="{{on.naam}}" aria-invalid="{{inv.naam}}" class="{{cls.naam}}" maxlength="120"><sc-if value="{{e.naam}}" hint-placeholder-val="{{ false }}"><p class="l-err">{{msg.naam}}</p></sc-if></div>
+<div><label for="veld-org" style="display:block;font-weight:600;margin-bottom:8px">Organisatie</label><input id="veld-org" type="text" autocomplete="organization" value="{{f.org}}" onChange="{{on.org}}" maxlength="160"></div>
+<div><label for="veld-email" style="display:block;font-weight:600;margin-bottom:8px">E-mailadres</label><input id="veld-email" type="email" autocomplete="email" value="{{f.email}}" onChange="{{on.email}}" aria-invalid="{{inv.email}}" aria-describedby="hint-contact" class="{{cls.email}}" maxlength="200"><sc-if value="{{e.email}}" hint-placeholder-val="{{ false }}"><p class="l-err">{{msg.email}}</p></sc-if></div>
+<div><label for="veld-tel" style="display:block;font-weight:600;margin-bottom:8px">Telefoonnummer</label><input id="veld-tel" type="tel" autocomplete="tel" value="{{f.tel}}" onChange="{{on.tel}}" aria-describedby="hint-contact" maxlength="40"></div>
 </div>
 <p id="hint-contact" style="margin:-14px 0 0;font-size:15px;color:#4F6260">Vul een e-mailadres of telefoonnummer in, zodat we u kunnen bereiken.</p>
 <div>
@@ -424,7 +424,10 @@ const submit = (e) => { if (e && e.preventDefault) e.preventDefault(); if (this.
 if (!ok || !live) { this.setState({ err: out, done: ok, sendErr: false }); return; }
 this.setState({ err: {}, sending: true, sendErr: false });
 const payload = { type: cur.type, naam: cur.naam, organisatie: cur.org, email: cur.email, telefoon: cur.tel, toelichting: cur.tekst, bron: 'website verbind-en-go', _subject: 'Nieuw contactverzoek via de website' };
-fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+const isSb = endpoint.indexOf('/rest/v1/') > -1; const nz = v => { const t = (v || '').trim(); return t ? t : null; };
+const body = isSb ? { type: cur.type, naam: cur.naam.trim(), organisatie: nz(cur.org), email: nz(cur.email), telefoon: nz(cur.tel), toelichting: nz(cur.tekst) } : payload;
+const headers = isSb ? { 'Content-Type': 'application/json', 'apikey': cfg.supabaseKey || '', 'Prefer': 'return=minimal' } : { 'Accept': 'application/json', 'Content-Type': 'application/json' };
+fetch(endpoint, { method: 'POST', headers: headers, body: JSON.stringify(body) })
 .then(r => { if (!r.ok) throw new Error('status ' + r.status); this.setState({ sending: false, sent: true }); })
 .catch(() => this.setState({ sending: false, sendErr: true })); };
 const reset = () => this.setState({ f: EMPTY, err: {}, done: false, sent: false, sendErr: false, sending: false });

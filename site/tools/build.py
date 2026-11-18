@@ -107,7 +107,7 @@ runtime = (HERE / 'runtime.js').read_text(encoding='utf-8')
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231F5D5A'/%3E%3Cpath d='M12 20c16 0 18 12 28 12M12 44c16 0 18-12 28-12M12 32h36' fill='none' stroke='%23FFFFFF' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='32' r='6' fill='%23F0862B'/%3E%3C/svg%3E"
 SETTLED_CSS = '<style>[data-settled] .o-w,[data-settled] .o-fade{animation:none!important;opacity:1!important;transform:none!important}</style>'
-site_cfg_public = {k: CFG.get(k, '') for k in ('organisatie', 'email', 'telefoon', 'formEndpoint')}
+site_cfg_public = {k: CFG.get(k, '') for k in ('organisatie', 'email', 'telefoon', 'formEndpoint', 'supabaseKey')}
 base = (CFG.get('domein') or '').rstrip('/')
 if base and not base.startswith('http'):
     base = 'https://' + base
